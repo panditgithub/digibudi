@@ -1,0 +1,116 @@
+{% extends 'client_base.html' %}
+{% block content %}
+{% load static %}
+<section class="all-jobs-section new-tabs-section">
+    <div class="container LandingContainer">
+        <div class="row">
+            <div class="col-md-12"> 
+                <div class="all-project-history">
+                    
+                    <!-- import tabs_nav.html -->
+                    <div class="all-project-tab-heading">
+                        <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                          <li class="nav-item all-project-li" role="presentation">
+                            <a style="text-decoration: none;" href="{% url 'clientallproject' %}">
+                            <button class="nav-link " id="all-project-tab" data-bs-toggle="pill"
+                              data-bs-target="#all-project" type="button" role="tab" aria-controls="all-project"
+                              aria-selected="false">All Projects</button></a>
+                          </li>
+                          <li class="nav-item comp-project-li" role="presentation">
+                            <a style="text-decoration: none;" href="{% url 'completeclientproject' %}">
+                            <button class="nav-link" id="complete-project-tab" data-bs-toggle="pill"
+                              data-bs-target="#complete-project" type="button" role="tab" aria-controls="complete-project"
+                              aria-selected="false">Completed Projects</button></a>
+                          </li>
+                          <li class="nav-item in-pro-project-li" role="presentation">
+                            <a style="text-decoration: none;" href="{% url 'progressclientproject' %}">
+                            <button class="nav-link active" id="in-progress-tab" data-bs-toggle="pill" data-bs-target="#in-progress"
+                              type="button" role="tab" aria-controls="in-progress" aria-selected="true">In progress projects
+                            </button></a>
+                          </li>
+                          <li class="nav-item  pend-project-li" role="presentation">
+                            <a style="text-decoration: none;" href="{% url 'unassignedclientproject' %}">
+                            <button class="nav-link" id="pending-tab" data-bs-toggle="pill" data-bs-target="#pending"
+                              type="button" role="tab" aria-controls="pending" aria-selected="false">Unassigned projects</button></a>
+                          </li>
+                          <li class="nav-item" role="presentation">
+                            <a style="text-decoration: none;" href="{% url 'archivedclientproject' %}">
+                            <button class="nav-link reject-project-li" id="rejected-tab" data-bs-toggle="pill"
+                              data-bs-target="#rejected" type="button" role="tab" aria-controls="rejected"
+                              aria-selected="false">Archived Projects</button></a>
+                          </li>
+                    
+                        </ul>
+                      </div>
+                    
+                    <div class="all-project-tab-content">
+                        <div class="tab-content" id="pills-tabContent">
+                            
+                            <div class="tab-pan" id="in-progress" role="tabpanel" aria-labelledby="in-progress-tab"
+                            tabindex="0">
+                            {% if page_obj %}
+                            {% for data in page_obj %}
+                            <div class="job-tab-content client_jobs">
+                                <div class="all-job-des">
+                                    <h3><a style="text-decoration: none;" href="/project/report/{{data.id}}">{{data.job.job_title}}</a></h3>
+                                    <h6>{{data.job.seller.user.first_name}}</h6>
+                                    <p>J{{data.job.short_desc}}</p>
+                                    <div class="all-job-dates">
+                                        <div class="assg-by">
+                                            <span>Assigned by </span>
+                                            <span class="span-content"> {{data.job.seller}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="all-job-price">
+                                    <h5>{{data.job.askamount}}</h5>
+                                    <span class="job-approved">Hired </span>
+                                    <a href="/project/report/{{data.id}}">
+                                    <span class="job-approved">{{data.bidder.user}}</span>
+                                    </a>
+                                    <div class="icon_hadding">
+                                        <div class="massageDiv_header">
+                                          <a href="/project/group/{{data.id}}">
+                                            <img src="{%static 'static2/images/massage_ivHeader.svg'%}" alt="massage_icon">
+                                          </a>
+                                        </div>
+                                      </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            {% else %}
+                                    <div class="job-tab-content client_jobs">
+                                        <div class="all-job-des">
+                                            <h3>There is no any inprogress project</h3>
+                                        </div>
+                                    </div>
+                            {% endif %}
+                            {% if page_obj %}
+                            
+                            <div>
+                                <span>
+                                    {% if page_obj.has_previous %}
+                                    <a href="?page3={{ page_obj.previous_page_number }}">Previous</a>
+                                    {% endif %}
+                                    <span>
+                                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                                    </span>
+                                    {% if page_obj.has_next %}
+                                    <a href="?page3={{ page_obj.next_page_number }}">Next</a>
+                                    {% endif %}
+                                </span>
+                              </div>
+                            {% endif %}
+                                </div>
+                                
+                            </div>
+                        </div> 
+                        
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div> 
+</section>
+
+{% endblock %}

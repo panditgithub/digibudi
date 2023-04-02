@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client All Jobs</title>
+  <!-- link css -->
+  <link rel="stylesheet" href="{% static 'static2/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'static2/css/style.css' %}" >
+  <!-- link font awsome -->
+  <link rel="stylesheet" href="{% static 'static2/css/font-awesome.min.css' %}">
+</head>
+<body>
+{% if request.user.is_authenticated %}
+{% if request.user.is_buyer %}
+{% comment %} {%extends 'buyerheader.html'%}
+{% extends 'buyerfooter.html'%} {% endcomment %}
+{% include 'header_new.html' %}
+{% elif request.user.is_seller %}
+
+{% endif %}
+{% else %}
+<!-- header start here --> 
+<header class="header_Landing">
+  <div class="container LandingContainer">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'index' %}">Logo Here</a>
+        <div class="menu-bar d-lg-none ">
+          <span class="nav-bar" onclick="openNav()"><i class="fa fa-bars" aria-hidden="true"></i></span>
+          <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+            <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'login' %}">Browse Freelance</a>
+            </li>
+          </ul>
+          <ul class="unOrder_list">
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'logout' %}">Log Out</a></li>
+             {% else %}
+            <li><a href="{% url 'login' %}">Log In</a></li>
+            {% endif %}
+            <li><a href="{% url 'register' %}">Sign Up</a></li>
+          </ul>
+          </div>
+        </div>
+        <button class="navbar-toggler d-none" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'login' %}">Browse Freelance</a>
+            </li>
+          </ul>
+          <ul class="unOrder_list">
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'logout' %}">Log Out</a></li>
+             {% else %}
+            <li><a href="{% url 'login' %}">Log In</a></li>
+            {% endif %}
+            <li><a href="{% url 'register' %}">Sign Up</a></li>
+          </ul>
+          <div class="btnHeader_job">
+            <a href="{% url 'login' %}">Post a Job</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    
+  </div>
+</header> 
+
+{% endif %}
+
+{% block content %}
+
+{% endblock %}
+{% include 'footer_new.html' %} 

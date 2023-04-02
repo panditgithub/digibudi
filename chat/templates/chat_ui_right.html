@@ -1,0 +1,219 @@
+{% load static %}
+  <div class="chatUi_right">
+    <div class="side_manu_add PeopleChatBox">
+      <div class="add_People_btn">
+        <div class="close_icon_add">
+          <i class="fa fa-times" aria-hidden="true"></i>
+        </div>
+       
+        
+{% if request.user.is_buyer %}
+<a href="#"><i class="fa fa-plus" aria-hidden="true"></i>Show People</a>
+{% elif request.user.is_seller %}
+<a href="#"><i class="fa fa-plus" aria-hidden="true"></i>Add People</a>
+</div>
+<div>
+<form action="" method="post" class="center_content2">
+  {% csrf_token %}
+  {% comment %} <input type="hidden" name="" value=""> {% endcomment %}
+
+    {% comment %} <input type="text" name="group" placeholder="Enter Group Name" > {% endcomment %}
+    <select class="form-control selectpicker" name="new_pepole" id="select-country users" multiple="multiple" data-live-search="true"style="min-height:20%;";>
+
+      {% for user in new_pepole %}
+      <option value="{{user}}">{{user}}</option>
+      {% endfor %}
+    </select>
+  <button class="sbmt_btn" type="submit">Submit</button>
+</form>
+{% endif %}
+        
+      </div>
+      <ul>
+        <li> <div class="search_btn_add" id="searchuserr">
+          <input type="text" placeholder="Search">
+          <img src="{%static 'static2/images/chatUi_sarch_ic.svg'%}" alt="search_icon">
+        </div></li>
+        {% for list in course.users.all  %}
+        <li><a href="#">
+          <div class="side_manu_img">
+            <img src="{%static 'static2/images/default_profile.png'%}" alt="image_add">
+            <span>{{list.first_name}}</span>
+          </div>
+        </a></li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="search_btn_add">
+      <input type="text" placeholder="Search">
+      <img src="{%static 'static2/images/chatUi_sarch_ic.svg'%}" alt="search_icon">
+    </div>
+    <div class="chatUi_outerName">
+      <div class="chatUi_right_item">
+        <div class="chatUi_left1">
+          <div class="rightSide_outer">
+            <img class="rightimg" src="{%static 'static2/images/default_client.png'%}" alt="thumb">
+            {% comment %} <div class="rightSide_Item_left name_C1">
+              <span>B</span>
+              <div class="online_offline"></div>
+            </div> {% endcomment %}
+            <div class="rightSide_Item_Right">
+              {% if course.chatType == "is_group" %}
+              <h6 class="data_name">{{course.name}} </h6>
+              {% elif course.chatType == "is_chat"%}
+              <h6>{% for user in course.users.all%} {% if user.username1 != request.user.username1 %}{{user.username1}}{% endif %}{% endfor%}</h6>
+              {% comment %} <h6>{{course.name}}</h6> {% endcomment %}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        <div class="chatUi_right1">
+          <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="{%static 'static2/images/3manu_iconChat.svg'%}" alt="3Dots">
+          </a>
+          <ul class="dropdown-menu profile_DropdownDiv" aria-labelledby="dropdownMenuLink">
+            <div class="dots_pop_outer">
+              <div class="dots_pop_outer1">
+                <div class="dots_popLeft">
+                  <h6></h6>
+                  
+                </div>
+                <div class="dots_popRight">
+                 
+                </div>
+              </div>
+              <div class="dots_names">
+
+                <div class="dots_names_left">
+                  <span></span>
+                </div>
+                <div class="dots_names_right">
+                  <h6>{{course.users}}</h6>
+                  <p>UI/UX Designer</p>
+                  <span><img src="{%static 'static2/images/location_ic_dots.svg'%}" alt="location_icon" class="location_icon_pop">India - 8:30 pm Local Time</span>
+                </div>
+                
+              </div>
+              <div class="dots_popSearch">
+                <ul>
+                  <li class="search_message">
+                    <a href="#">
+                      <img src="{%static 'static2/images/3dot_searchIcon.svg'%}" alt="search_icon" class="dots_searchIcon">Search Message 
+                      <img src="{%static 'static2/images/message_inboxIcon.svg'%}" alt="arrow_leftIcon" class="arrow_inbox_icon">
+                    </a>
+                  </li>
+                  <li class="Add_People">
+                    <a href="#">
+                      <img src="{%static 'static2/images/dotsMan_icon.svg'%}" alt="popele" class="dots_searchIcon">People
+                      <img src="{%static 'static2/images/message_inboxIcon.svg'%}" alt="arrow_leftIcon" class="arrow_inbox_icon">
+                    </a>
+                </li>
+                  <li>
+                    <a href="#">
+                      <img src="{%static 'static2/images/dots_popLink.svg'%}" alt="link" class="dots_searchIcon">File & Links
+                      <img src="{%static 'static2/images/message_inboxIcon.svg'%}" alt="arrow_leftIcon" class="arrow_inbox_icon">
+                    </a>
+                </li>
+                </ul>
+              </div>
+            </div>
+          </ul>
+        </div>
+      </div>
+    <div class="our_Proposal">
+      <span>Our Proposal</span>
+      <div class="Search_input_Proposal">
+        <input type="search" placeholder="Search" data-search >
+        <img src="{%static 'static2/images/chatUi_sarch_ic.svg'%}" alt="search_icon">
+    </div>
+  </div>
+  <div class="outer_chat_rightSide" id="chatLog">
+    {% for message in message %}
+    {% if message.user == user %}
+    <div class="outer_chat_Item">
+      {% comment %} #left side user name and icon {% endcomment %}
+      <img class="rightimg" src="{%static 'static2/images/default_client.png'%}" alt="thumb">
+      {{message.user.username1}}
+      {% comment %} <div class="outer_chat_ItemLeft">
+        <span>s</span>
+        <div class="online_offline"></div>
+      </div> {% endcomment %}
+      <div class="outer_chat_ItemRight">
+        <div class="B_chat_outer">
+          <div class="B_chat_item1 B_chat_item2">
+              {% if message.file_type == 'image' %}
+              <div class="B_chat_item B_chat_space videoTag_outer">
+              <span style="height:auto;"><a href="{{message.content}}" target="_blank"><img src ="{{message.content}}" width="280px"></a></span>
+              {% elif message.file_type == 'text' %}
+              <div class="B_chat_item B_chat_space">
+              <span>{{message.content}}</span>
+              {% elif message.file_type == 'video' %}
+              <div class="B_chat_item B_chat_space videoTag_outer">
+              <span style="height:auto;"><video width="320" controls>
+                <source src="{{message.content}}" type="video/mp4">
+              </video></span>
+              {% elif message.file_type == 'others' %}
+              <div class="B_chat_item B_chat_space">
+              <span><a href="{{message.content}}" target="_blank">{{message.content|cut:"http://127.0.0.1:8000/media/messagefiles/"}}</a></span>
+              {% endif %}
+            </div>
+          </div>
+          <span class="Time_chat">{{message.timestamp|timesince}}</span>
+        </div>
+      </div>
+    </div>
+    {% else %}
+    <div class="outer_chat_ItemRight">
+      <div class="name_chat_ItemLeft">
+        <div class="chatUi_text1">
+            {% if message.file_type == 'image' %}
+            <div class="chatUi_text video_Outer" style="height: auto !important;padding: 0;background: none;border: unset;">
+            <span><a href="{{message.content}}" target="_blank"><img src ="{{message.content}}" width="280px"></a></span>
+            {% elif message.file_type == 'text' %}
+            <div class="chatUi_text ">
+            <span>{{message.content}}</span>
+            {% elif message.file_type == 'video' %}
+            <div class="chatUi_text video_Outer" style="height: auto !important;padding: 0;background: none;border: unset;">
+            <span><video width="320" height="240" controls>
+              <source src="{{message.content}}" type="video/mp4">
+            </video></span>
+            {% elif message.file_type == 'others' %}
+            <div class="chatUi_text">
+            <span><a href="{{message.content}}" target="_blank">{{message.content|cut:"http://127.0.0.1:8000/media/messagefiles/"}}</a></span>
+            {% endif %}
+          </div>
+        </div>
+        <span class="Time_chat">{{message.timestamp|timesince}}</span>
+      </div>
+      <img class="rightimg" src="{%static 'static2/images/default_user.png'%}" alt="thumb">
+      {{message.user.username1}}
+      {% comment %} <div class="name_chat_ItemRight">
+        <span>d</span>
+        <div class="online_offline"></div>
+      </div> {% endcomment %}
+    </div>
+    {% endif %}
+    {% endfor %}
+  </div>
+  <div class="inputFlied_Right"> 
+    
+    {% comment %} <div class="user_name_ChatUI">
+      <span>g</span>
+      <div class="online_offline"></div>
+    </div> {% endcomment %}
+    <div class="inputFlied_submit">
+
+      <input type="text" class="form-control" id="chatMessageInput" placeholder="type message here" aria-describedby="emailHelp">
+      <div class="mic_icon">
+        <img src="{% static 'static2/images/mic_iconInput.svg' %}" alt="mic_icon" >
+      </div>
+      <div class="button-wrapper">
+        <span class="label">
+          <img src="{% static 'static2/images/gallary_icon_input.svg' %}" alt="gallary_icon ">
+        </span><input type="file" name="upload" id="fileupload" class="upload-box" placeholder="Upload File" aria-label="Upload File">
+      </div>
+      <button type="submit" class="btn btn-primary"><img src="{% static 'static2/images/send_icon_input.svg' %}" id="chat-message-submit" alt="send_icon"></button>
+    </div>
+    
+  </div>
+</div>

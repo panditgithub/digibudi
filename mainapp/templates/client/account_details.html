@@ -1,0 +1,88 @@
+{% load static %}
+
+ <div class="editProfile_itemDiv editProfile_itemDiv-1">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="editprofile_input">
+                <div class="editBtn_outer">
+                  <img src="{% static 'static2/images/edit_ic_white.svg' %}" alt="edit_icon">
+                </div>
+                <form method="POST">
+                  {% csrf_token %}
+                  <div class="form_prfileHadding">
+                    <h6>Account Details</h6>
+                  </div>
+                  <div class="prfileImage">
+                    <div class="prfileImage-item">
+                      <img src="{% static 'static2/images/form_card1.svg' %}" alt="card">
+                    </div>
+                    <div class="prfileImage-item">
+                      <img src="{% static 'static2/images/form_card2.svg' %}" alt="card">
+                    </div>
+                    <div class="prfileImage-item">
+                      <img src="{% static 'static2/images/form_card3.svg' %}" alt="card">
+                    </div>
+                    <div class="prfileImage-item">
+                      <img src="{% static 'static2/images/form_card4.svg' %}" alt="card">
+                    </div>
+                    <div class="prfileImage-item">
+                      <img src="{% static 'static2/images/form_card5.svg' %}" alt="card">
+                    </div>
+                  </div>
+
+
+                  <div class="row input_edit_profile d-flex">
+                    <div class="col-md-6 input_editCol">
+                      <label for="exampleInputEmail1" class="form-label">First Name*</label>
+                      <input type="text" class="form-control" id="exampleInputEmail1" name="first_name" value="{{acdetails.first_name}}" aria-describedby="emailHelp"> 
+                    </div>
+                    <div class="col-md-6 input_editCol">
+                      <label for="exampleInputEmail1" class="form-label">Last Name*</label>
+                      <input type="text" class="form-control" id="exampleInputEmail1" name="last_name" value="{{acdetails.last_name}}"  aria-describedby="emailHelp"> 
+                    </div>
+                  </div>
+
+
+                  <div class="row input_edit_profile d-flex">
+                    <div class="col-md-6 input_editCol">
+                      <label for="exampleInputEmail1" class="form-label">Card Number*</label>
+                      <input type="text" class="form-control" id="exampleInputEmail1" name="card_no" value="{{acdetails.card_number}}" aria-describedby="emailHelp"> 
+                    </div>
+                    <div class="col-md-6 input_editCol">
+                      <div class="expiryDate_outer row">
+                        <div class="expiryDate_item col-md-6">
+                          <label for="exampleInputEmail1" class="form-label">Expiry Date*</label>
+                          <input type="date" class="form-control" id="exampleInputEmail1" name="exp_date" value="{{acdetails.expiry_date|date:'Y-m-d'}}" aria-describedby="emailHelp">
+                        </div>
+                        <div class="expiryDate_item1 col-md-6">
+                          <label for="exampleInputEmail1" class="form-label">CVV*</label>
+                          <input type="text" class="form-control" id="exampleInputEmail1" name="cvv" value="{{acdetails.cvv}}" aria-describedby="emailHelp">
+                        </div>
+                      </div>
+                       
+                    </div>
+                  </div>
+                  <div class="row mb-3 input_edit_profile1">
+                    <div class="col-md-8">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="checkbox" id="gridCheck1">
+                        <label class="form-check-label" for="gridCheck1">
+                          <span>I certify that the above Card Details is correct.</span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="editProfile_btn">
+                    <div class="btn_leftSide">
+                      <button type="submit" name="account_details">Update</button>
+                    </div>
+                    <div class="btn_leftSide btn_rightSide">
+                      <button type="submit">Cancel</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>

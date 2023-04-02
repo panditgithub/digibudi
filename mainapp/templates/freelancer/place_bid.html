@@ -1,0 +1,63 @@
+<!-- if current user already placed bid for this project show message -->
+
+<!-- write a code for if user already submitted bid for this project show message -->
+<!-- else show place bid form -->
+
+
+
+    
+
+
+
+<div class="place-bid">
+
+    {% if check_user_bid %}
+    <section>
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-12">
+              <div class="alert alert-success" role="alert">
+                <strong>Hey!</strong> You have already submitted a job for this project.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    {% else %}  
+    <div class="place-bid-content">
+        
+        <h5>Place a Bid on this Project</h5>
+        <div class="bid-price-details">
+          <form class="bid-form" method="post"> {% csrf_token %} <p>Bid Details</p>
+            <div class="bid-detail-field">
+              <div class="usd-div">
+                <span class="pb-dollar">$</span>
+                <input type="text" name="bid_amount" class="usd-input">
+                <span class="pb-usd">USD</span>
+              </div>
+              <div class="bid-days">
+                <input type="number" name="points" step="1" class="number-input" placeholder="2">
+                <select name="days">
+                  <option value="Days"> Days </option>
+                  <option value="Week"> Week </option>
+                  <option value="Months"> Months </option>
+                  <option value="Years"> Years </option>
+                </select>
+              </div>
+            </div>
+            <div class="describe-proposal">
+              <h5>Describe your Proposal</h5>
+              <textarea id="w3review" name="pitch" rows="4" cols="50"></textarea>
+            </div>
+            <input type="submit" value="Submit" class="submit-bid">
+          </form>
+        </div>
+      </div>
+    {% endif %}
+
+    
+
+
+    
+  </div>

@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Password</title>
+    <!-- link css -->
+    <link rel="stylesheet" href="{% static 'static2/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'static2/css/style.css'%}">
+    <link rel="stylesheet" href="{% static 'static2/css/home.css'%}">
+    <!-- link font awsome -->
+    <link rel="stylesheet" href="{% static 'static2/css/font-awesome.min.css'%}">
+  </head>
+
+<body>
+  <section class="login-page forget-pass-page">
+    <div class="container LandingContainer">
+      <div class="row justify-content-center forget_rowOuter">
+        <div class="col-md-6  col-lg-4">
+          <div class="site-login-div">
+            {% if messages %}  
+            {% for message in messages %}
+            <div class="form-group">
+              <div class="alert alert-danger col-md-7 inputGroupContainer text-center" style="float:none; margin:auto;" role="alert">
+                {{ message }}
+              </div>
+            </div>
+            {% endfor %}
+          {% endif %}
+            <div class="login-logo mb-3 text-center">
+              <img src="{% static 'static2/images/forget-img.png'%}" class="img-fluid" alt="forget-image">
+            </div>
+            <div class="login-form">
+              <h3>Forget Password</h3>
+              <p>Enter your email and we’ll send you a link to reset your password.</a></p>
+              <form class="login-page-form" method="post">
+                {% csrf_token %}
+                <div class="email-field">
+                  <input type="email" name="username" placeholder="johndoe@gmail.com">
+                  <img src="{% static 'static2/images/for-email.png'%}" alt="" class="img-fluid" alt="email-icon">
+                  <!-- <div class="error_msg_outer">
+                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                    <span>Enter An Email</span>
+                  </div>
+                  <div class="suecces_msg_outer">
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                    <span>Successfully</span>
+                  </div> -->
+                </div>
+                <div class="login-btn">
+                  <input type="submit" name="" value="Reset Password" class="w-100">
+                </div>
+              </form>
+              <div class="forget-back-login">
+                <img src="{% static 'static2/images/b-t-login.png'%}" alt="" class="img-fluid" alt="email-icon">
+                <p class="mb-0"><a href="{% url 'login' %}" class="text-decoration-none">Back to Login</a></p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="{% static 'static2/js/bootstrap.bundle.min.js'%}"></script>
+</body>
+</html>

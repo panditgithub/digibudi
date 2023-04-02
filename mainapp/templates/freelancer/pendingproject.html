@@ -1,0 +1,106 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% block content %}
+<section class="all-jobs-section new-tabs-section">
+    <div class="container LandingContainer">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="all-pro-head">
+                    <h3 class="mb-0">Work History</h3>
+                </div>
+                <div class="all-project-history">
+                    <div class="all-project-tab-heading">
+                        <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                            <li class="nav-item all-project-li" role="presentation">
+                                <a style="text-decoration: none;" href="{% url 'projectfreelancer' %}">
+                                    <button class="nav-link" id="all-project-tab" data-bs-toggle="pill"
+                                    data-bs-target="#all-project" type="button" role="tab" aria-controls="all-project"
+                                    aria-selected="false">All Projects ({{all_bidings.count}})</button></a>
+                                </li>
+                                <li class="nav-item comp-project-li" role="presentation">
+                                    <a style="text-decoration: none;" href="{% url 'completeproject' %}">
+                                        <button class="nav-link" id="complete-project-tab" data-bs-toggle="pill"
+                                        data-bs-target="#complete-project" type="button" role="tab" aria-controls="complete-project"
+                                        aria-selected="false">Completed Projects ({{complete.count}})</button>
+                                    </a>
+                                </li>
+                                <li class="nav-item in-pro-project-li" role="presentation">
+                                    <a style="text-decoration: none;" href="{% url 'progressproject' %}">
+                                        <button class="nav-link" id="in-progress-tab" data-bs-toggle="pill" data-bs-target="#in-progress"
+                                        type="button" role="tab" aria-controls="in-progress" aria-selected="false">In progress projects
+                                        ({{accept.count}})</button>
+                                    </a>
+                                </li>
+                                <li class="nav-item  pend-project-li" role="presentation">
+                                    <a style="text-decoration: none;" href="{% url 'pendingproject' %}">
+                                        <button class="nav-link active" id="pending-tab" data-bs-toggle="pill" data-bs-target="#pending"
+                                        type="button" role="tab" aria-controls="pending" aria-selected="true">Pending Approvel
+                                        ({{not_accept.count}})</button>
+                                    </a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a style="text-decoration: none;" href="{% url 'rejectproject' %}">
+                                        <button class="nav-link" id="rejected-tab" data-bs-toggle="pill" data-bs-target="#rejected"
+                                        type="button" role="tab" aria-controls="rejected" aria-selected="false">Rejected Projects({{not_complete.count}})</button>
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                        <div class="tab-pane" id="pending" role="tabpanel" aria-labelledby="pending-tab" tabindex="0">
+                            {% if not_accept_pagination %}
+                            {% for nacpt in not_accept_pagination %}
+                            <div class="job-tab-content all-pending-job">
+                                <div class="all-job-des">
+                                    <h3>{{nacpt.job.job_title}}</h3>
+                                    <p>{{nacpt.job.full_desc|safe}}</p>
+                                    <div class="all-job-dates">
+                                        <div class="start-date">
+                                            <span>Bid on </span>
+                                            <span class="span-content">{{nacpt.job.deadline.date}}</span>
+                                        </div>
+                                        <div class="assg-date">
+                                            <span>Total Bid </span>
+                                            <span class="span-content">30 Bids</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="all-job-price">
+                                    <h5>{{nacpt.bid_amount}}</h5>
+                                    <a class="client-offers text-decoration-none" href="">Client offer - {{nacpt.job.askamount}}</a>
+                                    <span class="job-approved">{{nacpt.is_accepted}} Pending</span>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            {% else %}
+                            
+                            <div class="job-tab-content client_jobs">
+                                <div class="all-job-des">
+                                    <h3>There is no completed project</h3>
+                                </div>
+                            </div>
+                            {% endif %}
+                            
+                            {% if not_accept_pagination %}
+                            <div>
+                                <span>
+                                    {% if not_accept_pagination.has_previous %}
+                                    <a href="?page4={{ not_accept_pagination.previous_page_number }}">Previous</a>
+                                    {% endif %}
+                                    <span>
+                                        Page {{ not_accept_pagination.number }} of {{ not_accept_pagination.paginator.num_pages }}.
+                                    </span>
+                                    {% if not_accept_pagination.has_next %}
+                                    <a href="?page4={{ not_accept_pagination.next_page_number }}">Next</a>
+                                    {% endif %}
+                                </span>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    {% endblock %}

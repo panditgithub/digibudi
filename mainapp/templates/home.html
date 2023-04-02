@@ -1,0 +1,492 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Freelancer</title>
+  
+
+  <!-- link css -->
+  <link rel="stylesheet" href="{% static 'static2/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'static2/css/style.css' %}" >
+
+  <!-- link font awsome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
+</head>
+<body>
+  <!-- header start here -->
+  <header class="header_Landing">
+    <div class="container LandingContainer">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+          <div class="mobileTop_bar">
+            <a class="navbar-brand" href="{% url 'index' %}">Logo Here</a>
+          <div class="mobileHeader_logo">
+            <div class="allJobs_btnOuter1">
+              <a href="#">All Jobs</a>
+            </div>
+            <div class="mobileSocial_ic">
+              <div class="massageDiv_header">
+                <img src="{% static 'static2/images/massage_ivHeader.svg' %}" alt="massage_icon">
+              </div>
+              <div class="massageDiv_header notification-div">
+                <img src="{% static 'static2/images/notifacation_icon.svg' %}" alt="notifacation_icon">
+                <div class="notifacation_item">
+                  <p>4</p>
+                </div>
+              </div>
+              <div class="nameHadding_header">
+                <div class="dropdown_outerHeader">
+                  <div class="img_headerDropdown">
+                  {% if user.is_authenticated %}
+                    <img src="" alt="">
+                  </div>
+                  <div class="btn_headerDropdown">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                      
+                    </a>
+                    <ul class="dropdown-menu profile_DropdownDiv" aria-labelledby="dropdownMenuLink">
+                      <li><a class="dropdown-item" href="#"><i class="fa fa-user" aria-hidden="true"></i>Profile</a></li>
+                      <li><a class="dropdown-item" href="#"><i class="fa fa-list-ul" aria-hidden="true"></i>Job List</a></li>
+                      <li><a class="dropdown-item" href="#"><i class="fa fa-envelope" aria-hidden="true"></i>Message</a></li>
+                      <li><a class="dropdown-item" href="#"><i class="fa fa-bell" aria-hidden="true"></i>Notifaction</a></li>
+                      <hr class="headerLine_outer">
+                      
+                      <li><a class="dropdown-item" href="{% url 'logout' %}"><i class="fa fa-sign-out" aria-hidden="true"></i>Log Out</a></li>
+                      {% endif %}
+                      
+                    </ul>
+                  </div>
+                  
+                </div>
+              </div> 
+            </div>
+          </div>
+          </div>
+          <div class="header-search-barMobile">
+            <form>
+              <input type="text" placeholder="Search">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </form>
+          </div>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <div class="header-search-bar">
+                <form>
+                  <input type="text" placeholder="Search">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </form>
+              </div>
+            </ul>
+            <div class="allJobs_btnOuter">
+              <a href="#">All Jobs</a>
+            </div>
+            <div class="massageDiv_header">
+              <img src="{% static 'static2/images/massage_ivHeader.svg' %}" alt="massage_icon">
+            </div>
+            <div class="massageDiv_header notification-div">
+              <img src="{% static 'static2/images/notifacation_icon.svg' %}" alt="notifacation_icon">
+              <div class="notifacation_item">
+                <p>4</p>
+              </div>
+            </div>
+            <div class="nameHadding_header">
+              <div class="dropdown_outerHeader">
+                <div class="img_headerDropdown">
+                {% if user.is_authenticated %}
+                  <img src="{{ user.profile_picture.url }}" alt="Dropdown_Images">
+                </div>
+                
+                  <div class="btn_headerDropdown">
+                  <a class="btn btn-seconary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{ user.first_name }}  
+                    
+                  </a>
+                  <ul class="dropdown-menu profile_DropdownDiv" aria-labelledby="dropdownMenuLink">
+                    <li><a class="dropdown-item" href="#"><i class="fa fa-user" aria-hidden="true"></i>Profile</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="fa fa-list-ul" aria-hidden="true"></i>Job List</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="fa fa-envelope" aria-hidden="true"></i>Message</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="fa fa-bell" aria-hidden="true"></i>Notifaction</a></li>
+                    <hr class="headerLine_outer">
+                    <li><a class="dropdown-item" href="{% url 'logout' %}"><i class="fa fa-sign-out" aria-hidden="true"></i>Log Out</a></li>
+                  </ul>
+                </div>
+                {% endif %}
+                
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      
+    </div>
+  </header>
+  <!--header close here  -->
+
+  <!-- main content start-->
+  <section class="jobs-main-content mb-5">
+    <div class="container site-container">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="job-title-div">
+            <div class="j-head">
+              <a class="text-decoration-none" href="">
+                <h3 class="mb-0">Jobs</h3>
+              </a>
+            </div>
+            <div class="job-count">
+              <p class="mb-0">(10,673)</p>
+            </div>
+          </div>
+          <div class="all-jobs-div">
+            {% for alljobs in applied_job %}
+            <div class="job-1-div">
+              <div class="job-details">
+                <div class="job-name">
+                  <h3 class="mb-0">{{ alljobs.job_title }}</h3>
+                  <span>Designer</span>
+                </div>
+                <div class="job-desc">
+                  <p>{{ alljobs.short_desc }}</p>
+                  <div class="jobs-platform">
+                    <ul>
+                      <li>{{ alljobs.skills.skill_title }}</li>
+                      {% comment %} <li>Php</li>
+                      <li>Wordpress</li>
+                      <li>HTML</li>
+                      <li>CSS</li>
+                      <li>SCSS</li>
+                      <li>SHopify</li>
+                      <li>Javascript</li>
+                      <li>Python</li> {% endcomment %}
+                    </ul>
+                  </div>
+                </div>
+                <div class="job-reviews mt-2">
+                  <div class="j-star">
+                    <img src="{% static 'static2/images/job-star.png' %}" class="img-fluid" alt="star">
+                    <img src="{% static 'static2/images/job-star.png' %}" class="img-fluid" alt="star">
+                    <img src="{% static 'static2/images/job-star.png' %}" class="img-fluid" alt="star">
+                    <img src="{% static 'static2/images/job-star.png' %}" class="img-fluid" alt="star">
+                    <img src="{% static 'static2/images/job-star.png' %}" class="img-fluid" alt="star">
+                  </div>
+                  <div class="j-reviews">
+                    <p class="mb-0 ms-2">4.5/5</p>
+                    <span>(67 reviews)</span>
+                  </div>
+                  <div class="j-location d-flex align-items-center ms-2">
+                    <i class="fa fa-map-marker me-1" aria-hidden="true"></i>
+                    <p class="mb-0">{{alljobs.seller.country_of_company}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="job-times">
+                <div class="job-hours">
+                  <h4>Hourly - $20 hr</h4>
+                </div>
+                <div class="job-bid-buttons">
+                  <div class="featured_btnOuter justify-content-end">
+                    <div class="featured_btn">
+                      <a href="#">Bid Now</a>
+                    </div>
+                    <div class="featured_btn">
+                      <a href="#">20 Bids</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>{% endfor %}
+            {% comment %} <div class="job-1-div">
+              <div class="job-details">
+                <div class="job-name">
+                  <h3 class="mb-0">UI/UX Design</h3>
+                  <span>Designer</span>
+                </div>
+                <div class="job-desc">
+                  <p>Justo tempora reiciendis aut tempor? Metus tortor, ab cursus phasellus tempor eius eligendi oribus
+                    Justo tempora reiciendis aut tempor...</p>
+                  <div class="jobs-platform">
+                    <ul>
+                      <li>Php</li>
+                      <li>Wordpress</li>
+                      <li>HTML</li>
+                      <li>CSS</li>
+                      <li>SCSS</li>
+                      <li>SHopify</li>
+                      <li>Javascript</li>
+                      <li>Python</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="job-reviews mt-2">
+                  <div class="j-star">
+                    <img src="images/job-star.png" class="img-fluid" alt="star">
+                    <img src="images/job-star.png" class="img-fluid" alt="star">
+                    <img src="images/job-star.png" class="img-fluid" alt="star">
+                    <img src="images/job-star.png" class="img-fluid" alt="star">
+                    <img src="images/job-star.png" class="img-fluid" alt="star">
+                  </div>
+                  <div class="j-reviews">
+                    <p class="mb-0 ms-2">4.5/5</p>
+                    <span>(67 reviews)</span>
+                  </div>
+                  <div class="j-location d-flex align-items-center ms-2">
+                    <i class="fa fa-map-marker me-1" aria-hidden="true"></i>
+                    <p class="mb-0">India</p>
+                  </div>
+                </div>
+              </div>
+              <div class="job-times">
+                <div class="job-hours">
+                  <h4>Hourly - $20 hr</h4>
+                </div>
+                <div class="job-bid-buttons">
+                  <div class="featured_btnOuter justify-content-end">
+                    <div class="featured_btn">
+                      <a href="#">Bid Now</a>
+                    </div>
+                    <div class="featured_btn">
+                      <a href="#">20 Bids</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="job-1-div">
+              <div class="job-details">
+                <div class="job-name">
+                  <h3 class="mb-0">UI/UX Design</h3>
+                  <span>Designer</span>
+                </div>
+                <div class="job-desc">
+                  <p>Justo tempora reiciendis aut tempor? Metus tortor, ab cursus phasellus tempor eius eligendi oribus
+                    Justo tempora reiciendis aut tempor...</p>
+                  <div class="jobs-platform">
+                    <ul>
+                      <li>Php</li>
+                      <li>Wordpress</li>
+                      <li>HTML</li>
+                      <li>CSS</li>
+                      <li>SCSS</li>
+                      <li>SHopify</li>
+                      <li>Javascript</li>
+                      <li>Python</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="job-reviews mt-2">
+                  <div class="j-star">
+                    <img src="images/job-star.png" class="img-fluid" alt="star">
+                    <img src="images/job-star.png" class="img-fluid" alt="star">
+                    <img src="images/job-star.png" class="img-fluid" alt="star">
+                    <img src="images/job-star.png" class="img-fluid" alt="star">
+                    <img src="images/job-star.png" class="img-fluid" alt="star">
+                  </div>
+                  <div class="j-reviews">
+                    <p class="mb-0 ms-2">4.5/5</p>
+                    <span>(67 reviews)</span>
+                  </div>
+                  <div class="j-location d-flex align-items-center ms-2">
+                    <i class="fa fa-map-marker me-1" aria-hidden="true"></i>
+                    <p class="mb-0">India</p>
+                  </div>
+                </div>
+              </div>
+              <div class="job-times">
+                <div class="job-hours">
+                  <h4>Hourly - $20 hr</h4>
+                </div>
+                <div class="job-bid-buttons">
+                  <div class="featured_btnOuter justify-content-end">
+                    <div class="featured_btn">
+                      <a href="#">Bid Now</a>
+                    </div>
+                    <div class="featured_btn">
+                      <a href="#">20 Bids</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="job-1-div">
+              <div class="job-details">
+                <div class="job-name">
+                  <h3 class="mb-0">UI/UX Design</h3>
+                  <span>Designer</span>
+                </div>
+                <div class="job-desc">
+                  <p>Justo tempora reiciendis aut tempor? Metus tortor, ab cursus phasellus tempor eius eligendi oribus
+                    Justo tempora reiciendis aut tempor...</p>
+                  <div class="jobs-platform">
+                    <ul>
+                      <li>Php</li>
+                      <li>Wordpress</li>
+                      <li>HTML</li>
+                      <li>CSS</li>
+                      <li>SCSS</li>
+                      <li>SHopify</li>
+                      <li>Javascript</li>
+                      <li>Python</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="job-reviews mt-2">
+                  <div class="j-star">
+                    <img src="images/job-star.png" class="img-fluid" alt="star">
+                    <img src="images/job-star.png" class="img-fluid" alt="star">
+                    <img src="images/job-star.png" class="img-fluid" alt="star">
+                    <img src="images/job-star.png" class="img-fluid" alt="star">
+                    <img src="images/job-star.png" class="img-fluid" alt="star">
+                  </div>
+                  <div class="j-reviews">
+                    <p class="mb-0 ms-2">4.5/5</p>
+                    <span>(67 reviews)</span>
+                  </div>
+                  <div class="j-location d-flex align-items-center ms-2">
+                    <i class="fa fa-map-marker me-1" aria-hidden="true"></i>
+                    <p class="mb-0">India</p>
+                  </div>
+                </div>
+              </div>
+              <div class="job-times">
+                <div class="job-hours">
+                  <h4>Hourly - $20 hr</h4>
+                </div>
+                <div class="job-bid-buttons">
+                  <div class="featured_btnOuter justify-content-end">
+                    <div class="featured_btn">
+                      <a href="#">Bid Now</a>
+                    </div>
+                    <div class="featured_btn">
+                      <a href="#">20 Bids</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="job-1-div">
+              <div class="job-details">
+                <div class="job-name">
+                  <h3 class="mb-0">UI/UX Design</h3>
+                  <span>Designer</span>
+                </div>
+                <div class="job-desc">
+                  <p>Justo tempora reiciendis aut tempor? Metus tortor, ab cursus phasellus tempor eius eligendi oribus
+                    Justo tempora reiciendis aut tempor...</p>
+                  <div class="jobs-platform">
+                    <ul>
+                      <li>Php</li>
+                      <li>Wordpress</li>
+                      <li>HTML</li>
+                      <li>CSS</li>
+                      <li>SCSS</li>
+                      <li>SHopify</li>
+                      <li>Javascript</li>
+                      <li>Python</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="job-reviews mt-2">
+                  <div class="j-star">
+                    <img src="images/job-star.png" class="img-fluid" alt="star">
+                    <img src="images/job-star.png" class="img-fluid" alt="star">
+                    <img src="images/job-star.png" class="img-fluid" alt="star">
+                    <img src="images/job-star.png" class="img-fluid" alt="star">
+                    <img src="images/job-star.png" class="img-fluid" alt="star">
+                  </div>
+                  <div class="j-reviews">
+                    <p class="mb-0 ms-2">4.5/5</p>
+                    <span>(67 reviews)</span>
+                  </div>
+                  <div class="j-location d-flex align-items-center ms-2">
+                    <i class="fa fa-map-marker me-1" aria-hidden="true"></i>
+                    <p class="mb-0">India</p>
+                  </div>
+                </div>
+              </div>
+              <div class="job-times">
+                <div class="job-hours">
+                  <h4>Hourly - $20 hr</h4>
+                </div>
+                <div class="job-bid-buttons">
+                  <div class="featured_btnOuter justify-content-end">
+                    <div class="featured_btn">
+                      <a href="#">Bid Now</a>
+                    </div>
+                    <div class="featured_btn">
+                      <a href="#">20 Bids</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> {% endcomment %}
+
+            <div class="jobs-pagination">
+              <ul class="m-0 p-0 list-unstyled d-flex justify-content-center">
+                <li class="prev-icon">
+                  <a href="" class="text-decoration-none">
+                    <img src="{% static 'static2/images/prev-icon.png' %}"  class="img-fluid" alt="prev-icon">
+                    Prev</a>
+                </li>
+                <li class="count-no">
+                  <a href="" class="text-decoration-none">01</a>
+                </li>
+                <li class="count-no green">
+                  <a href="" class="text-decoration-none">02</a>
+                </li>
+                <li class="count-no hr-line">
+                  <hr>
+                </li>
+                <li class="count-no green">
+                  <a href="" class="text-decoration-none">03</a>
+                </li>
+                <li class="count-no">
+                  <a href="" class="text-decoration-none">04</a>
+                </li>
+                <li class="next-icon">
+                  <a href="" class="text-decoration-none">
+
+                    Next<img src="{% static 'static2/images/next-icon.png' %}" class="img-fluid ms-2"></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+       
+
+
+      </div>
+    </div>
+  </section>
+
+  
+  <!-- main content end -->
+  <!-- footer bottom start here -->
+  <section>
+    <div class="footer_bottom home">
+      <div class="container LandindContainer">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="footer_bottomOuter">
+              <p>© Copyright 2022, DigiBuddies.All Rights Reserved</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- footer bottm close here -->
+
+  <!-- link js -->
+  
+  </script>
+  <script src="{% static 'static2/js/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+
+</html>

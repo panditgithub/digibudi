@@ -1,0 +1,92 @@
+{% load static %}
+{% load socialaccount %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In</title>
+  
+
+  <!-- link css -->
+  <link rel="stylesheet" href="{% static 'static2/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'static2/css/style.css' %}" >
+
+  <!-- link font awsome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
+</head> 
+
+<body>
+    <section class="login-page">
+     <div class="container site-container">
+       <div class="row justify-content-center">
+         <div class="col-md-6  col-lg-4">
+           <div class="site-login-div">
+   <div class="login-logo mb-3">
+     <a href="{% url 'index' %}"class="text-decoration-none"><h5>Logo here<h5></a>
+   </div>
+   <div class="login-form">
+     <h3>Log In</h3>
+     <p>Don't have an account?<a href="{% url 'register' %}" class="text-decoration-none signup-tag">Sign Up</a></p>
+     <form class="login-page-form" id="loginResiter" method="post">
+    {% if messages %}  
+  {% for message in messages %}
+  <div class="form-group">
+    <div class="alert alert-danger col-md-12 inputGroupContainer text-center" style="float:none; margin:auto;" role="alert">
+      {{ message }}
+    </div>
+  </div>
+  {% endfor %}
+{% endif %}
+      {% if error %}
+            <p class='alert alert-danger'> {{ error }} </p>
+        {% endif %} 
+        {% csrf_token %}
+       <div class="email-field">
+
+         <input type="text" name="username" id="username" placeholder="username" required>
+         <img src="{% static 'static2/images/form-email-icon.png' %}" alt="" class="img-fluid">
+       </div>
+       <div class="password-field">
+         <input type="password"name="password" id="password" required>
+         <img src="{% static 'static2/images/form-password.png' %}" alt="" class="img-fluid">
+       </div>
+       <div class="login-btn">
+   <input type="submit" name="" value="Login" class="w-100">
+       </div>
+       <div class="login-forget-password">
+         <div class="forget-check">
+         <input type="checkbox" name="">
+         <span>Terms of use Privacy Policy</span>
+       </div>
+       <div class="forg-pass">
+         <a href="{% url 'forgetpassword' %}">Forgot password?</a>
+       </div>
+       </div>
+     </form>
+     <div class="login-or">
+       <span>or</span>
+     </div>
+     <div class="login-fb-button">
+       <a href="{% provider_login_url 'google'%}" class="text-decoration-none google">
+         <img src="{% static 'static2/images/google-logo.png' %}" class="img-fluid me-2">
+         <span> Log in with Google</span>
+       </a>
+       <!-- <a href="" class="text-decoration-none facebook">
+         <img src="{% static 'static2/images/fb-logo.png' %}" class="img-fluid me-2">
+         <span>Log in with Facebook</span>
+       </a> -->
+     </div>
+     </div>
+   
+           </div>
+         </div>
+       </div>
+     </div>
+     <script src="{% static 'static2/js/bootstrap.bundle.min.js' %}"></script>
+
+    </body>
+    
+    </html>

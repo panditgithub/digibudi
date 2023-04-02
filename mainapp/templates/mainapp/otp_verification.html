@@ -1,0 +1,55 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% block content %}
+<body>
+{% if messages %}  
+  {% for message in messages %}
+  <div class="form-group">
+    <div class="alert alert-danger col-md-7 inputGroupContainer text-center" style="float:none; margin:auto;" role="alert">
+      {{ message }}
+    </div>
+  </div>
+  {% endfor %}
+{% endif %}
+  <title> OTP </title>
+    <section class="login-page forget-pass-page new-password ">
+      <div class="container LandingContainer">
+        <div class="row justify-content-center">
+          <div class="col-md-6  col-lg-4">
+            <div class="site-login-div">
+              <div class="login-logo mb-3 text-center">
+                <img src="{% static 'static2/images/forget-img.png' %}" class="img-fluid" alt="forget-image">
+              </div>
+              <div class="login-form">
+                <h3>Verify your email</h3>
+                <p>Please input the otp sent to you on your email.</a></p>
+                <form class="login-page-form" method ='post'>
+                  {% csrf_token %}
+                  <p>OTP</p>
+                  <div class="email-field">
+                    <input type="text" name="otp" placeholder="Verify">
+                    <img src="{% static 'static2/images/form-password.png' %}" alt="" class="img-fluid" alt="otp">
+                  </div>
+                  <!-- <p>Confirm Password</p>
+                  <div class="email-field">
+                    <input type="password" name="" placeholder="">
+                    <img src="images/form-password.png" alt="" class="img-fluid" alt="password">
+                  </div> -->
+                  <div class="login-btn">
+                    <input type="submit" name="verify" value="OTP Verify" class="w-100">
+                  </div>
+                </form>
+                <div class="forget-back-login">
+                  <img src="images/b-t-login.png" alt="" class="img-fluid" alt="email-icon">
+                  <p class="mb-0"><a href="login.html" class="text-decoration-none">Back to Login</a></p>
+                </div>
+              </div>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    {% comment %} <script src="js/bootstrap.bundle.min.js"></script> {% endcomment %}
+  </body>
+{% endblock content %}

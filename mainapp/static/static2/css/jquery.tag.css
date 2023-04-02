@@ -1,0 +1,34 @@
+/**
+ * jquery.tag.css
+ * @license	GPL
+ * @author	zhujie
+ * @site	http://www.cnzhujie.cn
+ * */
+@CHARSET "UTF-8";
+
+.tag-clearfix:after {visibility: hidden;display: block;font-size: 0;content: " ";clear: both;height: 0;}
+* html .tag-clearfix{ zoom: 1; } /* IE6 */
+*:first-child+html .tag-clearfix { zoom: 1; } /* IE7 */
+/**blue**/
+.blue.tag-contain{padding:10px;font-size:12px}
+.blue.tag-contain ul{padding:0px;margin:0px}
+.blue.tag-contain ul li{background:#2C93D9;-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px;color:#fff;float:left;height:22px;line-height:22px;margin:0 5px 5px 0;padding:0 5px;list-style:none}
+.blue.tag-contain a{color:white;padding-left:5px;text-decoration:none;cursor:pointer}
+.blue.tag-contain .tag-input{border:1px solid #999;color:#000}
+.blue.tag-contain .tag-input-blur{color:#CCC}
+
+/**black**/
+.black.tag-contain{padding:10px;font-size:12px}
+.black.tag-contain ul{padding:0px;margin:0px}
+.black.tag-contain ul li{background:#000;-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px;color:#fff;float:left;height:22px;line-height:22px;margin:0 5px 5px 0;padding:0 5px;list-style:none}
+.black.tag-contain a{color:white;padding-left:5px;text-decoration:none;cursor:pointer}
+.black.tag-contain .tag-input{border:1px solid #999;color:#000}
+.black.tag-contain .tag-input-blur{color:#CCC}
+
+/**white**/
+.white.tag-contain{padding:10px;font-size:12px}
+.white.tag-contain ul{padding:0px;margin:0px}
+.white.tag-contain ul li{background:#fff;-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px;color:#fff;float:left;height:22px;line-height:22px;margin:0 5px 5px 0;padding:0 5px;list-style:none}
+.white.tag-contain a{color:#000;padding-left:5px;text-decoration:none;cursor:pointer}
+.white.tag-contain .tag-input{border:1px solid #999;color:#000}
+.white.tag-contain .tag-input-blur{color:#CCC}

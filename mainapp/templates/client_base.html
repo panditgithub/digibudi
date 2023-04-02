@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client All Jobs</title>
+  <!-- link css -->
+  <link rel="stylesheet" href="{% static 'static2/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'static2/css/style.css' %}" >
+  <!-- link font awsome -->
+  <link rel="stylesheet" href="{% static 'static2/css/font-awesome.min.css' %}">
+</head>
+<body>
+  
+{% include 'header_new.html' %}
+{% comment %} {% include 'seller/navbar.html' %} {% endcomment %}
+  <!-- all jobs start-->
+ {% block content %}
+ {% endblock content %}
+  <!-- all jobs end -->
+  <!-- footer bottom start here -->
+
+  {% include 'footer_new.html' %}

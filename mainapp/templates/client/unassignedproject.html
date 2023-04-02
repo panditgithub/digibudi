@@ -1,0 +1,103 @@
+{% extends 'client_base.html' %}
+{% block content %}
+{% load static %}
+<section class="all-jobs-section new-tabs-section">
+    <div class="container LandingContainer">
+        <div class="row">
+            <div class="col-md-12"> 
+                <div class="all-project-history">
+                    
+                    <!-- import tabs_nav.html -->
+                    <div class="all-project-tab-heading">
+                        <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                          <li class="nav-item all-project-li" role="presentation">
+                            <a style="text-decoration: none;" href="{% url 'clientallproject' %}">
+                            <button class="nav-link " id="all-project-tab" data-bs-toggle="pill"
+                              data-bs-target="#all-project" type="button" role="tab" aria-controls="all-project"
+                              aria-selected="false">All Projects</button></a>
+                          </li>
+                          <li class="nav-item comp-project-li" role="presentation">
+                            <a style="text-decoration: none;" href="{% url 'completeclientproject' %}">
+                            <button class="nav-link" id="complete-project-tab" data-bs-toggle="pill"
+                              data-bs-target="#complete-project" type="button" role="tab" aria-controls="complete-project"
+                              aria-selected="false">Completed Projects</button></a>
+                          </li>
+                          <li class="nav-item in-pro-project-li" role="presentation">
+                            <a style="text-decoration: none;" href="{% url 'progressclientproject' %}">
+                            <button class="nav-link" id="in-progress-tab" data-bs-toggle="pill" data-bs-target="#in-progress"
+                              type="button" role="tab" aria-controls="in-progress" aria-selected="false">In progress projects
+                            </button></a>
+                          </li>
+                          <li class="nav-item  pend-project-li" role="presentation">
+                            <a style="text-decoration: none;" href="{% url 'unassignedclientproject' %}">
+                            <button class="nav-link active" id="pending-tab" data-bs-toggle="pill" data-bs-target="#pending"
+                              type="button" role="tab" aria-controls="pending" aria-selected="true">Unassigned projects</button></a>
+                          </li>
+                          <li class="nav-item" role="presentation">
+                            <a style="text-decoration: none;" href="{% url 'archivedclientproject' %}">
+                            <button class="nav-link reject-project-li" id="rejected-tab" data-bs-toggle="pill"
+                              data-bs-target="#rejected" type="button" role="tab" aria-controls="rejected"
+                              aria-selected="false">Archived Projects</button></a>
+                          </li>
+                    
+                        </ul>
+                      </div>
+                    
+                    <div class="all-project-tab-content">
+                        <div class="tab-content" id="pills-tabContent">
+                            
+                            <div class="tab-pan" id="pending" role="tabpanel" aria-labelledby="pending-tab" tabindex="0">
+                                {% if page_obj %}
+                                {% for data in page_obj %}
+                                <div class="job-tab-content client_jobs">
+                                    <div class="all-job-des">
+                                        <h3><a href="/client_project_det/{{data.id}}">{{data.job_title}}</a> </h3>
+                                        <h6>{{data.seller.user.first_name}}</h6>
+                                        <p>{{data.short_desc}}</p>
+                                        
+                                    </div>
+                                    <div class="all-job-price">
+                                        <h5>{{data.deadline.date}}</h5>
+                                        <a class="client-offers text-decoration-none" href="/client_project_det/{{data.id}}">Total Bid {{data.count}} Bids</a>
+                                        <span class="job-approved">Pending</span>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                {% else %}
+                                        <div class="job-tab-content client_jobs">
+                                            <div class="all-job-des">
+                                                <h3>There is no any pending project</h3>
+                                            </div>
+                                        </div>
+                                        
+                                    {% endif %}
+
+                                    {% if page_obj %}
+                            
+                                    <div>
+                                        <span>
+                                            {% if page_obj.has_previous %}
+                                            <a href="?page5={{ page_obj.previous_page_number }}">Previous</a>
+                                            {% endif %}
+                                            <span>
+                                                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                                            </span>
+                                            {% if page_obj.has_next %}
+                                            <a href="?page5={{ page_obj.next_page_number }}">Next</a>
+                                            {% endif %}
+                                        </span>
+                                      </div>
+                                    {% endif %}
+                                        
+                                    </div> 
+                                </div>
+                            </div> 
+                            
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </section>
+    
+    {% endblock %}

@@ -1,0 +1,95 @@
+{% extends 'base2.html' %}
+{% load static %}
+
+{% block content %}
+{% comment %} {% for i in page_obj,formfilter %}
+{{i}}
+{% endfor %} {% endcomment %}
+  <section class="jobs-main-content mb-5">
+      <div class="container site-container">
+        <div class="row">
+          <div class="col-lg-8">
+            
+            <div class="all-jobs-div">
+              <div class="job-title-div mb-4">
+              <div class="j-head">
+                <a class="text-decoration-none" href="">
+                  <h3 class="mb-0">Jobs</h3>
+                </a>
+              </div>
+              <div class="job-count">
+                <p class="mb-0">{{buyer.job.count}}</p>
+              </div>
+            </div>
+            {%for fil in page_obj%}
+              <div class="job-1-div">
+                <div class="job-details">
+                  <div class="job-name">
+                    <a href="{% url 'productdetail' fil.id %}"class="text-decoration-none">
+                    <h3 class="mb-0">{{fil.job_title}}</h3>
+                    </a>
+                    <span>(20 Bids)</span>
+                  </div>
+                  <div class="job-desc">
+                    <p>{{fil.full_desc|safe}}</p>
+                    <div class="jobs-platform">
+                      <ul>
+                          {%for data in fil.skills.all%}
+                        <li>{{data}}</li>
+                        {%endfor%}
+                        
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="job-reviews mt-2">
+                    <div class="j-location d-flex align-items-center me-2 gap-1">
+                      <i class="fa fa-map-marker me-1" aria-hidden="true"></i>
+                      <p class="mb-0">India</p>
+                    </div>
+                    <div class="j-star">
+                      <img src="{%static 'static2/images/job-star.png'%}" class="img-fluid" alt="star">
+                      <img src="{%static 'static2/images/job-star.png'%}" class="img-fluid" alt="star">
+                      <img src="{%static 'static2/images/job-star.png'%}" class="img-fluid" alt="star">
+                      <img src="{%static 'static2/images/job-star.png'%}" class="img-fluid" alt="star">
+                      <img src="{%static 'static2/images/bid-grey-star.png'%}" class="img-fluid" alt="star">
+                    </div>
+                    <div class="j-reviews">
+                      <p class="mb-0 ms-2">4/5</p>
+                      <span>(67 reviews)</span>
+                    </div>
+                    
+                  </div>
+                </div>
+                <div class="job-times">
+                  <div class="job-hours">
+                      {% if fil.job_type.job_type_title == 'Hourly'%}
+                      <h4>{{fil.askamount}}/hr</h4>
+                      <span>{{fil.job_type.job_type_title}}</span>
+                      {% else %}
+                      <h4>{{fil.askamount}}</h4>
+                      <span>{{fil.job_type.job_type_title}}</span>
+                      {% endif %}
+    
+                  </div>
+                  <div class="job-bid-buttons">
+                    <div class="featured_btnOuter justify-content-end">
+                      <div class="featured_btn">
+                        <a href="{% url 'productdetail' fil.id %}">Bid Now</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {%endfor%}
+              {% include 'freelancer/pagination.html' %}
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            {% include 'freelancer/job_filter.html' %}
+          </div>
+        </div>
+      </div>
+  </section>
+
+  {%endblock%}

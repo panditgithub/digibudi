@@ -1,0 +1,130 @@
+[
+  {
+    "model": "mainapp.SkillModel",
+    "pk": 1,
+    "fields": {
+      "skill_title": "python",
+      "skill_desc": "python is a programming language"
+    }
+  },
+  {
+    "model": "mainapp.SkillModel",
+    "pk": 2,
+    "fields": {
+      "skill_title": "django",
+      "skill_desc": "django is a web framework"
+    }
+  },
+  {
+    "model": "mainapp.SkillModel",
+    "pk": 3,
+    "fields": {
+      "skill_title": "javascript",
+      "skill_desc": "javascript is a programming language"
+    }
+  },
+  {
+    "model": "mainapp.SkillModel",
+    "pk": 4,
+    "fields": {
+      "skill_title": "html",
+      "skill_desc": "html is a markup language"
+    }
+  },
+  {
+    "model": "mainapp.SkillModel",
+    "pk": 5,
+    "fields": {
+      "skill_title": "css",
+      "skill_desc": "css is a style sheet language"
+    }
+  },
+  {
+    "model": "mainapp.SkillModel",
+    "pk": 6,
+    "fields": {
+      "skill_title": "bootstrap",
+      "skill_desc": "bootstrap is a css framework"
+    }
+  },
+  {
+    "model": "mainapp.SkillModel",
+    "pk": 7,
+    "fields": {
+      "skill_title": "jquery",
+      "skill_desc": "jquery is a javascript library"
+    }
+  },
+  {
+    "model": "mainapp.SkillModel",
+    "pk": 8,
+    "fields": {
+      "skill_title": "mysql",
+      "skill_desc": "mysql is a database management system"
+    }
+  },
+  {
+    "model": "mainapp.SkillModel",
+    "pk": 9,
+    "fields": {
+      "skill_title": "postgresql",
+      "skill_desc": "postgresql is a database management system"
+    }
+  },
+  {
+    "model": "mainapp.SkillModel",
+    "pk": 10,
+    "fields": {
+      "skill_title": "git",
+      "skill_desc": "git is a version control system"
+    }
+  },
+  {
+    "model": "mainapp.SkillModel",
+    "pk": 11,
+    "fields": {
+      "skill_title": "github",
+      "skill_desc": "github is a web-based hosting service for version control using git"
+    }
+  },
+  {
+    "model": "mainapp.SkillModel",
+    "pk": 12,
+    "fields": {
+      "skill_title": "linux",
+      "skill_desc": "linux is an operating system"
+    }
+  },
+  {
+    "model": "mainapp.SkillModel",
+    "pk": 13,
+    "fields": {
+      "skill_title": "ubuntu",
+      "skill_desc": "ubuntu is a linux distribution"
+    }
+  },
+  {
+    "model": "mainapp.SkillModel",
+    "pk": 14,
+    "fields": {
+      "skill_title": "windows",
+      "skill_desc": "windows is an operating system"
+    }
+  },
+  {
+    "model": "mainapp.SkillModel",
+    "pk": 15,
+    "fields": {
+      "skill_title": "macos",
+      "skill_desc": "macos is an operating system"
+    }
+  },
+  {
+    "model": "mainapp.SkillModel",
+    "pk": 16,
+    "fields": {
+      "skill_title": "docker",
+      "skill_desc": "docker is a containerization platform"
+    }
+  }
+]

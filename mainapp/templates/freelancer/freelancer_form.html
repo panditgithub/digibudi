@@ -1,0 +1,307 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% block content %}
+{% load widget_tweaks %}
+
+  <!-- header start here -->
+  
+  <!--header close here  -->
+  <!-- profile start here -->
+
+  {% if form.errors %}
+  {% for field in form %}
+      {% for error in field.errors %}
+          <p class='alert alert-danger'> {{ error }} </p>
+      {% endfor %}
+  {% endfor %}
+  {% endif %} 
+  {% comment %} <form method = "post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <button type="submit">
+      Submit
+    </button>
+  </form> {% endcomment %}
+  <div class="editProfile">
+    <div class="container LandingContainer">
+      <div class="editProfile_outerDiv">
+        <div class="editProfile_itemDiv">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="editprofile_input">
+                <div class="editBtn_outer">
+                  <img src="{%static 'static2/images/edit_ic_white.svg'%}" alt="edit_icon">
+                </div>
+                <form method='post' enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <div class="form_prfileHadding">
+                    <h6>Profile</h6>
+                  </div>
+                  
+                  <div class="row input_edit_profile d-flex">
+                    <div class="col-6 col-sm-6 col-md-6 input_editCol">
+                      <label for="exampleInputEmail1" class="form-label">First Name*</label>
+                      <input type="text" class="form-control" name="first_name" id="exampleInputEmail1" placeholder="John" aria-describedby="emailHelp" required> 
+                    </div>
+                    <div class="col-6 col-sm-6 col-md-6 input_editCol">
+                      <label for="exampleInputEmail1" class="form-label">Last Name*</label>
+                      <input type="text" class="form-control" name="last_name"id="exampleInputEmail1" placeholder="Doe" aria-describedby="emailHelp" required> 
+                    </div>
+                  </div> 
+                  <div class="row input_edit_profile d-flex">
+                    <div class="col-6 col-sm-6 col-md-6 input_editCol input_selectEdit1">
+                      <label for="exampleInputEmail1" class="form-label">Gender*</label>
+                      <select name = "gender" class="form-select" aria-label="Default select example">
+                        <option selected>Open this select menu</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                      </select>
+                      <img src="{%static 'static2/images/input_dopdownIcon.svg'%}" alt="dopdownIcon" class="dopdownIcon1">
+                    </div>
+                    
+                    <div class="col-6 col-sm-6 col-md-6 input_editCol input_selectEdit1">
+                      <label for="exampleInputEmail1" class="form-label">Profile Picture*</label>
+                        {% render_field form.profile_picture class="form-control"%}
+                    </div>
+                  </div>
+                  <div class="row input_edit_profile d-flex">
+                    <div class="col-6 col-sm-6 col-md-6 input_editCol input_selectEdit1">
+                      <label for="exampleInputEmail1" class="form-label">Country*</label>
+                      {% render_field form.country class="form-select"%}
+                      <img src="{%static 'static2/images/input_dopdownIcon.svg'%}" alt="dopdownIcon" class="dopdownIcon1">
+                    </div>
+                    <div class="col-md-6 input_editCol">
+                      <label for="exampleInputEmail1" class="form-label">Resume*</label>
+                      
+                        {% render_field form.resume class="form-control" id="exampleInputEmail1"%}
+                        {% comment %} <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Upload a File" aria-describedby="emailHelp">
+                        <input type="file" id="upload" hidden/>
+                        <label for="upload">Choose file</label> {% endcomment %}
+                        <!--{% comment %} <img src="images/upload_IconFile.svg" alt="Uploaad_icon" class="uploadIcon1"> {% endcomment %}-->
+                    </div>
+                    {% comment %} <div class="col-6 col-sm-6 col-md-6 input_editCol input_selectEdit1">
+                      <label for="exampleInputEmail1" class="form-label">Category*</label>
+                      {% render_field form.category class="form-select"%}
+                      <!-- <select class="form-select" aria-label="Default select example"> -->
+                        <!-- <option selected>Open this select menu</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option> -->
+                      </select> 
+                      <img src="images/input_dopdownIcon.svg" alt="dopdownIcon" class="dopdownIcon1">
+                    </div> {% endcomment %}
+                  </div>
+                  <div class="row input_edit_profile d-flex">
+                    <div class="col-6 col-sm-6 col-md-6 input_editCol">
+                      <label for="exampleInputEmail1" class="form-label">State*</label>
+                      <input type="text" class="form-control" name="state" id="exampleInputEmail1" placeholder="State" aria-describedby="emailHelp"> 
+                    </div>
+                    <div class="col-6 col-sm-6 col-md-6 input_editCol">
+                      <label for="exampleInputEmail1" class="form-label">City*</label>
+                      <input type="text" class="form-control" name="city" id="exampleInputEmail1" placeholder="City" aria-describedby="emailHelp"> 
+                    </div>
+                  </div> 
+                  <div class="row input_edit_profile d-flex">
+                    <div class="col-6 col-sm-6 col-md-6 input_editCol">
+                      <label for="exampleInputEmail1" class="form-label">Category*</label>
+                      {% render_field form.category class="form-select"%}
+                    </div>
+                  </div>
+                  
+                  <div class="row input_edit_profile d-flex">
+                    <div class="col-md-12 input_editCol">
+                      <label for="exampleInputEmail1" class="form-label">Profile Description*</label>
+                      {% render_field form.profile_desc type="textarea" class="form-control" id="exampleFormControlTextarea1"%}
+                      {% comment %} <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Lorem ipsum is dummy text" rows="3"></textarea> {% endcomment %}
+                    </div> 
+                  </div>
+                  <!-- <div class="editProfile_btn">
+                    <div class="btn_leftSide">
+                      <a href="#">Save</a>
+                    </div>
+                    <div class="btn_leftSide btn_rightSide">
+                      <a href="#">Cancel</a>
+                    </div>
+                  </div> -->
+                <!-- </form>
+                <form> -->
+                  {% comment %} <div class="form_prfileHadding">
+                    <h6>About</h6>
+                  </div>  {% endcomment %}
+                  <div class="row input_edit_profile d-flex">
+                    <div class="col-md-12 input_editCol">
+                      <label for="exampleInputEmail1" class="form-label">Description*</label>
+                      {% render_field form.long_description type="textarea" class="form-control" id="exampleFormControlTextarea1"%}
+                      {% comment %} <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Lorem ipsum is dummy text" rows="3"></textarea> {% endcomment %}
+                    </div> 
+                  </div>
+                  <!-- <div class="editProfile_btn">
+                    <div class="btn_leftSide">
+                      <a href="#">Save</a>
+                    </div>
+                    <div class="btn_leftSide btn_rightSide">
+                      <a href="#">Cancel</a>
+                    </div>
+                  </div> -->
+                <!-- </form>
+                <form> -->
+                  {% comment %} <div class="form_prfileHadding">
+                    <h6>Skills</h6>
+                  </div> 
+                  <div class="row input_edit_profile d-flex">
+                    <div class="col-md-12 input_editCol"> 
+                      <div class="example">
+                        <div class="real">
+                          <div id="testtag1" tagname="test1"><div class="blue tag-contain tag-clearfix">
+                            <ul id="test1_tag_list"></ul>
+                            <div style="clear:both;height:0px;">
+
+                            </div>
+                            <input type="text" value="" title="" class="tag-input tag-input-blur" id="test1_tag_input">
+                          </div>
+                        </div>
+                        </div>
+                      </div>
+                    </div> 
+                  </div>
+                  <div class="row input_edit_profile d-flex">
+                    <div class="col-md-6 input_editCol">
+                      <label for="exampleInputEmail1" class="form-label">Experience*</label>
+                      <div class="Experience_outer">
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Experience" aria-describedby="emailHelp">
+                        <img src="images/edit_icon.svg" alt="edit_icon" class="editBtn">
+                      </div>
+                    </div>
+                    
+                  </div> {% endcomment %}
+                  {% comment %} <div class="row input_edit_profile d-flex">
+                    <div class="col-md-6 input_editCol">
+                      <label for="exampleInputEmail1" class="form-label">Linkdin Profile* (Optional)</label>
+                      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Linkdin Profile" aria-describedby="emailHelp"> 
+                    </div>
+                    <div class="col-md-6 input_editCol">
+                      <label for="exampleInputEmail1" class="form-label">Github Profile* (Optional)</label>
+                      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Github Profile" aria-describedby="emailHelp"> 
+                    </div>
+                  </div> {% endcomment %}
+                  <div class="editProfile_btn">
+                    <div class="btn_leftSide">
+                      <button type="submit">Submit</button>
+                    </div>
+                    <div class="btn_leftSide btn_rightSide">
+                      <a href="#">Cancel</a>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--<div class="editProfile_itemDiv editProfile_itemDiv-1">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="editprofile_input">
+                <div class="editBtn_outer">
+                  <img src="images/edit_ic_white.svg" alt="edit_icon">
+                </div>
+                <form>
+                  <div class="form_prfileHadding">
+                    <h6>About</h6>
+                  </div> 
+                  <div class="row input_edit_profile d-flex">
+                    <div class="col-md-12 input_editCol">
+                      <label for="exampleInputEmail1" class="form-label">Description*</label>
+                      {% render_field form.long_description type="textarea" class="form-control" id="exampleFormControlTextarea1"%}
+                      {% comment %} <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Lorem ipsum is dummy text" rows="3"></textarea> {% endcomment %}
+                    </div> 
+                  </div>
+                  <div class="editProfile_btn">
+                    <div class="btn_leftSide">
+                      <a href="#">Save</a>
+                    </div>
+                    <div class="btn_leftSide btn_rightSide">
+                      <a href="#">Cancel</a>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="editProfile_itemDiv editProfile_itemDiv-1">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="editprofile_input">
+                <div class="editBtn_outer">
+                  <img src="images/edit_ic_white.svg" alt="edit_icon">
+                </div>
+                <form>
+                  <div class="form_prfileHadding">
+                    <h6>Skills</h6>
+                  </div> 
+                  <div class="row input_edit_profile d-flex">
+                    <div class="col-md-12 input_editCol"> 
+                      <div class="example">
+                        <div class="real">
+                          <div id="testtag1" tagname="test1"><div class="blue tag-contain tag-clearfix">
+                            <ul id="test1_tag_list"></ul>
+                            <div style="clear:both;height:0px;">
+
+                            </div>
+                            <input type="text" value="" title="" class="tag-input tag-input-blur" id="test1_tag_input">
+                          </div>
+                        </div>
+                        </div>
+                      </div>
+                    </div> 
+                  </div>
+                  <div class="row input_edit_profile d-flex">
+                    <div class="col-md-6 input_editCol">
+                      <label for="exampleInputEmail1" class="form-label">Experience*</label>
+                      <div class="Experience_outer">
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Experience" aria-describedby="emailHelp">
+                        <img src="images/edit_icon.svg" alt="edit_icon" class="editBtn">
+                      </div>
+                    </div>
+                    <div class="col-md-6 input_editCol">
+                      <label for="exampleInputEmail1" class="form-label">Resume*</label>
+                      
+                        {% render_field form.resume class="form-control" id="exampleInputEmail1"%}
+                        {% comment %} <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Upload a File" aria-describedby="emailHelp">
+                        <input type="file" id="upload" hidden/>
+                        <label for="upload">Choose file</label> {% endcomment %}
+                        {% comment %} <img src="images/upload_IconFile.svg" alt="Uploaad_icon" class="uploadIcon1"> {% endcomment %}-->
+                    <!--</div>
+                  </div>
+                  <div class="row input_edit_profile d-flex">
+                    <div class="col-md-6 input_editCol">
+                      <label for="exampleInputEmail1" class="form-label">Linkdin Profile* (Optional)</label>
+                      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Linkdin Profile" aria-describedby="emailHelp"> 
+                    </div>
+                    <div class="col-md-6 input_editCol">
+                      <label for="exampleInputEmail1" class="form-label">Github Profile* (Optional)</label>
+                      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Github Profile" aria-describedby="emailHelp"> 
+                    </div>
+                  </div>
+                  <div class="editProfile_btn">
+                    <div class="btn_leftSide">
+                      <a href="#">Update</a>
+                    </div>
+                    <div class="btn_leftSide btn_rightSide">
+                      <a href="#">Cancel</a>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>-->
+
+       
+      </div>
+    </div>
+  </div>
+  <!-- profile close here -->
+  <!-- footer bottom start here -->
+ {% endblock %}

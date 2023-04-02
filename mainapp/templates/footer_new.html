@@ -1,0 +1,236 @@
+{% load static %}
+{% if request.user.is_buyer %}
+<section>
+    <div class="footer_bottom home">
+      <div class="container LandindContainer">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="footer_bottomOuter">
+              <p>© Copyright 2022, DigiBuddies.All Rights Reserved</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+  <script src="{% static 'static2/js/jquery.js' %}"></script>
+  <script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
+  <link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet"/>
+  <script src="{% static 'static2/js/bootstrap.bundle.min.js' %}"></script>
+{% elif request.user.is_seller %}
+  <section>
+    <div class="footer_bottom home">
+      <div class="container LandindContainer">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="footer_bottomOuter">
+              <p>© Copyright 2022, DigiBuddies.All Rights Reserved</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="{% static 'static2/js/jquery.js' %}"></script>
+  <script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
+  <link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet"/>
+  <!-- footer bottm close here -->
+  <!-- link js -->
+  <script>
+    $(".chosen-select").chosen({
+  no_results_text: "Oops, nothing found!"
+})
+  </script>
+  
+
+  <script src="{% static 'static2/js/bootstrap.bundle.min.js' %}"></script>
+  {% else %}
+  <section>
+    <div class="contact">
+      <div class="container LandingContainer">
+        <div class="contact_outerRow1">
+          <div class="row contact_outerRow align-items-center">
+            <div class="col-md-8">
+              <div class="contact_leftSide">
+                <h2>
+                  If you have any, Comments or Concerns,
+                  <span>Please Contact us.</span>
+                </h2>
+                <div class="contactForm">
+                  <form>
+                    <div class="contactForm_Item">
+                      <img src="{% static 'static2/images/name_ic.svg'%}" alt="email_icon">
+                      <input type="email" class="form-control" id="exampleFormControlInput2" placeholder="Your name">
+                    </div>
+                    <div class="contactForm_Item">
+                      <img src="{% static 'static2/images/email_icon.svg'%}" alt="email_icon">
+                      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Your email">
+                    </div>
+                    <div class="contactForm_Item contactForm_Img">
+                      <img src="{% static 'static2/images/edit_icon.svg'%}" alt="edit">
+                      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                        placeholder="Type something if you want..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                      Send message
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="contact_right">
+                <img src="{% static 'static2/images/contact-left-img.png'%}" alt="contact_img">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Contact close here -->
+  <!-- footer start here -->
+  <section>
+    <div class="footer">
+      <div class="container LandingContainer">
+        <div class="row footerRow">
+          <div class="col-md-12 col-lg-12 col-xl-7 footerCol">
+            <div class="leftSideFooter">
+              <div class="row footerItem_unorderList">
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-2">
+                  <div class="leftSection_footer">
+                    <h6>About Us</h6>
+                    <ul>
+                      <li><a href="{% url 'login' %}">About Company</a></li>
+                      <li><a href="{% url 'login' %}">For Business</a></li>
+                      <li><a href="{% url 'login' %}">Our Partners</a></li>
+                      <li><a href="{% url 'login' %}">Press Contact</a></li>
+                      <li><a href="{% url 'login' %}">Careers</a></li>
+                      <li><a href="{% url 'login' %}">Events</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-2">
+                  <div class="leftSection_footer">
+                    <h6>Help&Contact</h6>
+                    <ul>
+                      <li><a href="{% url 'login' %}">Stay Safe Online</a></li>
+                      <li><a href="{% url 'login' %}">How to Sell</a></li>
+                      <li><a href="{% url 'login' %}">How to Buy</a></li>
+                      <li><a href="{% url 'login' %}">Posting Rules</a></li>
+                      <li><a href="{% url 'login' %}">Promote Your Ad</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-3">
+                  <div class="leftSection_footer">
+                    <h6>More from us</h6>
+                    <ul>
+                      <li><a href="{% url 'login' %}">FAQ</a></li>
+                      <li><a href="{% url 'login' %}">Blog</a></li>
+                      <li><a href="{% url 'login' %}">Popular Searches</a></li>
+                      <li><a href="{% url 'login' %}">Site Map</a></li>
+                      <li><a href="{% url 'login' %}">Customer Reviews</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-3">
+                  <div class="leftSection_footer">
+                    <h6>Account</h6>
+                    <ul>
+                      <li><a href="{% url 'login' %}">Manage Account</a></li>
+                      <li><a href="{% url 'login' %}">Login</a></li>
+                      <li><a href="{% url 'login' %}">Register</a></li>
+                      <li><a href="{% url 'login' %}">My ads</a></li>
+                      <li><a href="{% url 'login' %}">Profile</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="row socialIc_Row">
+                <div class="col-lg-6">
+                  <div class="leftSection_social">
+                    <ul>
+                      <li><a href="{% url 'login' %}"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                      <li><a href="{% url 'login' %}"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                      <li><a href="{% url 'login' %}"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                      <li><a href="{% url 'login' %}"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="rightSection_social">
+                    <p><img src="{% static 'static2/images/footer_card1.png'%}" alt="card"></p>
+                    <p><img src="{% static 'static2/images/footer_card2.png'%}" alt="card"></p>
+                    <p><img src="{% static 'static2/images/footer_card3.png'%}" alt="card"></p>
+                    <p><img src="{% static 'static2/images/footer_card4.png'%}" alt="card"></p>
+                    <p><img src="{% static 'static2/images/footer_card5.png'%}" alt="card"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-12 col-xl-5">
+            <div class="rightSide_footer">
+              <div class="hadding_footer">
+                <h2>Download Our App</h2>
+                <p>
+                  Aliquip voluptatibus, placeat debitis. Beatae tristique ac
+                  dolores hic, aenean ante.
+                </p>
+                <div class="footerBtn_rightSide">
+                  <a href="{% url 'login' %}">
+                    <div class="footerBtn_leftSide">
+                      <div class="footerSocial_ic">
+                        <div class="footerSocial_img">
+                          <img src="{% static 'static2/images/apple_ic.svg'%}" alt="footer_ic">
+                        </div>
+                        <div class="footerSocial_hadding">
+                          <span>Available on the</span>
+                          <p>App Store</p>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="{% url 'login' %}">
+                    <div class="footerBtn_leftSide">
+                      <div class="footerSocial_ic">
+                        <div class="footerSocial_img">
+                          <img src="{% static 'static2/images/store_ic.svg'%}" alt="footer_ic">
+                        </div>
+                        <div class="footerSocial_hadding">
+                          <span>Get In On</span>
+                          <p>Google Play</p>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- footer close here -->
+  <!-- footer bottom start here -->
+  <section>
+    <div class="footer_bottom">
+      <div class="container LandingContainer">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="footer_bottomOuter">
+              <p>&copy; Copyright 2022, DigiBuddies.All Rights Reserved</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endif %}
+
+</body>
+
+</html>
+  

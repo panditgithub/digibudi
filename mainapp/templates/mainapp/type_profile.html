@@ -1,0 +1,83 @@
+{% load static %}
+{% load socialaccount %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Type</title>
+  
+
+  <!-- link css -->
+  <link rel="stylesheet" href="{% static 'static2/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'static2/css/style.css' %}" >
+
+  <!-- link font awsome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
+</head> 
+
+<body>
+ <section class="signup-page">
+  <div class="container site-container">
+    <div class="row justify-content-center">
+      <div class="col-md-6  col-lg-6 col-xl-4">
+        <div class="site-login-div">
+<!-- <div class="login-logo mb-3">
+  <a href="{% url 'index' %}"class="text-decoration-none"><h5>Logo here<h5></a>
+</div> -->
+<div class="login-form">
+
+  <h3>What are you???</h3>
+  <!-- <p>Already have an account?<a href="{% url 'login' %}" class="text-decoration-none signup-tag">Log In</a></p> -->
+  <form class="login-page-form" action="" method = 'post'>
+    {% csrf_token %}
+    <div class="client-free-btn">
+      <div class="inputGroup">
+       <input id="radio1" name="radio" value = "seller" type="radio"/>
+       <label for="radio1">Client</label>
+     </div>
+     <div class="inputGroup">
+       <input id="radio2" name="radio" value="buyer" type="radio"/>
+       <label for="radio2">Freelancer</label>
+     </div>
+   </div>
+    <div class="login-btn">
+      <input type="submit" name="signup" value="Choose" class="w-100">
+    </div>
+    <div class="login-forget-password">
+      <!-- <div class="forget-check">
+        <input type="checkbox" name="">
+        <span>Terms of use Privacy Policy</span>
+      </div> -->
+      <div class="forg-pass">
+        <!--  <a href="">Forgot password?</a> -->
+      </div>
+    </div>
+  </form>
+  <!-- <div class="login-or">
+    <span>or</span>
+  </div>
+  <div class="login-fb-button">
+    <a href="{% provider_login_url 'google'%}" class="text-decoration-none google">
+      <img src="{% static 'static2/images/google-logo.png' %}" class="img-fluid me-2">
+      <span>Sign up with Google</span>
+    </a>
+    {% comment %} <a href="" class="text-decoration-none facebook">
+      <img src="{% static 'static2/images/fb-logo.png' %}" class="img-fluid me-2">
+      <span>Sign up with Facebook</span>
+    </a> {% endcomment %}
+  </div> -->
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+ </section>
+  <script src="{% static 'static2/js/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+
+</html>

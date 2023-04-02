@@ -1,0 +1,61 @@
+{% extends 'client_base.html' %}
+{% load static %}
+{% block content %}
+  <section>
+    <div class="chat_ui">
+      <div class="container LandingContainer">
+        <div class="chatUi_outer">
+          <div class="chatUi_item">
+            <div class="chatUi_left">
+              <div class="top_hadding_topBar">
+                <h6>Message</h6>
+              <div class="search_outer">
+                <input type="text" placeholder="Search">
+                <img src="{%static 'static2/images/chatUi_sarch_ic.svg'%}" alt="search_icon">
+              </div>
+              <div class="">
+              {% if request.user.is_buyer %}
+              <div class="chat_group_buttons">	
+                <a href="{% url 'group_chat_page' %}"  class="add_new_btn mt-0">Group</a>		
+                <a href="{% url 'project_chat_page' %}"  class="add_new_btn mt-0">Project Group</a>	
+                </div>	
+                {% elif  request.user.is_seller %}
+              
+                <a href="{% url 'create_group' %}" class="add_new_btn">Add New Group</a>	
+                </div>
+                <div class="chat_group_buttons">	
+                <a href="{% url 'group_chat_page' %}"  class="add_new_btn mt-0">Group</a>		
+                <a href="{% url 'project_chat_page' %}"  class="add_new_btn mt-0">Project Group</a>	
+                </div>	
+              </div>
+              {% endif %}
+              <div class="contact_list">
+                {% for data in data %}
+                <div class="contact_listItem">
+                  <a class="search_name" href="/project_chat/{{data.unique_code}}" style="text-decoration: none; color:chartreuse" >
+                  <div class="contact_listItem_left">
+                    
+                    <div class="chat_item_outer1">
+                      <img class="rightimg" src="{%static 'static2/images/default_client.png'%}" alt="thumb">
+                        
+                        <div class="chat_item_right1">
+                          <h6>{% for user in data.users.all%} {% if user.username1 != request.user.username1 %}{{user.username1}}{% endif %}{% endfor%}</h6>
+                        </div>
+                    </div> 
+                  </div>
+                </a>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- chat ui close here -->
+
+  <!-- footer bottom start here -->
+  {% endblock %}
+ 
+  

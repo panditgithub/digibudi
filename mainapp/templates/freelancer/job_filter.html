@@ -1,0 +1,76 @@
+
+<div class="filter-budgets">
+    <div class="job-filters-home mb-3">
+    <div class="filter-job-heading">
+      <h3>Filter Jobs by</h3>
+    </div>
+  </div>
+    <h4>Budget</h4>
+    <form method="get">
+        <div class="job-budget-range">
+
+
+            
+        <div class="range-slider m-0">
+            <div class="range-input">
+            <input type="range" step="10" value="200" min="0" max="800" class="w-100">
+
+            </div>
+            
+        </div>
+        <p class="mb-0 text-center range-slide-price">{{abc.form.datefilter}}</p>
+        <div class="two-range-values d-flex justify-content-between">
+
+
+        </div>
+        </div>
+    </form>
+    <hr>
+    <h4 class="mb-0 all-cat">All Categories</h4>
+    <form class="category-form">
+      <div class="all-cat-check pb-3">
+        {% for abc in abc.form.job_category%}
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
+          <label class="form-check-label" for="flexCheckDefault">
+            {{abc}} <span>{{abc.count}}</span>
+          </label>
+        </div>
+        {%endfor%}
+        
+      </div>
+      <hr>
+      <div class="work-type-check">
+        <h4 class="mb-0 all-cat">Work Type</h4>
+        <form class="category-form">
+         {%for job in hours.all%}
+            <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked10" checked>
+            <label class="form-check-label" for="flexCheckChecked10">
+              {{job}}
+            </label>
+          </div>
+          {%endfor%}
+          {% comment %} <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked11">
+            <label class="form-check-label" for="flexCheckChecked11">
+                {{hours.job_type}}
+            </label>
+          </div> {% endcomment %}
+        </form>
+      </div>
+      <hr>
+      <div class="work-type-check filter-job-tags">
+        <h4 class="mb-0 all-cat">Tags</h4>
+        
+         <div class="Job_tittle">
+            {%for data in allskill.all%}
+            <span>{{data}}</span>
+            {%endfor%}
+            
+        </div>
+          
+        
+      </div>
+   
+  </div>

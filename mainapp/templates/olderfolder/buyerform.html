@@ -1,0 +1,241 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% block content %}
+{% load digibuddies_extras %}
+<div class="container mt-5 col-md-8 " style="float:none;margin:auto;">
+<form action="" id='form-register' class="well form-horizontal"  method='POST' enctype="multipart/form-data">
+    {% csrf_token %}
+
+<fieldset>
+
+<!-- Form Name -->
+<legend><center><h2><b>Freelancer Profile</b></h2></center></legend><br>
+{% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <p class='alert alert-danger'> {{ error }} </p>
+        {% endfor %}
+    {% endfor %}
+{% endif %} 
+<div class="fromGroup_outer">
+<!-- Text input-->
+  <div class="form-group">
+      <label class=" control-label">Gender</label>  
+        <div class=" inputGroupContainer">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+          <select name="gender" class='form-control' id="">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+          </select> 
+
+        </div>
+      </div>
+  </div>
+
+  <div class="form-group">
+      <label class=" control-label">Address</label>  
+        <div class=" inputGroupContainer">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+      {{ form.address }}
+      {{ field.address.errors }}
+
+        </div>
+      </div>
+  </div>
+
+  <div class="form-group">
+    <label class=" control-label">City</label>  
+      <div class=" inputGroupContainer">
+      <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+    {{ form.city }}
+    {{ field.address.errors }}
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <label class=" control-label">Country</label>  
+      <div class=" inputGroupContainer">
+      <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+    {{ form.country }}
+    {{ field.address.errors }}
+
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class=" control-label">State</label>  
+      <div class=" inputGroupContainer">
+      <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+    {{ form.state }}
+    {{ field.address.errors }}
+
+      </div>
+    </div>
+  </div>
+
+    <!-- Text input-->
+
+  {% comment %} <div class="form-group">
+      <label class=" control-label">Skills </label> 
+        <div class=" inputGroupContainer">
+        <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+      {{ form.skills }}
+      {{ field.skills.errors }}
+      </div>
+      <small id="skillshelp" class="form-text text-muted"> add multiple skills comma(,) separated</small>
+      </div>
+    </div> {% endcomment %}
+
+
+  <div class="form-group">
+    <label class=" control-label" >Skills</label>
+    
+    <div class=" inputGroupContainer ">
+      <div class="input-group">
+      <select class='selectpicker form-control' name="skills" id="skill_type" multiple data-live-search="true">
+        {% for data in skill_type %}
+        {% comment %} {{ form.category_type}}  {% endcomment %}
+
+          <option value="{{ data.skill_title }}">{{ data.skill_title}}</option>
+        {% comment %} <label for="category_type">{{ data.category_title }}</label> {% endcomment %}
+        {% endfor %}
+      </select>
+    </div>
+    </div>
+
+  </div>
+  <form action="" method="post">
+    <input name="skill_added" id="skill_hide_input" required  placeholder="Add new skill" form='form1'></input><input type='submit' id="skill_hide_add" name="skill_added" class='btn btn-success' value='Add' form='form1'></input>
+  </form>
+  
+  
+  
+  <form method="post" id='form1'>
+    {% csrf_token %}
+    <input name="skill_added" id="skill_input" placeholder="Add new skill" form='form1'></input>
+    <input type='submit' id="skill_add" class='btn btn-success' value='Add' form='form1'></input>
+  </form> 
+
+    <!-- Text input-->
+
+  <div class="form-group">
+      <label class=" control-label" >Profile Description</label> 
+      <div class=" inputGroupContainer">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+          {{ form.profile_desc }}
+          {{ field.profile_desc.errors }}
+        </div>
+      </div>
+  </div>
+
+
+  <div class="form-group">
+      <label class=" control-label" > Linkedin Profile</label> 
+        <div class=" inputGroupContainer">
+        <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+      {{ form.linkedin_profile }}
+      {{ field.linkedin_profile.errors }}
+        </div>
+      </div>
+  </div>
+
+  <div class="form-group">
+      <label class=" control-label" > Github Profile</label> 
+        <div class=" inputGroupContainer">
+        <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+      {{ form.github_profile }}
+      {{ field.github_profile.errors }}
+
+      
+        </div>
+      </div>
+  </div>
+
+  <div class="form-group">
+      <label class=" control-label" > Profile Picture</label> 
+        <div class=" inputGroupContainer">
+        <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+      {{ form.profile_picture }}
+      {{ field.profile_picture.errors }}
+
+        </div>
+      </div> 
+  </div>
+
+  <div class="form-group">
+      <label class=" control-label" > Resume</label> 
+        <div class=" inputGroupContainer">
+        <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+      {{ form.resume }}
+      {{ field.resume.errors }}
+
+        </div>
+      </div>
+  </div>
+  <div class="form-group ">
+    <label class="col-md-12 text-center control-label mb-4" > Full Profile Description</label> 
+      <div class="col-md-12  inputGroupContainer" >
+      <div class="input-group justify-content-center"  >
+    {{ form.long_description }}
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Button -->
+  <div class="form-group">
+    <label class=" control-label"></label>
+    <div class=" col-md-12 text-center saveBtnSubmit_resiter ">
+      <input type="submit" class="btn btn-warning" name="buyersave" value="Save"> <span class="glyphicon glyphicon-send"></span></input>
+    </div>
+  </div>
+</div>
+
+</fieldset>
+</div>
+    </div>
+</form>
+</div>
+
+{% comment %} <footer>
+  <div class="footerOuter">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="footer_Leftsec">
+            <ul>
+              <li><a href="#">HOME</a></li>
+              <li><a href="#">ABOUT US</a></li>
+              <li><a href="#">TEAMS AND CONDITIONS</a></li>
+              <li><a href="#">PRIVACY POLICY</a></li>
+              <li><a href="#">CONTACT US</a></li>
+              <li><a href="#">FAQ</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="footer_Rightsec">
+            <p>@ 2022 Digibuddies</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer> {% endcomment %}
+
+{% endblock %}

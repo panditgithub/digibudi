@@ -1,0 +1,26 @@
+[
+  {
+    "model": "mainapp.JobTypeModel",
+    "pk": 1,
+    "fields": {
+      "job_type_title": "Full Time",
+      "job_type_desc": "full-time"
+    }
+  },
+  {
+    "model": "mainapp.JobTypeModel",
+    "pk": 2,
+    "fields": {
+      "job_type_title": "Part Time",
+      "job_type_desc": "part-time"
+    }
+  },
+  {
+    "model": "mainapp.JobTypeModel",
+    "pk": 3,
+    "fields": {
+      "job_type_title": "Contract",
+      "job_type_desc": "contract"
+    }
+  }
+]

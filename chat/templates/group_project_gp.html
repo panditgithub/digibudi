@@ -1,0 +1,466 @@
+{% load static %}
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landing Pages</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css" rel="stylesheet" />
+  <script src="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js"type="text/javascript"></script>
+  <link href="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/css/bootstrap-multiselect.css"rel="stylesheet" type="text/css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <!-- link css -->
+  <link rel="stylesheet" href="{% static 'static2/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'static2/css/style.css' %}" >
+  
+  <!-- link font awsome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
+  {% comment %} <style>
+    .search_name{
+      color:#3b65f5
+    }
+    a {
+      color: #ffff;
+      text-decoration: underline;
+  }
+  </style> {% endcomment %}
+</head>
+<body>
+  <!-- header start here -->
+  {% include 'header_new.html' %}
+  <!--header close here  -->
+  
+  <!-- chat ui start here -->
+  <section>
+    <div class="chat_ui">
+      <div class="container LandingContainer">
+        <div class="chatUi_outer">
+          <div class="chatUi_item">
+            <div class="chatUi_left">
+              <div class="top_hadding_topBar">
+                <h6>Message</h6>
+                <div class="search_outer">
+                  <input type="text" placeholder="Search" onkeyup="search(this)" id="search_message">
+                  <img src="{% static 'static2/images/chatUi_sarch_ic.svg' %}" alt="search_icon">
+                </div>
+                
+                {% if request.user.is_buyer %}
+                <div class="chat_group_buttons">	
+                  <a href="{% url 'group_chat_page' %}" class="add_new_btn mt-0">Group</a>		
+                  <a href="{% url 'project_chat_page' %}" class="add_new_btn mt-0">Project Group</a>		
+                  </div>
+              <div class="contact_list" id="searchresultdiv">
+                {% for data in joined_rooms %}
+                <div class="contact_listItem ">
+                    {% if data.chatType == "is_chat" %}
+                  <a class="search_name" href="/project_chat/{{data.unique_code}}" style="text-decoration: none;" >
+                  <div class="contact_listItem_left">
+                    <div class="chat_item_outer1">
+                        <img class="rightimg" src="{%static 'static2/images/default_client.png'%}" alt="thumb">
+                        
+                        <div class="chat_item_right1">
+                          
+                            <h6>{% for user in data.users.all%} {% if user.username1 != request.user.username1 %}{{user.username1}}{% endif %}{% endfor%}</h6>
+                          
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  {% endif %}
+                  </div>
+                  {% endfor %}
+                </div>
+                {%elif  request.user.is_seller %}
+                <a href="{% url 'create_group' %}" class="add_new_btn">Add New Group</a>
+                  <div class="chat_group_buttons">	
+                    <a href="{% url 'group_chat_page' %}" class="add_new_btn mt-0">Group</a>		
+                    <a href="{% url 'project_chat_page' %}" class="add_new_btn mt-0">Project Group</a>			
+                  </div>	
+                
+              </div>
+              
+              <div class="contact_list" id="searchresultdiv">
+                {% for data in joined_rooms %}
+                <div class="contact_listItem ">
+                    {% if data.chatType == "is_chat" %}
+                  <a class="search_name" href="/project_chat/{{data.unique_code}}" style="text-decoration: none;" >
+                  <div class="contact_listItem_left">
+                    <div class="chat_item_outer1">
+                        <img class="rightimg" src="{%static 'static2/images/default_client.png'%}" alt="thumb">
+                        <div class="chat_item_right1">
+                          <h6>{% for user in data.users.all%} {% if user.username1 != request.user.username1 %}{{user.username1}}{% endif %}{% endfor%}</h6>
+                          {% comment %} <h6 class="data_name">{{data.name}} </h6> {% endcomment %}
+                         
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  {% endif %}
+                  </div>
+                  {% endfor %}
+                </div>
+                <div class="contact_list">
+                  {% for data in usered %}
+                  <div class="contact_listItem">
+                    <a class="search_name" href="{% url 'chat-room' username=data.first_name %}">
+                    <div class="contact_listItem_left">
+                      <div class="chat_item_outer1">
+                        <img class="rightimg" src="{%static 'static2/images/default_client.png'%}" alt="thumb">
+                        <div class="chat_item_right1">
+                          {% if data.chatType == "is_group" %}
+                          <h6> {{data.first_name}}</h6>
+                          {% elif data.chatType == "is_chat"%}
+                          <h6>{% for user in data.users.all%} {% if user.username1 != request.user.username1 %}{{user.username1}}{% endif %}{% endfor%}</h6>
+                          {% endif %}
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  </div>
+                  {% endfor %}
+                  {% endif %} 
+                </div>
+                
+              </div>
+             
+              {% include 'chat_ui_right.html' %}
+            </div>
+          </div>
+        </div>
+      </div>
+</section>
+    <!-- chat ui close here -->
+    
+    <!-- footer bottom start here -->
+    
+    {{ course.unique_code|json_script:"roomName" }}
+    {{request.user.first_name|json_script:"json-username"}}
+    
+    <!-- footer bottm close here -->
+    <script>
+      
+      function search(e){
+        let data=document.getElementsByClassName('search_name');
+        // console.log(e)
+        var term =e.value;
+        var regex= new RegExp(term,'gi')
+        for (let i = 0; i < data.length; i++) {
+          if(data[i].innerHTML.match(regex)){
+            console.log(data[i].closest('.contact_listItem').style.display='block')
+          }else{
+            console.log(data[i].closest('.contact_listItem').style.display='none')
+          }
+          
+          
+          let thediv=$('#searchresultdiv');
+        }
+        //var temp1= data.filter((lo)=>{
+          //  return lo.name.match(regex);
+          //})
+        }
+      </script>
+      <!-- link js -->
+      <script src="{%static 'static2/js/jquery.js'%}"></script> 
+      <script>
+        $(document).ready(function(){ 
+          $("#searchuserr").hide(); 
+          
+          $(".side_manu_add").hide();
+          $(".add_People_btn").click(function(){
+            $("#searchuserr").toggle();
+          });
+          $(".close_icon_add").click(function(){
+            $(".side_manu_add").hide();
+          });
+          $(".Add_People").click(function(){
+            $(".side_manu_add").show();
+          });
+          $(".Search_input_Proposal").hide();
+          $(".search_message").click(function(){
+            $(".Search_input_Proposal").toggle();
+          });
+        });
+      </script>
+      <script>
+        function openNav() {
+          document.getElementById("mySidenav").style.width = "250px";
+        }
+        function closeNav() {
+          document.getElementById("mySidenav").style.width = "0";
+        }
+        const
+        range = document.getElementById('range'),
+        tooltip = document.getElementById('tooltip')
+        constsetValue = () => {
+          const newValue = Number((range.value - range.min) * 100 / (range.max - range.min)),
+          newPosition = 16 - (newValue * 0.32);
+          tooltip.innerHTML = `<span>${range.value}</span>`;
+          tooltip.style.left = `calc(${newValue}% + (${newPosition}px))`;
+          document.documentElement.style.setProperty("--range-progress", `calc(${newValue}% + (${newPosition}px))`);
+        };
+        document.addEventListener("DOMContentLoaded", setValue);
+        range.addEventListener('input', setValue);
+      </script>
+      
+      <script src="{%static 'static2/js/bootstrap.bundle.min.js'%}"></script>
+      
+      <script>
+        $(function () {
+          $('#users').multiselect({
+            includeSelectAllOption: true
+          });
+          $('#btnSelected').click(function () {
+            var selected = $("#lstFruits option:selected");
+            var message = "";
+            selected.each(function () {
+              message += $(this).text() + " " + $(this).val() + "\n";
+            });
+          });
+        });
+      </script>
+      
+      
+      
+      
+      <script>
+        console.log("Sanity check from room.js.");
+        const reciever_id = JSON.parse(document.getElementById('json-username').textContent);
+        const roomName = JSON.parse(document.getElementById('roomName').textContent);
+        
+        let chatLog = document.querySelector("#chatLog");
+        let chatMessageInput = document.querySelector("#chatMessageInput");
+        let chatMessageSend = document.querySelector("#chat-message-submit");
+        
+        chatMessageInput.focus();
+        // submit if the user presses the enter key
+        chatMessageInput.onkeyup = function(e) {
+          if (e.keyCode === 13) {  // enter key
+            chatMessageSend.click();
+          }
+        };
+        
+        
+        // clear the 'chatMessageInput' and forward the message
+        chatMessageSend.onclick = function() {
+          if (chatMessageInput.value.length === 0) return;
+          chatSocket.send(JSON.stringify({
+            "message": chatMessageInput.value,
+            'file_type': 'text'
+          }));
+          chatMessageInput.value = "";
+          $(".outer_chat_rightSide").stop().animate({ scrollTop: $(".outer_chat_rightSide")[0].scrollHeight}, 1000);
+        };
+        
+        
+        let chatSocket = null;
+        
+        function connect() {
+          chatSocket = new WebSocket("ws://" + window.location.host + "/ws/chat/" + roomName + "/");
+          
+          chatSocket.onopen = function(e) {
+            console.log("Successfully connected to the WebSocket.");
+            $(".outer_chat_rightSide").stop().animate({ scrollTop: $(".outer_chat_rightSide")[0].scrollHeight}, 1000);
+          }
+          
+          chatSocket.onclose = function(e) {
+            console.log("WebSocket connection closed unexpectedly. Trying to reconnect in 2s...");
+            setTimeout(function() {
+              console.log("Reconnecting...");
+              connect();
+            }, 2000);
+          };
+          
+          chatSocket.onmessage = function(e){
+            console.log(e.data.message)
+            const data = JSON.parse(e.data);
+            console.log(data.username1)
+            if (data.message != undefined){
+              var today= new Date();
+              time_since = timeSince(today);
+              if (data.file_type == 'image'){
+                if(data.user == reciever_id ){
+                  var mymsg = `<div class="B_chat_item B_chat_space videoTag_outer"> <span><a href="${data.message}" target="_blank"><image src=" ${data.message}" width="280px"></a><span></div>`
+                  }
+                  else{
+                    var mymsg = `<div class="chatUi_text" style="height: auto !important;padding: 0;background: none;border: unset;"> <span><a href="${data.message}" target="_blank"><image src=" ${data.message}" width="280px"></a><span></div>`
+                    }
+                    
+                  }
+                  else if (data.file_type == 'text'){
+                    if(data.user == reciever_id ){
+                      var mymsg = `<div class="B_chat_item B_chat_space"> <span><p>${data.message}</p><span></div>`
+                      }
+                      else{
+                        var mymsg = `<div class="chatUi_text"> <span><p>${data.message}</p><span></div>`
+                        }
+                      }
+                      else if (data.file_type == 'video'){
+                        if(data.user == reciever_id ){
+                          var mymsg = `<div class="B_chat_item B_chat_space videoTag_outer"> <span><video width="320" height="240" controls>
+                            <source src="${data.message}" type="video/mp4">
+                          </video><span></div>`
+                          }
+                          else{
+                            var mymsg = `<div class="chatUi_text" style="height: auto !important;padding: 0;background: none;border: unset;"> <span><video width="320" height="240" controls>
+                              <source src="${data.message}" type="video/mp4">
+                            </video><span></div>`
+                            }
+                          }
+                          else if (data.file_type == 'others'){
+                            if(data.user == reciever_id ){
+                              var mymsg =`<div class="B_chat_item B_chat_space"> <span><a href="${data.message}" target="_blank">${data.message.slice(41,)}</a><span></div>`}
+                                else{
+                                  var mymsg =`<div class="chatUi_text"> <span><a style="
+                                    color:#ffffff;" href="${data.message}" target="_blank">${data.message.slice(41,)}</a><span></div>`
+                                  }
+                                }
+                                else{
+                                  var mymsg = `${data.message}`
+                                }
+                                console.log(data.user,reciever_id,"this is the test")
+                                if(data.user == reciever_id ){
+                                  document.querySelector('.outer_chat_rightSide').innerHTML += 
+                                  `<div class="outer_chat_Item">
+                                    <img class="rightimg" src="{%static 'static2/images/default_client.png'%}" alt="thumb">
+                                    ${data.username1}
+                                 
+                                    {% comment %} <div class="outer_chat_ItemLeft">
+                                      <span>B</span>
+                                      <div class="online_offline"></div>
+                                    </div> {% endcomment %}
+                                    <div class="outer_chat_ItemRight">
+                                      <div class="B_chat_outer">
+                                        <div class="B_chat_item1 B_chat_item2">
+                                          `+ mymsg +`
+                                        </div>
+                                        <span class="Time_chat">${time_since}</span>
+                                      </div>
+                                    </div>
+                                  </div>`
+                                  
+                                }else{
+                                  document.querySelector('.outer_chat_rightSide').innerHTML += 
+                                  `<div class="outer_chat_ItemRight">
+                                    <div class="name_chat_ItemLeft">
+                                      <div class="chatUi_text1">
+                                        `+ mymsg +`
+                                      </div>
+                                      <span class="Time_chat">${time_since}</span>
+                                    </div>
+                                    {% comment %} change the icon and username rightside {% endcomment %}
+                                    
+                                    <img class="rightimg" src="{%static 'static2/images/default_user.png'%}" alt="thumb">
+                                    ${data.username1}
+                                    {% comment %} <div class="name_chat_ItemRight">
+                                      <span>C</span>
+                                      <div class="online_offline"></div>
+                                    </div> {% endcomment %}
+                                  </div>`
+                                  $(".outer_chat_rightSide").stop().animate({ scrollTop: $(".outer_chat_rightSide")[0].scrollHeight}, 1000);
+                                }
+                                
+                              }
+                              
+                              
+                              
+                            }
+                            function timeSince(date) {
+                              
+                              var seconds = Math.floor((new Date() - date) / 1000);
+                              
+                              var interval = seconds / 31536000;
+                              
+                              if (interval > 1) {
+                                return Math.floor(interval) + " years";
+                              }
+                              interval = seconds / 2592000;
+                              if (interval > 1) {
+                                return Math.floor(interval) + " months";
+                              }
+                              interval = seconds / 86400;
+                              if (interval > 1) {
+                                return Math.floor(interval) + " days";
+                              }
+                              interval = seconds / 3600;
+                              if (interval > 1) {
+                                return Math.floor(interval) + " hours";
+                              }
+                              interval = seconds / 60;
+                              if (interval > 1) {
+                                return Math.floor(interval) + " minutes";
+                              }
+                              return Math.floor(seconds) + " seconds";
+                            }
+                            
+                            
+                            
+                            
+                            chatSocket.onerror = function(err) {
+                              console.log("WebSocket encountered an error: " + err.message);
+                              console.log("Closing the socket.");
+                              chatSocket.close();
+                            }
+                          }
+                          connect();
+                          
+                          $("#chat-message-submit").click(function(){
+                            
+                            var form_data = new FormData()
+                            
+                            var ins = document.getElementById("fileupload").files.length;
+                            
+                            for(var x = 0; x<ins;x++){
+                              form_data.append("files[]",document.getElementById("fileupload").files[x]);
+                              
+                            }
+                            
+                            csrf_token = $("input[name=csrfmiddlewaretoken").val();
+                            
+                            form_data.append('csrfmiddlewaretoken',csrf_token);
+                            
+                            
+                            $.ajax({
+                              url:"{% url 'imagesend' %}",
+                              cache:false,
+                              dataType:"json",
+                              contentType:false,
+                              processData:false,
+                              type:"POST",
+                              data: form_data,
+                              success: function(response){
+                                console.log(response.url)
+                                let hostname = window.location.origin
+                                console.log(hostname+response.url)
+                                
+                                let img_url = hostname+response.url
+                                console.log(response.msgtype)
+                                
+                                
+                                if(response.msgtype == 'image'){
+                                  var msgtype = 'image';
+                                  console.log(msgtype)
+                                  
+                                }
+                                else if(response.msgtype == 'video'){
+                                  var msgtype = 'video';
+                                  
+                                }
+                                else if(response.msgtype == 'others'){
+                                  var msgtype = 'others';   
+                                }
+                                chatSocket.send(JSON.stringify({
+                                  'message':img_url,
+                                  'file_type':msgtype
+                                }))
+                                document.getElementById('fileupload').value=''
+                                
+                              }
+                            })
+                          })
+                          
+                        </script>    
+                      </body>
+                      </html>

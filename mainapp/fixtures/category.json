@@ -1,0 +1,82 @@
+[
+  {
+    "model": "mainapp.JobCategoryModel",
+    "pk": 1,
+    "fields": {
+      "category_title": "Automation",
+      "category_desc": "Automation"
+
+    },
+    "model": "mainapp.JobCategoryModel",
+    "pk": 2,
+    "fields": {
+      "category_title": "Frontend",
+      "category_desc": "Frontend"
+    }
+  },
+    {
+        "model": "mainapp.JobCategoryModel",
+        "pk": 3,
+        "fields": {
+        "category_title": "Backend",
+        "category_desc": "Backend"
+        }
+    },
+  {
+    "model": "mainapp.JobCategoryModel",
+    "pk": 4,
+    "fields": {
+      "category_title": "DevOps",
+      "category_desc": "DevOps"
+    }
+  },
+  {
+    "model": "mainapp.JobCategoryModel",
+    "pk": 5,
+    "fields": {
+      "category_title": "Mobile",
+      "category_desc": "Mobile"
+    }
+  },
+  {
+    "model": "mainapp.JobCategoryModel",
+    "pk": 6,
+    "fields": {
+      "category_title": "QA",
+      "category_desc": "QA"
+    }
+  },
+  {
+    "model": "mainapp.JobCategoryModel",
+    "pk": 7,
+    "fields": {
+      "category_title": "Data Science",
+      "category_desc": "Data Science"
+    }
+  },
+  {
+    "model": "mainapp.JobCategoryModel",
+    "pk": 8,
+    "fields": {
+      "category_title": "Project Management",
+      "category_desc": "Project Management"
+    }
+  },
+  {
+    "model": "mainapp.JobCategoryModel",
+    "pk": 9,
+    "fields": {
+      "category_title": "Business Analysis",
+      "category_desc": "Business Analysis"
+    }
+  },
+  {
+    "model": "mainapp.JobCategoryModel",
+    "pk": 10,
+    "fields": {
+      "category_title": "Other",
+      "category_desc": "Other"
+    }
+  }
+
+]

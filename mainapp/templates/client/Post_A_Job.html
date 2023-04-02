@@ -1,0 +1,367 @@
+{% extends 'client_base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+
+<style>
+
+</style>
+
+  <!-- profile start here -->
+  <div class="editProfile">
+    <div class="container LandingContainer">
+      <div class="editProfile_outerDiv">
+        <div class="editProfile_itemDiv">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="editprofile_input"> 
+                <form method="POST" enctype='multipart/form-data'>
+                  {% csrf_token %}
+                  {% comment %} {{ form.as_p }} {% endcomment %}
+                  
+                  <div class="form_prfileHadding">
+                    <h6>Post a Job</h6>
+                  </div>
+                  <div class="row input_edit_profile d-flex">
+                    <div class="col-md-12 input_editCol">
+                      <label for="exampleInputEmail1" class="form-label">Tittle*</label>
+                      {% comment %} <input type="email" class="form-control" id="exampleInputEmail1" name= "title" aria-describedby="emailHelp">  {% endcomment %}
+                      {% render_field form.job_title class="form-control" %}
+                    </div> 
+                  </div> 
+                  <div class="row input_edit_profile d-flex">
+                    <div class="col-md-12 input_editCol">
+                      <label for="exampleInputEmail1" class="form-label">Short Description*</label>
+                      {% comment %} <textarea class="form-control" id="exampleFormControlTextarea1" name= "short_desc" rows="3"></textarea> {% endcomment %}
+                      {% render_field form.short_desc class="form-control" type="textarea" %}
+                    </div> 
+                  </div>
+                  <div class="row input_edit_profile d-flex">
+                    <div class="col-md-6 input_editCol input_selectEdit1">
+                      <label for="exampleInputEmail1" class="form-label">Category Type*</label>
+                      {% render_field form.category_type class="form-select" %}
+                      
+                    </div>
+                      <div class="col-md-6 input_editCol input_selectEdit1">
+                        <label for="exampleInputEmail1" class="form-label">Skills*</label>
+                        
+                        <div class="multiselect" id="countries" multiple="multiple" data-target="multi-0">
+                          <div class="title noselect">
+                              <span class="text">Select</span>
+                              <span class="close-icon">&times;</span>
+                              <span class="expand-icon">&plus;</span>
+                          </div>
+                          
+                          <div class="container">
+                            {% for data in skill_type %}
+                              <option value='{{ data.skill_title }}'>{{ data.skill_title }}</option>
+                              {%endfor%}
+                          </div>
+                      </div>
+                      
+                      
+                        {% comment %} <div class="dropdown">
+                          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"> 
+                          </button>
+                        <ul class="dropdown-menu menuOuter_category" aria-labelledby="dropdownMenuButton1">
+                          <div class="inputFled_outer"> 
+                            <select style="padding-top:15px" class='selectpicker form-control' name="skill_type" id="skill_type" multiple data-live-search="true">
+                          </div>
+                          {% for data in skill_type %}
+                            <li>
+                              <option style="padding: 25px 0px 5px 15px;
+                              border:0.1px;"
+                               value='{{ data.skill_title }}'>{{ data.skill_title }}</option></li> 
+                          
+                          {% endfor %}
+                        </select>
+                        </ul>
+                        </div> {% endcomment %}
+                      </div>
+                  </div>
+                  
+                    {% comment %} <div class="col-md-6 input_editCol input_selectEdit1">
+                      <label for="exampleInputEmail1" class="form-label">Skill Type*</label>
+                      <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"> 
+                        </button>
+                        <ul class="dropdown-menu menuOuter_category" aria-labelledby="dropdownMenuButton1">
+                          <div class="inputFled_outer"> 
+                           <input type="search" id="gsearch" placeholder="Search" name="skill_type"> 
+                            <img src="{% static 'static2/images/category_iconSearch.svg' %}" alt="icon_Search" class="category_icon">
+                          </div>
+                          {% for i in form.skills %}
+                          <li name="skill_type" value='{{i}}'>
+                            {{i}}
+                          </li>
+                          {% endfor %}
+                          
+                         <li><a class="dropdown-item" href="#">Frontend Devloper</a></li>
+                          <li><a class="dropdown-item" href="#">Frontend Devloper</a></li>
+                          <li><a class="dropdown-item" href="#">Backend Developer</a></li>
+                          <li><a class="dropdown-item" href="#">UI/UX Designer</a></li>
+                          <li><a class="dropdown-item" href="#">Frontend Devloper</a></li>
+                          <li><a class="dropdown-item" href="#">Backend Developer</a></li>
+                        </ul>
+                      </div> 
+                    </div> {% endcomment %}
+                  </div>
+                  <div class="row input_edit_profile d-flex">
+                    <div class="col-md-6 input_editCol">
+                    <label for="exampleInputEmail1" class="form-label">Deadline*</label>
+                        {% render_field form.deadline class="form-control"%}
+                    </div>
+                    <div class="col-md-6 input_editCol">
+                      <div class="expiryDate_outer row">
+                        <div class="expiryDate_item col-md-12">
+                          <label for="exampleInputEmail1" class="form-label">Enter Amount*</label>
+                          <div class="enterAmount_outer row">
+                            <div class="enterAmount_item col-md-6">
+                              {% comment %} <input type="number" name="points" step="1"  name="amount" class="number-input" >  {% endcomment %}
+                              {% render_field form.askamount class="number-input" %}
+                            </div>
+                            <div class="enterAmount_item col-md-6">
+                              {% comment %} <input type="number" name="points" step="1" name="amount_2" class="number-input" > 
+                              {% endcomment %}
+                              {% render_field form.askamount_2 class="number-input" %}
+                            </div>
+                          </div>
+                        </div> 
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row input_edit_profile d-flex">
+                    <div class="col-md-6 input_editCol">
+                      <label for="exampleInputEmail1" class="form-label">Job Type* </label>
+                      
+                      <div class="radio_btn_outer">
+                        {% for data in job %}
+                        <div class="form-check form-check-inline check_RadioBtn_outer">
+                          <input class="form-check-input check_RadioBtn" type="radio" name="job_type" id="inlineRadio1" value="{{data.job_type_title}}">
+                          <label class="form-check-label" for="inlineRadio1">{{data.job_type_title}}</label>
+                        </div>
+                        {% endfor %}
+                        
+                        {% comment %} <div class="form-check form-check-inline check_RadioBtn_outer">
+                          <input class="form-check-input check_RadioBtn" type="radio" name="job_type" id="inlineRadio2" value="">
+                          <label class="form-check-label" for="inlineRadio2">one time payment</label>
+                        </div> {% endcomment %}
+                      </div>
+                    </div>
+                    {% comment %} <div class="row input_edit_profile d-flex">
+                      <div class="col-md-6 input_editCol input_selectEdit1">
+                         {% endcomment %}
+                    
+                  </div>
+                  
+                  <div class="row">
+                    <div class="col-md-12 input_editCol">
+                      <div class="lable-editor">
+                      <label for="exampleInputEmail1" class="form-label">Full Description*</label>
+                    </div>
+                    <div style="
+                      text-align: center
+                      ">
+                      {{form.media}}
+                        {% render_field form.full_desc id="exampleFormControlTextarea1" class="form_control" type="textarea" %}
+                      </div>
+                      {% comment %} <textarea class="form-control" id="exampleFormControlTextarea1" name="long_desc" placeholder="" rows="3"></textarea> {% endcomment %}
+                      
+                        <div class="editor-character-words">
+                          <span>Character:100 &nbsp;  Words:260</span>
+                        </div>
+                    </div> 
+                  </div>
+                  <div class="row input_edit_profile d-flex">
+                    <label for="exampleInputEmail1" class="form-label">File Attachment*</label>
+                    <div class="col-md-12 input_editCol1">
+                      <div class="upload_btnOuter">
+                        {% comment %} <input type="file" id="upload" name="file_upload" hidden/> {% endcomment %}
+                        {% render_field form.file_upload type="file" class="form-control" id="upload" %}
+                        {% comment %} <label for="upload"></label>
+                        <span>Upload a File</span> {% endcomment %}
+                        {% comment %} <label for="upload" class="upload_btn">Choose file</label> {% endcomment %}
+                      </div>
+                      <img src="{% static 'static2/images/upload_IconFile.svg' %}" alt="Uploaad_icon" class="uploadIcon">
+                    </div> 
+                  </div> 
+                  <div class="editProfile_btn">
+                    <div class="btn_leftSide">
+                      {% comment %} <input type="submit" value="Submit"> {% endcomment %}
+                      <button type="submit">Save</button>
+                    </div>
+                    {% comment %} <div class="btn_leftSide btn_rightSide">
+                      <button type="submit">Cancel</button>
+                    </div> {% endcomment %}
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script>
+    // Created by @conmarap.
+
+Array.prototype.search = function(elem) {
+    for(var i = 0; i < this.length; i++) {
+        if(this[i] == elem) return i;
+    }
+    
+    return -1;
+};
+
+var Multiselect = function(selector) {
+    if(!$(selector)) {
+        console.error("ERROR: Element %s does not exist.", selector);
+        return;
+    }
+
+    this.selector = selector;
+    this.selections = [];
+
+    (function(that) {
+        that.events();
+    })(this);
+};
+
+Multiselect.prototype = {
+    open: function(that) {
+        var target = $(that).parent().attr("data-target");
+
+        // If we are not keeping track of this one's entries, then
+        // start doing so.
+        if(!this.selections) {
+            this.selections = [ ];
+        }
+
+        $(this.selector + ".multiselect").toggleClass("active");
+    },
+
+    close: function() {
+        $(this.selector + ".multiselect").removeClass("active");
+    },
+
+    events: function() {
+        var that = this;
+
+        $(document).on("click", that.selector + ".multiselect > .title", function(e) {
+            if(e.target.className.indexOf("close-icon") < 0) {
+                that.open();
+            }
+        });
+
+        $(document).on("click", that.selector + ".multiselect option", function(e) {
+            var selection = $(this).attr("value");
+            var target = $(this).parent().parent().attr("data-target");
+
+            var io = that.selections.search(selection);
+
+            if(io < 0) that.selections.push(selection);
+            else that.selections.splice(io, 1);
+
+            that.selectionStatus();
+            that.setSelectionsString();
+        });
+
+        $(document).on("click", that.selector + ".multiselect > .title > .close-icon", function(e) {
+            that.clearSelections();
+        });
+
+        $(document).click(function(e) {
+            if(e.target.className.indexOf("title") < 0) {
+                if(e.target.className.indexOf("text") < 0) {
+                    if(e.target.className.indexOf("-icon") < 0) {
+                        if(e.target.className.indexOf("selected") < 0 ||
+                           e.target.localName != "option") {
+                            that.close();
+                        }
+                    }
+                }
+            }
+        });
+    },
+
+    selectionStatus: function() {
+        var obj = $(this.selector + ".multiselect");
+
+        if(this.selections.length) obj.addClass("selection");
+        else obj.removeClass("selection");
+    },
+
+    clearSelections: function() {
+        this.selections = [];
+        this.selectionStatus();
+        this.setSelectionsString();
+    },
+
+    getSelections: function() {
+        return this.selections;
+    },
+
+    setSelectionsString: function() {
+        var selects = this.getSelectionsString().split(", ");
+        $(this.selector + ".multiselect > .title").attr("title", selects);
+
+        var opts = $(this.selector + ".multiselect option");
+
+        if(selects.length > 6) {
+            var _selects = this.getSelectionsString().split(", ");
+            _selects = _selects.splice(0, 6);
+            $(this.selector + ".multiselect > .title > .text")
+                .text(_selects + " [...]");
+        }
+        else {
+            $(this.selector + ".multiselect > .title > .text")
+                .text(selects);
+        }
+
+        for(var i = 0; i < opts.length; i++) {
+            $(opts[i]).removeClass("selected");
+        }
+
+        for(var j = 0; j < selects.length; j++) {
+            var select = selects[j];
+
+            for(var i = 0; i < opts.length; i++) {
+                if($(opts[i]).attr("value") == select) {
+                    $(opts[i]).addClass("selected");
+                    break;
+                }
+            }
+        }
+    },
+
+    getSelectionsString: function() {
+        if(this.selections.length > 0)
+            return this.selections.join(", ");
+        else return "Select";
+    },
+
+    setSelections: function(arr) {
+        if(!arr[0]) {
+            error("ERROR: This does not look like an array.");
+            return;
+        }
+
+        this.selections = arr;
+        this.selectionStatus();
+        this.setSelectionsString();
+    },
+};
+
+$(document).ready(function() {
+    var multi = new Multiselect("#countries");
+});
+
+  </script>
+
+  <script>
+    $('select').selectpicker();
+  
+  
+  </script>  
+{% endblock %}

@@ -1,0 +1,60 @@
+{% load static %}
+
+<!-- header start here --> 
+<header class="header_Landing">
+  <div class="container LandingContainer">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'index' %}">Logo Here</a>
+        <div class="menu-bar d-lg-none ">
+          <span class="nav-bar" onclick="openNav()"><i class="fa fa-bars" aria-hidden="true"></i></span>
+          <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+            <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Browse Freelance</a>
+            </li>
+          </ul>
+          <ul class="unOrder_list">
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'logout' %}">Log Out</a></li>
+             {% else %}
+            <li><a href="{% url 'login' %}">Log In</a></li>
+            {% endif %}
+            <li><a href="{% url 'register' %}">Sign Up</a></li>
+          </ul>
+          </div>
+        </div>
+        <button class="navbar-toggler d-none" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'buyerapplyjob' %}">Browse Freelance</a>
+            </li>
+          </ul>
+          <ul class="unOrder_list">
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'logout' %}">Log Out</a></li>
+             {% else %}
+            <li><a href="{% url 'login' %}">Log In</a></li>
+            {% endif %}
+            <li><a href="{% url 'register' %}">Sign Up</a></li>
+          </ul>
+          <div class="btnHeader_job">
+            <a href="#">Post a Job</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    
+  </div>
+</header> 
+
+
+
+<!-- link js -->
+<script src="{% static 'static2/js/bootstrap.bundle.min.js' %}"></script>

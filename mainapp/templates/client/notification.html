@@ -1,0 +1,81 @@
+{% extends 'client_base.html' %}
+{% block content %}
+{% load static %}
+
+
+
+  <!-- all jobs start-->
+  <section class="notification-section">
+    <div class="container LandingContainer">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="notification-message-heading">
+<h2>Notification ({{notifi.count}})</h2>
+
+{% if notify.notification.unread %}
+<a class="text-decoration-none" href="buyer/notification/markasread/{{notify.notification.slug}}">Mark all as read</a>
+{% else %}
+  {% endif%}
+ 
+          </div>
+          {% for notify in notifi %}
+          <div class="notification-messages-content">
+            <div class="single-notification">
+<div class="noti-date">
+  <span>Dec 24, 2022</span>
+</div>
+<div class="noti-message">
+  <div class="noti-message-content">
+    <div class="noti-image">
+      <div class="un-first-ltr">
+        <span>A</span>
+      </div>
+    </div>
+    <div class="noti-con">
+  <h3>{{ notify.notification.actor }} 
+    {{ notify.notification.verb }}
+    {% if notify.notification.target %}
+      of {{ notify.notification.target }}
+    {% endif %}</h3>
+  <p>{{ notify.notification.description|linebreaksbr }}</p>
+</div>
+<div class="noti-time">
+  <span>{{ notify.notification.timesince }}</span>
+  </div>
+  </div>
+</div>
+</div>
+</div>
+          {% endfor %}
+          <div class="load-more-noti">
+            <a href="" class="text-decoration-none">Load more notifications</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+ 
+  <!-- all jobs end -->
+  <!-- footer bottom start here -->
+  {% comment %} <section>
+    <div class="footer_bottom home">
+      <div class="container LandindContainer">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="footer_bottomOuter">
+              <p>© Copyright 2022, DigiBuddies.All Rights Reserved</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> {% endcomment %}
+  <!-- footer bottm close here -->
+
+  <!-- link js -->
+  {% comment %} 
+  
+ 
+  <script src="{%static 'static2/js/bootstrap.bundle.min.js'%}"></script> {% endcomment %}
+  {%endblock%}

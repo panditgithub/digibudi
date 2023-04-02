@@ -1,0 +1,91 @@
+{% extends 'client_base.html' %}
+{% load static %}
+{% block content %}
+
+  <!-- chat ui start here -->
+  <section>
+    <div class="chat_ui">
+      <div class="container LandingContainer">
+        <div class="chatUi_outer">
+          <div class="chatUi_item">
+            <div class="chatUi_left">
+              <div class="top_hadding_topBar">
+                <h6>Message</h6>
+              <div class="search_outer">
+                <input type="text" placeholder="Search" onkeyup="search(this)" id="search_message">
+                <img src="{% static 'static2/images/chatUi_sarch_ic.svg' %}" alt="search_icon">
+              </div>
+              {% if request.user.is_buyer %}
+
+                  {% elif request.user.is_seller %}
+                  <a href="{% url 'create_group' %}" class="add_new_btn">Add New Group</a>
+                  {% endif %}
+              </div>
+              <div class="contact_list" id="searchresultdiv">
+                {% comment %} {% for data in joined_rooms %}
+                <div class="contact_listItem">
+                  <a class="search_name" href="/group_chat/{{data.unique_code}}" style="text-decoration: none;" >
+                  <div class="contact_listItem_left">
+                    <div class="chat_item_outer1">
+                          <img class="rightimg" src="{%static 'static2/images/default_client.png'%}" alt="thumb">
+                        <div class="chat_item_right1">
+                          <h6 class="search_name">{{data.name}}</h6>
+                        </div>
+                 
+                      
+                    </div>
+                    
+                  </div>
+                </a>
+                </div>
+                {% endfor %} {% endcomment %}
+              </div>
+              <div class="contact_list" id="searchresultdiv">
+                {% for data in users %}
+                <div class="contact_listItem">
+                  <a class="search_name" href="{% url 'chat-room' username=data.first_name %}">
+                  <div class="contact_listItem_left">
+                    <div class="chat_item_outer1">
+                        <img class="rightimg" src="{%static 'static2/images/default_client.png'%}" alt="thumb">
+                      <div class="chat_item_right1">
+                        <h6> {{data.username1}}</h6>
+                      
+                      </div>
+                    </div>
+                    
+                  </div>
+                </a>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
+  
+    function search(e){
+      let data=document.getElementsByClassName('search_name');
+     // console.log(e)
+      var term =e.value;
+      var regex= new RegExp(term,'gi')
+          for (let i = 0; i < data.length; i++) {
+            if(data[i].innerHTML.match(regex)){
+              console.log(data[i].closest('.contact_listItem').style.display='block')
+            }else{
+              console.log(data[i].closest('.contact_listItem').style.display='none')
+            }
+            
+            
+            let thediv=$('#searchresultdiv');
+          }
+          //var temp1= data.filter((lo)=>{
+            //  return lo.name.match(regex);
+          //})
+    }
+  </script>
+  <!-- chat ui close here -->
+  {% endblock %}

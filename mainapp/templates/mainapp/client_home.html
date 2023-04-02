@@ -1,0 +1,29 @@
+{% extends 'client_base.html' %}
+{% block content %}
+{% load static %}
+  <section class="all-jobs-section new-tabs-section">
+    <div class="container LandingContainer">
+      <div class="row">
+        <div class="col-md-12"> 
+          <div class="all-project-history">
+            
+            <!-- import tabs_nav.html -->
+            {% include 'mainapp/tabs/tabs_nav.html' %}
+            
+            <div class="all-project-tab-content">
+              <div class="tab-content" id="pills-tabContent">
+                {% include 'mainapp/tabs/all-projects.html' %}
+                {% include 'mainapp/tabs/complete-projects.html' %}
+                {% include 'mainapp/tabs/in-progress.html' %}
+                {% include 'mainapp/tabs/pending.html' %}
+                {% include 'mainapp/tabs/rejected.html' %}
+              </div>
+            </div> 
+
+          </div> 
+        </div>
+      </div>
+    </div>
+    </div> 
+  </section>
+  {% endblock content %}

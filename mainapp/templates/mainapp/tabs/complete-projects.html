@@ -1,0 +1,72 @@
+{% load static %}
+
+<div class="tab-pane fade" id="complete-project" role="tabpanel" aria-labelledby="complete-project-tab"
+                  tabindex="0">
+                    {% if completed_jobs %}
+                        {% for data in completed_jobs %}
+                        <div class="job-tab-content client_jobs">
+                            <div class="all-job-des">
+                            <h3>{{data.job_title}}</h3>
+                            <h6>{{data.seller.user.first_name}}</h6>
+                            <p>{{data.short_desc}}</p>
+                            <div class="all-job-dates">
+                                <div class="assg-by">
+                                <span>Assigned by </span>
+                                <span class="span-content"> John Doe</span>
+                                </div>
+                                <div class="assg-date">
+                                <span>Assigned date </span>
+                                <span class="span-content">{{data.deadline.date}}</span>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="all-job-price">
+                            <h5>Total amount- {{data.askamount}}</h5>
+                            <div class="client-verified">
+                                <span>Client <img src="images/verify-tick.png" alt=""> Payment Verified</span>
+                            </div>
+                            <span class="job-approved">Approved</span>
+                            </div>
+                        </div>
+                        {% endfor %} 
+                    {% else %}
+                    
+                        <div class="job-tab-content client_jobs">
+                            <div class="all-job-des">
+                            <h3>There is no completed project</h3>
+                            </div>
+                        </div>
+                    
+                    {% endif %}
+                    {% if completed_jobs %}
+                      <div class="jobs-pagination">
+                        <ul class="m-0 p-0 list-unstyled d-flex justify-content-center align-items-center">
+                          <li class="prev-icon">
+                            <a href="" class="text-decoration-none">
+                              <img src="{% static 'static2/images/prev-icon.png' %}" class="img-fluid" alt="prev-icon">
+                              Prev</a>
+                          </li>
+                          <li class="count-no">
+                            <a href="" class="text-decoration-none">01</a>
+                          </li>
+                          <li class="count-no green">
+                            <a href="" class="text-decoration-none">02</a>
+                          </li>
+                          <li class="count-no hr-line">
+                            <hr>
+                          </li>
+                          <li class="count-no green">
+                            <a href="" class="text-decoration-none">03</a>
+                          </li>
+                          <li class="count-no">
+                            <a href="" class="text-decoration-none">04</a>
+                          </li>
+                          <li class="next-icon">
+                            <a href="" class="text-decoration-none">
+
+                              Next<img src="{% static 'static2/images/next-icon.png' %}" class="img-fluid ms-2"></a>
+                          </li>
+                        </ul>
+                      </div>
+                    {% endif %}
+                </div>

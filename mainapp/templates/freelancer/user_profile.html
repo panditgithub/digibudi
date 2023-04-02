@@ -1,0 +1,259 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% block content %}
+
+
+  <!-- profile start here -->
+  <section class="profileOuter">
+    <div class="container site-container">
+      <div class="profileRow_outer">
+        <div class="row">
+          <div class="col-lg-7">
+            <div class="leftSide_profile">
+              <div class="EditProfile_item">
+                <img src="{{ profile_picture.url }}" alt="editImg" class="profile_img">
+                <div class="jobSuccess">
+                  <div class="jobSuccess_left">
+                    <span>100%</span>
+                  </div>
+                  <div class="jobSuccess_right">
+                    <h6>100%</h6>
+                    <span>Job Success</span>
+                    <div class="TopRated">
+                      <img src="{% static 'static2/images/userProfile_rated.svg' %}" alt="rated_ic" class="rated_icTop">
+                      <span>Top Rated</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="EditProfile_itemRight">
+                <div class="EditProfile_hadding">
+                  <div class="leftSide_hadding">
+                    <h5>{{user.first_name}} {{user.last_name}}</h5>
+                    <p>{{buyer.profile_desc}}</p>
+                  </div>
+                  <div class="rightSide_hadding">
+                    <a href="/edit_profileuser/">
+                      <i class="fa fa-pencil" aria-hidden="true"></i>Edit Profile</a></div>
+                </div>
+
+                <div class="editProfile_Location">
+                  <ul>
+                    <li><span><img src="{% static 'static2/images/location_ic.svg' %}" alt="location_ic">{{buyer.country}}, {{buyer.state}}, {{buyer.city}}</span>
+                    </li>
+                    <li><span><img src="{% static 'static2/images/30Years_ic.svg' %}" alt="location_ic">{{buyer.age}}</span></li>
+                    <div class="software_div">
+                      <img src="{% static 'static2/images/man_ic.svg' %}" alt="location_ic">
+                      <li>
+                        {% for skill in selected_skills %}
+                        <span><a href="#" class="text-decoration-none">{{skill}}</a></span>
+                        {% endfor %}
+                      </li>
+                    </div>
+                    <li class="language_outer"><img src="{% static 'static2/images/langaue_ic.svg' %}" alt="location_ic">
+                        <span class="language">{{buyer.language}}</span>
+                        {% comment %} <span class="language">Hindi</span>
+                        <span class="language">French</span>
+                        <span class="language">German</span> {% endcomment %}
+                      </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div class="RightSide_profile">
+              <div class="Available">
+                <div class="Available_leftSide">
+                  <img src="{% static 'static2/images/available_ic.svg' %}" alt="available_ic">
+                </div>
+                <div class="Available_RightSide">
+                  <h6>Available</h6>
+                  <span>{{buyer.available}}</span>
+                </div>
+              </div>
+              <div class="Available">
+                <div class="Available_leftSide">
+                  <img src="{% static 'static2/images/Verifications_ic.svg' %}" alt="Verifications_ic">
+                </div>
+                <div class="Available_RightSide">
+                  <h6>Verifications</h6>
+                  <span>Phone Number:- Verified</span>
+                </div>
+              </div>
+              <div class="Available">
+                <div class="Available_leftSide">
+                  <img src="{% static 'static2/images/education_ic.svg' %}" alt="education_ic">
+                </div>
+                <div class="Available_RightSide">
+                  <h6>Education</h6>
+                  <span>{{buyer.education}}</span>
+                </div>
+              </div>
+              <div class="numbering_userProfile">
+                <div class="numbering_leftSide">
+                  <h5>$90k+</h5>
+                  <span class="numbering_span">Total Earnings</span>
+                </div>
+                <div class="numbering_leftSide">
+                  <h5>120</h5>
+                  <span class="numbering_span">Total Bidding</span>
+                </div>
+                <div class="numbering_leftSide">
+                  <h5>787</h5>
+                  <span class="numbering_span">Total Hours</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- profile close here -->
+  <!-- about start here -->
+  <section class="about_outer">
+    <div class="container site-container">
+      <div class="row">
+        <div class="col-md-12">
+          <DIV class="about_outerHadding">
+            <h5>About</h5>
+            {{buyer.long_description|safe}}
+          </DIV>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- about close here -->
+
+  <!-- work history start here -->
+  <section class="workHistory">
+    <div class="container site-container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="work_historyItem">
+            <div class="workHistroy_hadding">
+              <h5>Work History</h5>
+            </div>
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item comp-pro" role="presentation">
+                <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
+                  role="tab" aria-controls="home" aria-selected="true">Complete Projects (120)</button>
+              </li>
+              <li class="nav-item progressProject" role="presentation">
+                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
+                  role="tab" aria-controls="profile" aria-selected="false">In progress Projects (20)</button>
+              </li> 
+            </ul>
+            <div class="tab-content" id="myTabContent">
+              <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <div class="detail_pageOuter">
+
+                  <div class="detailSection">
+                    {% for job in completed_jobs %}
+                    <h5>{{job.job}}</h5>
+                    <div class="detailSection_rating">
+                    <div class="star_outer">
+                        <ul>
+                          <li><a href="#"><img src="{% static 'static2/images/star_ic.svg' %}" alt="star"></a></li>
+                          <li><a href="#"><img src="{% static 'static2/images/star_ic.svg'%}" alt="star"></a></li>
+                          <li><a href="#"><img src="{% static 'static2/images/star_ic.svg'%}" alt="star"></a></li>
+                          <li><a href="#"><img src="{% static 'static2/images/star_ic.svg'%}" alt="star"></a></li>
+                          <li><a href="#"><img src="{% static 'static2/images/star_ic.svg'%}" alt="star"></a></li>
+                          
+                        </ul>
+                      </div>
+                      <span class="rating_number">5.00</span>
+                      <span class="rating_date">Sep 30, 2021 - April 20, 2022</span>
+                    </div>
+                    <p></p>
+                      <div class="btn_detailSection">
+                        <div class="btn_detailSection_1">
+                          <a href="#">{{ job.bid_amount }}</a>
+                        </div>
+                        <div class="btn_detailSection_1">
+                          <a href="#">{{ job.bidder }}</a>
+                        </div>
+                        <div class="btn_detailSection_1">
+                          <a href="#">{{ job.is_completed }}</a>
+                        </div>
+                      </div>
+                      {% endfor %}
+                  </div>
+                  <div class="detailSection detailSection1">
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                
+                <div class="detail_pageOuter">
+                  {% for job in jobs_accepted %}
+                  <div class="detailSection">
+                    <h5> {{job.job}}</h5>
+                    <div class="detailSection_rating">
+                      <div class="star_outer">
+                        <ul>
+                          <li><a href="#"><img src="{% static 'static2/images/star_ic.svg' %}" alt="star"></a></li>
+                          <li><a href="#"><img src="{% static 'static2/images/star_ic.svg' %}" alt="star"></a></li>
+                          <li><a href="#"><img src="{% static 'static2/images/star_ic.svg' %}" alt="star"></a></li>
+                          <li><a href="#"><img src="{% static 'static2/images/star_ic.svg' %}" alt="star"></a></li>
+                          <li><a href="#"><img src="{% static 'static2/images/star_ic.svg' %}" alt="star"></a></li>
+                        </ul>
+                      </div>
+                      <span class="rating_number">5.00</span>
+                      <span class="rating_date">Sep 30, 2021 - April 20, 2022</span>
+                    </div>
+                    <p></p>
+                    <div class="btn_detailSection">
+                        <div class="btn_detailSection_1">
+                          <a href="#">{{ job.bid_amount }}</a>
+                        </div>
+                        <div class="btn_detailSection_1">
+                          <a href="#">{{ job.bidder }}</a>
+                        </div>
+                        <div class="btn_detailSection_1">
+                          <a href="#">{{ job.is_accepted }}</a>
+                        </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+                
+            <div class="pagination_outer">
+              <div class="jobs-pagination">
+                <ul class="m-0 p-0 list-unstyled d-flex justify-content-center">
+                  <li class="prev-icon">
+                    <a href="" class="text-decoration-none">
+                      <img src="{% static 'static2/images/prev-icon.png' %}" class="img-fluid" alt="prev-icon">
+                      Prev</a>
+                  </li>
+                  <li class="count-no">
+                    <a href="" class="text-decoration-none">01</a>
+                  </li>
+                  <li class="count-no green">
+                    <a href="" class="text-decoration-none">02</a>
+                  </li>
+                  <li class="count-no hr-line">
+                    <hr>
+                  </li>
+                  <li class="count-no green">
+                    <a href="" class="text-decoration-none">03</a>
+                  </li>
+                  <li class="count-no">
+                    <a href="" class="text-decoration-none">04</a>
+                  </li>
+                  <li class="next-icon">
+                    <a href="" class="text-decoration-none">
+  
+                      Next<img src="{% static 'static2/images/next-icon.png' %}" class="img-fluid ms-2"></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endblock %}
+  <!-- work histroy close here -->

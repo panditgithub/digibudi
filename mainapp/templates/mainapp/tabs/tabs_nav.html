@@ -1,0 +1,34 @@
+<div class="all-project-tab-heading">
+    <ul class="nav nav-pills" id="pills-tab" role="tablist">
+      <li class="nav-item all-project-li" role="presentation">
+        <a style="text-decoration: none;" href="{% url 'clientallproject' %}">
+        <button class="nav-link active" id="all-project-tab" data-bs-toggle="pill"
+          data-bs-target="#all-project" type="button" role="tab" aria-controls="all-project"
+          aria-selected="true">All Projects</button></a>
+      </li>
+      <li class="nav-item comp-project-li" role="presentation">
+        <a style="text-decoration: none;" href="{% url 'completeclientproject' %}">
+        <button class="nav-link" id="complete-project-tab" data-bs-toggle="pill"
+          data-bs-target="#complete-project" type="button" role="tab" aria-controls="complete-project"
+          aria-selected="false">Completed Projects</button></a>
+      </li>
+      <li class="nav-item in-pro-project-li" role="presentation">
+        <a style="text-decoration: none;" href="{% url 'progressclientproject' %}">
+        <button class="nav-link" id="in-progress-tab" data-bs-toggle="pill" data-bs-target="#in-progress"
+          type="button" role="tab" aria-controls="in-progress" aria-selected="false">In progress projects
+        </button></a>
+      </li>
+      <li class="nav-item  pend-project-li" role="presentation">
+        <a style="text-decoration: none;" href="{% url 'unassignedclientproject' %}">
+        <button class="nav-link" id="pending-tab" data-bs-toggle="pill" data-bs-target="#pending"
+          type="button" role="tab" aria-controls="pending" aria-selected="false">Unassigned projects</button></a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a style="text-decoration: none;" href="{% url 'archivedclientproject' %}">
+        <button class="nav-link reject-project-li" id="rejected-tab" data-bs-toggle="pill"
+          data-bs-target="#rejected" type="button" role="tab" aria-controls="rejected"
+          aria-selected="false">Archived Projects</button></a>
+      </li>
+
+    </ul>
+  </div>

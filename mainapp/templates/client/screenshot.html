@@ -1,0 +1,155 @@
+{% extends 'client_base.html' %}
+{% load digibuddies_extras %}
+{% load static %}
+{% block content %}
+<section class="project-details-section screenshot_detail">
+  <div class="container LandingContainer">
+    <div class="row">
+      <div class="col-xl-8 col-lg-7">
+        <div class="project-detail">
+          <div class="project-detail-info">
+            <div class="p-d-content">
+              <div class="p-d-info">
+                <h3>Project-details</h3>
+                <div class="editor-image screenshot_image_hadding">
+                  <div class="bid-editor">
+                    <div class="editor-textarea">
+                      <div class="editor-text">
+                        <div class="editor-content">
+                          <div class="screenshot_outer">
+                            <h4>{{billing.job.full_desc|safe}}
+                            </h4>
+                            <div class="screenshot_btn">
+                              {% comment %} <a href="#">Overview</a> {% endcomment %}
+                            </div>
+                          </div>
+                          <div class="editor-text-price">
+                            <h5 class="mb-0">{{billing.job.askamount}}-{{billing.job.askamount_2}} AUD/hr</h5>
+                            <div class="editor-time">
+                              <img src="{%static 'static2/images/editor-time.png'%}" class="img-fluid" alt="time">
+                              <span>BIDDING ENDS IN {{billing.job.deadline}}</span>
+                            </div>
+                            <div class="editor-pid">
+                              <span>Project ID:-{{billing}}</span>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div class="screenShot_Date">
+                          {% comment %} <h6><br><span>9PM</span></h6> {% endcomment %}
+                          <h6><br><span>{{time.duration|timesince}}</span></h6>
+                          
+                          <div class="screenShot_outer">
+                            {% for del in time %}
+                            {% with  del.duration|mydata:idd as datee %}
+                            {% for d in datee %}
+                            <div class="screenshot_img">
+                              <div class="screenShot_item">
+                                
+                                <img src="{{d.screenshot.url}}" alt="screenShot" class="screenShot_img1">
+                                <div class="screenShot_footer_icon">
+                                  <div class="screenShot_icon_left">
+                                    <span><img src="{%static 'static2/images/screenshot_icon.svg'%}" alt="screenshot_icon">{{d.keyups}}</span>
+                                  </div>
+                                  <div class="screenShot_icon_left">
+                                    <span><img src="{%static 'static2/images/screenshot_icon2.svg'%}" alt="screenshot_icon">{{d.mouseclicks}}</span>
+                                  </div>
+                                  <div class="screenShot_icon_right">
+                                    <span>{{d.duration}}</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            
+                            {% endfor %}
+                            {% endwith %}
+                            
+                            {% endfor %}
+                            
+                            
+                          </div>
+                          
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      
+      <div class="col-xl-4 col-lg-5">
+        <div class="place-bid">
+          <div class="place-bid-content rightSide_screenshot">
+            <h5>Freelancer view</h5>
+            <div class="screenShot_name">
+              <div class="screenShot_name_left">
+                <div class="hadding_Name_outer">
+                  <div class="photo_rightSide">
+                    <img src="{%static 'static2/images/man_icon_Screenshot.svg'%}" alt="man_icon">
+                  </div>
+                  <div class="name_hadding">
+                    <h6>{{billing.bidder.user}}</h6>
+                    {% for skill in billing.bidder.skills.all  %}
+                    <p>{{ skill }}</p>
+                    {% endfor %}
+                    <span><img src="{%static 'static2/images/screenshot_location_ic.svg'%}" alt="icon">India - {{today.time}} Local Time</span>
+                  </div>
+                </div>
+                <div class="icon_hadding">
+                  <div class="massageDiv_header">
+                    <a href="/project/group/{{billing.id}}">
+                      <img src="{%static 'static2/images/massage_ivHeader.svg'%}" alt="massage_icon">
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="screenshot_right_paragraph">
+                <p>{{billing.bidder.profile_desc}}
+                </p>
+              </div>
+              <div class="weeklyimtOuter">
+                <div class="weeklyimtOuter1">
+                  <span class="time_limit">Weekly Limit</span>
+                  <div class="time_div">
+                    <span class="time_span">2.50 0f 20.00hrs</span>
+                    <div class="progress_bar"></div>
+                    <span class="time_span1">2.50 hrs manual time</span>
+                  </div>
+                  <div class="total_priceOuter">
+                    <div class="total_price_left">
+                      <span>Charged:-{{billing.bid_amount}}</span>
+                    </div>
+                    <div class="total_price_right">
+                      <span>Total:- {{billing.bid_amount}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class=" place-bid recent-new-projects screenshot_Description">
+          <div class="place-bid-content recent-projects">
+            <h5>Description</h5>
+            <p>{{billing.bidder.long_description|safe}}... <span></span></p>
+          {% if billing.job.Attachment %}
+            <div class="attach_upload">
+              <h6>Attachments</h6>
+              <span><a href="http://127.0.0.1:8000/media/{{billing.job.Attachment}}" target="_blank"><img src="{%static 'static2/images/upload_screenshot.svg'%}" alt="upload">{{billing.job.Attachment|cut:"http://127.0.0.1:8000/"}}</a></span>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</section>
+<!-- project details html end -->
+<!-- footer bottom start here -->
+
+{% endblock %}

@@ -1,0 +1,362 @@
+{% load static %}
+<header class="header_Landing client-header">
+    <div class="container LandingContainer">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+          <div class="mobileTop_bar">
+            <div class="mobileHeader_logo">
+              <a class="navbar-brand" href="{% url 'client_home' %}">Logo Here</a>
+              <div class="tabsOuter_header">
+                <div class="allJobs_btnOuter1">
+                  <a href="{% url 'client_home' %}">All Jobs</a>
+                </div>
+                <div class="client-post-job-btn">
+                  <a href="{% url 'sellerpostjob' %}">Post a Job</a>
+                </div>
+                <div class="mobileSocial_ic_tabs">
+                  <div class="massageDiv_header">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                      data-bs-toggle="dropdown" aria-expanded="false">
+                      <img src="{% static 'static2/images/massage_ivHeader.svg' %}" alt="massage_icon">
+                    </a>
+                    <ul class="dropdown-menu profile_DropdownDiv" aria-labelledby="dropdownMenuLink">
+                      <div class="notification_hadding">
+                        <div class="notification_hadding_left">
+                          <h6><img src="{% static 'static2/images/messagePop_icon.svg' %}" alt="message_Pop" class="message_Pop">Message</h6>
+                        </div>
+                      </div>
+                      <a href="#">
+                        <div class="notification_tittle">
+                          <div class="notification_tittle_left">
+                            <div class="notification_nameTittle name_c">
+                              <span>C</span>
+                              <div class="online_offline"></div>
+                            </div>
+                            <div class="notification_nameHadding">
+                              <h6>Cody Richards</h6>
+                              <p>Rhoncus eleifend mollitia eius... </p>
+                            </div>
+                          </div>
+                          <div class="notification_tittle_right">
+                            <span>10:34PM</span>
+                          </div>
+                        </div>
+                      </a>
+                      <div class="notification_btn">
+                        <a href="#">View all message<i class="fa fa-angle-right notification_pop"
+                            aria-hidden="true"></i></a>
+                      </div>
+                    </ul>
+                  </div>
+                  <div class="notification-div">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                      data-bs-toggle="dropdown" aria-expanded="true">
+                      <img src="{% static 'static2/images/notifacation_icon.svg' %}" alt="notifacation_icon">
+                    </a>
+                    <ul class="dropdown-menu profile_DropdownDiv" aria-labelledby="dropdownMenuLink"
+                      data-bs-popper="none">
+                      <div class="notification_hadding">
+                        <div class="notification_hadding_left">
+                          <h6><img src="{% static 'static2/images/notification_pop.svg' %}" alt="message_Pop" class="message_Pop">Notification
+                          </h6>
+                        </div>
+                        <div class="notification_hadding_right">
+                          <span>Mark all as read</span>
+                        </div>
+                      </div>
+                      <div class="notification_tittle">
+                        <div class="notification_tittle_left">
+                          <div class="notification_nameTittle">
+                            <span>G</span>
+                          </div>
+                          <div class="notification_nameHadding">
+                            <h6>Magni rerum fames curae.</h6>
+                            <p>Rhoncus eleifend mollitia eius. Architecto quaerat exercitationem placerat...</p>
+                          </div>
+                        </div>
+                        <div class="notification_tittle_right">
+                          <span>Just now</span>
+                        </div>
+                      </div>
+                     
+                      <div class="notification_btn">
+                        <a href="#">View all notifications<i class="fa fa-angle-right notification_pop"
+                            aria-hidden="true"></i></a>
+                      </div>
+                    </ul>
+                    <div class="notifacation_item">
+                      <p>4</p>
+                    </div>
+                  </div>
+                  <div class="nameHadding_header">
+                    <div class="dropdown_outerHeader">
+                      <div class="img_headerDropdown">
+                        <img src="{{seller.company_logo.url}}" alt="Dropdown_Images">
+                      </div>
+                      <div class="btn_headerDropdown">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                          data-bs-toggle="dropdown" aria-expanded="false">
+                          {{request.user.first_name}} {{request.user.last_name}}
+                        </a>
+                        <ul class="dropdown-menu profile_DropdownDiv" aria-labelledby="dropdownMenuLink">
+                          <li><a class="dropdown-item" href="{% url 'seller_update' %}"><i class="fa fa-user"
+                                aria-hidden="true"></i>Profile</a></li>
+                          <li><a class="dropdown-item" href="/client_home/"><i class="fa fa-list-ul"
+                                aria-hidden="true"></i>Job List</a></li>
+                          <li><a class="dropdown-item" href="{% url 'chat-index' %}"><i class="fa fa-envelope"
+                                aria-hidden="true"></i>Message</a></li>
+                          <li><a class="dropdown-item" href="{% url 'usernotification' %}"><i class="fa fa-bell"
+                                aria-hidden="true"></i>Notification</a></li>
+                          <hr class="headerLine_outer">
+                          <li><a class="dropdown-item" href="{% url 'logout' %}"><i class="fa fa-sign-out"
+                                aria-hidden="true"></i>Log Out</a></li>
+                        </ul>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="client-post-job-btn">
+                    <a href="{% url 'sellerpostjob' %}">Post a Job</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mobileSocial_ic">
+            <div class="massageDiv_header">
+              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="{% static 'static2/images/massage_ivHeader.svg' %}" alt="massage_icon">
+              </a>
+              <ul class="dropdown-menu profile_DropdownDiv" aria-labelledby="dropdownMenuLink">
+                <div class="notification_hadding">
+                  <div class="notification_hadding_left">
+                    <h6><img src="{% static 'static2/images/messagePop_icon.svg' %}" alt="message_Pop" class="message_Pop">Message</h6>
+                  </div>
+                </div>
+                {%for  user in allusers %}
+                <a href="#">
+                  <div class="notification_tittle">
+                    <div class="notification_tittle_left">
+                      <div class="notification_nameTittle name_c">
+                        <span>C</span>
+                        <div class="online_offline"></div>
+                      </div>
+                      <div class="notification_nameHadding">
+                        <h6>{{user.user}}</h6>
+                        <p>{{user.content}} </p>
+                      </div>
+                    </div>
+                    <div class="notification_tittle_right">
+                      <span>{{user.timestamp}}</span>
+                    </div>
+                  </div>
+                </a>
+                {%endfor%}
+                
+                <div class="notification_btn">
+                  <a href="{% url 'chat-index' %}">View all message<i class="fa fa-angle-right notification_pop"
+                      aria-hidden="true"></i></a>
+                </div>
+              </ul>
+            </div>
+            <div class="notification-div">
+              <a class="btn btn-secondary dropdown-toggle " href="#" role="button" id="dropdownMenuLink"
+                data-bs-toggle="dropdown" aria-expanded="true">
+                <img src="{% static 'static2/images/notifacation_icon.svg' %}" alt="notifacation_icon">
+              </a>
+              <ul class="dropdown-menu profile_DropdownDiv" aria-labelledby="dropdownMenuLink" data-bs-popper="none">
+                <div class="notification_hadding">
+                  <div class="notification_hadding_left">
+                    <h6><img src="{% static 'static2/images/notification_pop.svg' %}" alt="message_Pop" class="message_Pop">Notification</h6>
+                  </div>
+                  <div class="notification_hadding_right">
+                    <span>Mark all as read</span>
+                  </div>
+                </div>
+                <div class="notification_tittle">
+                  <div class="notification_tittle_left">
+                    <div class="notification_nameTittle">
+                      <span>G</span>
+                    </div>
+                    <div class="notification_nameHadding">
+                      <h6>Magni rerum fames curae.</h6>
+                      <p>Rhoncus eleifend mollitia eius. Architecto quaerat exercitationem placerat...</p>
+                    </div>
+                  </div>
+                  <div class="notification_tittle_right">
+                    <span>Just now</span>
+                  </div>
+                </div>
+                
+                <div class="notification_btn">
+                  <a href="notification.html">View all notifications<i class="fa fa-angle-right notification_pop"
+                      aria-hidden="true"></i></a>
+                </div>
+              </ul>
+              <div class="notifacation_item">
+                <p>4</p>
+              </div>
+            </div>
+            <div class="nameHadding_header">
+              <div class="dropdown_outerHeader">
+                <div class="img_headerDropdown">
+                  <img src="{{seller.company_logo.url}}" alt="Dropdown_Images">
+                </div>
+                <div class="btn_headerDropdown">
+                  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    {{request.user.first_name}} {{request.user.last_name}}
+                  </a>
+                  <ul class="dropdown-menu profile_DropdownDiv" aria-labelledby="dropdownMenuLink">
+                    <li><a class="dropdown-item" href="{% url 'seller_update' %}"><i class="fa fa-user"
+                          aria-hidden="true"></i>Profile</a></li>
+                    <li><a class="dropdown-item" href="/client_home/"><i class="fa fa-list-ul" aria-hidden="true"></i>Job
+                        List</a></li>
+                    <li><a class="dropdown-item" href="{% url 'chat-index' %}"><i class="fa fa-envelope"
+                          aria-hidden="true"></i>Message</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="fa fa-bell" aria-hidden="true"></i>Notification</a>
+                    </li>
+                    <hr class="headerLine_outer">
+                    <li><a class="dropdown-item" href="{% url 'logout' %}"><i class="fa fa-sign-out" aria-hidden="true"></i>Log
+                        Out</a></li>
+                  </ul>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="header-search-barMobile">
+            <form>
+              <input type="text" placeholder="Search">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </form>
+          </div>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <div class="header-search-bar">
+                <form>
+                  <input type="text" placeholder="Search">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </form>
+              </div>
+            </ul>
+            <div class="allJobs_btnOuter">
+            </div>
+            <div class="massageDiv_header">
+              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="{% static 'static2/images/massage_ivHeader.svg' %}" alt="massage_icon">
+              </a>
+              <ul class="dropdown-menu profile_DropdownDiv" aria-labelledby="dropdownMenuLink">
+                <div class="notification_hadding">
+                  <div class="notification_hadding_left">
+                    <h6><img src="{% static 'static2/images/messagePop_icon.svg' %}" alt="message_Pop" class="message_Pop">Message</h6>
+                  </div>
+                </div>
+                {%for  user in allusers|slice:"5" %}
+                <a href="#">
+                  <div class="notification_tittle">
+                    <div class="notification_tittle_left">
+                      <div class="notification_nameTittle name_c">
+                        <span>C</span>
+                        <div class="online_offline"></div>
+                      </div>
+                      <div class="notification_nameHadding">
+                        <h6>{{user.user}}</h6>
+                        <p>{{user.content}} </p>
+                      </div>
+                    </div>
+                    <div class="notification_tittle_right">
+                      <span>{{user.timestamp}}</span>
+                    </div>
+                  </div>
+                </a>
+                {%endfor%}
+                
+                <div class="notification_btn">
+                  <a href="{% url 'chat-index' %}">View all message<i class="fa fa-angle-right notification_pop"
+                      aria-hidden="true"></i></a>
+                </div>
+              </ul>
+            </div>
+            
+            <div class="massageDiv_header notification-div">
+              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="{% static 'static2/images/notifacation_icon.svg' %}" alt="notifacation_icon">
+              </a>
+              <ul class="dropdown-menu profile_DropdownDiv" aria-labelledby="dropdownMenuLink">
+                <div class="notification_hadding">
+                  <div class="notification_hadding_left">
+                    <h6><img src="{% static 'static2/images/notification_pop.svg' %}" alt="message_Pop" class="message_Pop">Notification</h6>
+                  </div>
+                  <div class="notification_hadding_right">
+                    <span>Mark all as read</span>
+                  </div>
+                </div>
+                {% for notify in notifi|slice:"3" %}
+                <div class="notification_tittle">
+                  <div class="notification_tittle_left">
+                    <div class="notification_nameTittle">
+                      <span>G</span>
+                    </div>
+               
+                    <div class="notification_nameHadding">
+                      
+                      <h6>{{notify.notification.actor}}</h6>
+                      <p>{{ notify.notification.verb }}</p>
+                      
+                    </div>
+                   
+                  </div>
+                  <div class="notification_tittle_right">
+                    <span>{{ notify.notification.timesince }}</span>
+                  </div>
+                </div>
+                {%endfor%}
+               
+                <div class="notification_btn">
+                  <a href="{%url 'usernotification'%}">View all notifications<i class="fa fa-angle-right notification_pop" aria-hidden="true"></i></a>
+                </div>
+              </ul>
+              <div class="notifacation_item">
+                <p>{{notifi.count}}</p>
+              </div>
+            </div>
+            <div class="nameHadding_header">
+              <div class="dropdown_outerHeader">
+                <div class="img_headerDropdown">
+                  <img src="{{seller.company_logo.url}}" alt="Dropdown_Images">
+                </div>
+                <div class="btn_headerDropdown">
+                  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    {{request.user.first_name}} {{request.user.last_name}}
+                  </a>
+                  <ul class="dropdown-menu profile_DropdownDiv" aria-labelledby="dropdownMenuLink">
+                    <li><a class="dropdown-item" href="{% url 'seller_update' %}"><i class="fa fa-user"
+                          aria-hidden="true"></i>Profile</a></li>
+                    <li><a class="dropdown-item" href="/client_home/"><i class="fa fa-list-ul" aria-hidden="true"></i>Job
+                        List</a></li>
+                    <li><a class="dropdown-item" href="{% url 'chat-index' %}"><i class="fa fa-envelope"
+                          aria-hidden="true"></i>Message</a></li>
+                    <li><a class="dropdown-item" href="{% url 'usernotification' %}"><i class="fa fa-bell"
+                          aria-hidden="true"></i>Notification</a></li>
+                    <hr class="headerLine_outer">
+                    <li><a class="dropdown-item" href="{% url 'logout' %}"><i class="fa fa-sign-out" aria-hidden="true"></i>Log
+                        Out</a></li>
+                  </ul>
+                </div>
+                <div class="client-post-job-btn">
+                  <a href="{% url 'sellerpostjob' %}">Post a Job</a>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+    </div>
+  </header>

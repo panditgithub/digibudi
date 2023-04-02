@@ -1,0 +1,57 @@
+{% load static %}
+
+<div class="tab-pane fade" id="pending" role="tabpanel" aria-labelledby="pending-tab" tabindex="0">
+    {% if unassigned %}
+        {% for data in unassigned %}
+        <div class="job-tab-content client_jobs">
+            <div class="all-job-des">
+            <h3><a href="/client_project_det/{{data.id}}">{{data.job_title}}</a> </h3>
+            <h6>{{data.seller.user.first_name}}</h6>
+            <p>{{data.short_desc}}</p>
+
+            </div>
+            <div class="all-job-price">
+            <h5>{{data.deadline.date}}</h5>
+            <a class="client-offers text-decoration-none" href="/client_project_det/{{data.id}}">Total Bid 30 Bids</a>
+            <span class="job-approved">Pending</span>
+            </div>
+        </div>
+        {% endfor %}
+        <div class="jobs-pagination">
+            <ul class="m-0 p-0 list-unstyled d-flex justify-content-center align-items-center">
+            <li class="prev-icon">
+                <a href="" class="text-decoration-none">
+                <img src="{% static 'static2/images/prev-icon.png' %}" class="img-fluid" alt="prev-icon">
+                Prev</a>
+            </li>
+            <li class="count-no">
+                <a href="" class="text-decoration-none">01</a>
+            </li>
+            <li class="count-no green">
+                <a href="" class="text-decoration-none">02</a>
+            </li>
+            <li class="count-no hr-line">
+                <hr>
+            </li>
+            <li class="count-no green">
+                <a href="" class="text-decoration-none">03</a>
+            </li>
+            <li class="count-no">
+                <a href="" class="text-decoration-none">04</a>
+            </li>
+            <li class="next-icon">
+                <a href="" class="text-decoration-none">
+
+                Next<img src="{% static 'static2/images/next-icon.png' %}" class="img-fluid ms-2"></a>
+            </li>
+            </ul>
+        </div> 
+    {% else %}
+        <div class="job-tab-content client_jobs">
+            <div class="all-job-des">
+            <h3>There is no any pending project</h3>
+            </div>
+        </div>
+        
+    {% endif %}
+</div> 

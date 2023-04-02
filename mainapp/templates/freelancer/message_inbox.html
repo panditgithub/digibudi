@@ -1,0 +1,273 @@
+{% extends "base2.html" %}
+{% load static %}
+{% block content %}
+
+
+  <section>
+    <div class="chat_ui">
+      <div class="container LandingContainer">
+        <div class="chatUi_outer">
+          <div class="chatUi_item">
+
+            
+            <div class="chatUi_left">
+              <div class="top_hadding_topBar">
+                <h6>Message</h6>
+              <div class="search_outer">
+                <input type="text" placeholder="Search">
+                <img src="{%static 'static2/images/chatUi_sarch_ic.svg'%}" alt="search_icon">
+              </div>
+              </div>
+              {%for user in users %}
+              <div class="contact_list">
+                <div class="contact_listItem">
+                  <div class="contact_listItem_left">
+                    <div class="chat_item_outer1">
+                      <div class="chat_item_left1">
+                        <span>C</span>
+                        <div class="online_offline"></div>
+                      </div>
+                      <div class="chat_item_right1">
+                        <h6>{{user.user}}</h6>
+                        <p>{{user.message}}</p>
+                      </div>
+                    </div>
+                    
+                  </div>
+                  <div class="contact_listItem_right">
+                    <span class="time">{{user.timestamp}}</span>
+                   
+                  </div>
+                </div>
+              </div>
+              {%endfor%}
+
+            </div>
+
+
+            <div class="chatUi_right">
+              <div class="side_manu_add">
+                <div class="add_People_btn">
+                  <div class="close_icon_add">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                  </div>
+                 
+                  <a href="#"><i class="fa fa-plus" aria-hidden="true"></i>Add People</a>
+                </div>
+                <ul>
+                  <li> <div class="search_btn_add" id="searchuserr">
+                    <input type="text" placeholder="Search">
+                    <img src="{%static 'static2/images/chatUi_sarch_ic.svg'%}" alt="search_icon">
+                  </div></li>
+                  <li><a href="#">
+                    <div class="side_manu_img">
+                      <img src="{%static 'static2/images/list_img.jpg'%}" alt="image_add">
+                      <span>Rohit Sharma</span>
+                    </div>
+                  </a></li>
+                  
+                
+                </ul>
+              </div>
+              {% comment %} 
+              <div class="search_btn_add">
+                <input type="text" placeholder="Search">
+                <img src="{%static 'static2/images/chatUi_sarch_ic.svg'%}" alt="search_icon">
+              </div> 
+              {% endcomment %}
+              <div class="chatUi_outerName">
+                <div class="chatUi_right_item">
+                  <div class="chatUi_left1">
+                    <div class="rightSide_outer">
+                      <div class="rightSide_Item_left name_C1">
+                        <span>B</span>
+                        <div class="online_offline"></div>
+                      </div>
+                      <div class="rightSide_Item_Right">
+                        <h6>{{course.name}}</h6>
+                        {% comment %} <p>Lorem ipsum</p> {% endcomment %}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="chatUi_right1">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                      <img src="{%static 'static2/images/3manu_iconChat.svg'%}" alt="3Dots">
+                    </a>
+                    <ul class="dropdown-menu profile_DropdownDiv" aria-labelledby="dropdownMenuLink">
+                      <div class="dots_pop_outer">
+                        <div class="dots_pop_outer1">
+                          <div class="dots_popLeft">
+                            <h6>Our projects</h6>
+                            <span>Nesciunt nam fugiat sapien</span>
+                            <p>Laboris labore voluptas dis, nascetur mollis mollit corporis earum quasi facilis...</p>
+                          </div>
+                          <div class="dots_popRight">
+                            <span>$50 - $1,000</span>
+                          </div>
+                        </div>
+                        <div class="dots_names">
+                          <div class="dots_names_left">
+                            <span>C</span>
+                          </div>
+                          <div class="dots_names_right">
+                            <h6>Calwin Barry</h6>
+                            <p>UI/UX Designer</p>
+                            <span><img src="{%static 'static2/images/location_ic_dots.svg'%}" alt="location_icon" class="location_icon_pop">India - 8:30 pm Local Time</span>
+                          </div>
+                        </div>
+                        <div class="dots_popSearch">
+                          <ul>
+                            <li class="search_message">
+                              <a href="#">
+                                <img src="{%static 'static2/images/3dot_searchIcon.svg'%}" alt="search_icon" class="dots_searchIcon">Search Message 
+                                <img src="{%static 'static2/images/message_inboxIcon.svg'%}" alt="arrow_leftIcon" class="arrow_inbox_icon">
+                              </a>
+                            </li>
+                            <li class="Add_People">
+                              <a href="#">
+                                <img src="{%static 'static2/images/dotsMan_icon.svg'%}" alt="popele" class="dots_searchIcon">People
+                                <img src="{%static 'static2/images/message_inboxIcon.svg'%}" alt="arrow_leftIcon" class="arrow_inbox_icon">
+                              </a>
+                          </li>
+                            <li>
+                              <a href="#">
+                                <img src="{%static 'static2/images/dots_popLink.svg'%}" alt="link" class="dots_searchIcon">File & Links
+                                <img src="{%static 'static2/images/message_inboxIcon.svg'%}" alt="arrow_leftIcon" class="arrow_inbox_icon">
+                              </a>
+                          </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </ul>
+                  </div>
+                </div>
+                <div class="our_Proposal">
+                  <span>Our Proposal</span>
+                  <div class="Search_input_Proposal">
+                    <input type="search" placeholder="Search">
+                    <img src="{%static 'static2/images/chatUi_sarch_ic.svg'%}" alt="search_icon">
+                  </div>
+                </div>
+              </div>
+              {% for message in message %}
+              {% if message.user == user %}
+              <div class="outer_chat_rightSide" id="chatLog">
+              
+                <div class="outer_chat_Item">
+                  <div class="outer_chat_ItemLeft">
+                    <span>B</span>
+                    <div class="online_offline"></div>
+                  </div>
+                  <div class="outer_chat_ItemRight">
+                    <div class="B_chat_outer">
+                      <div class="B_chat_item1 B_chat_item2">
+                          {% if message.file_type == 'image' %}
+                          <div class="B_chat_item B_chat_space videoTag_outer">
+                          <span style="height:auto;"><a href="{{message.mess}}" target="_blank"><img src ="{{message.mess}}" width="280px"></a></span>
+                          {% elif message.file_type == 'text' %}
+                          <div class="B_chat_item B_chat_space">
+                          <span>{{message.mess}}</span>
+                          {% elif message.file_type == 'video' %}
+                          <div class="B_chat_item B_chat_space videoTag_outer">
+                          <span style="height:auto;"><video width="320" controls>
+                            <source src="{{message.mess}}" type="video/mp4">
+                          </video></span>
+                          {% elif message.file_type == 'others' %}
+                          <div class="B_chat_item B_chat_space">
+                          <span><a href="{{message.mess}}" target="_blank">{{message.mess|cut:"http://127.0.0.1:8000/media/messagefiles/"}}</a></span>
+                          {% endif %}
+                        </div>
+                      </div>
+                      <span class="Time_chat">{{message.timestamp|timesince}}</span>
+                    </div>
+                  </div>
+               
+                {% else %}
+                <div class="outer_chat_ItemRight">
+                  <div class="name_chat_ItemLeft">
+                    <div class="chatUi_text1">
+                        {% if message.file_type == 'image' %}
+                        <div class="chatUi_text video_Outer" style="height: auto !important;padding: 0;background: none;border: unset;">
+                        <span><a href="{{message.mess}}" target="_blank"><img src ="{{message.mess}}" width="280px"></a></span>
+                        {% elif message.file_type == 'text' %}
+                        <div class="chatUi_text ">
+                        <span>{{message.mess}}</span>
+                        {% elif message.file_type == 'video' %}
+                        <div class="chatUi_text video_Outer" style="height: auto !important;padding: 0;background: none;border: unset;">
+                        <span><video width="320" height="240" controls>
+                          <source src="{{message.mess}}" type="video/mp4">
+                        </video></span>
+                        {% elif message.file_type == 'others' %}
+                        <div class="chatUi_text">
+                        <span><a href="{{message.mess}}" target="_blank">{{message.mess|cut:"http://127.0.0.1:8000/media/messagefiles/"}}</span>
+                        {% endif %}
+                      </div>
+                    </div>
+                    <span class="Time_chat">{{message.timestamp|timesince}}</span>
+                  </div>
+                  <div class="name_chat_ItemRight">
+                    <span>C</span>
+                    <div class="online_offline"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="inputFlied_Right"> 
+                <div class="user_name_ChatUI">
+                  <span>C</span>
+                  <div class="online_offline"></div>
+                </div>
+                <form class="inputFlied_submit">
+                  <input type="text" class="form-control" id="exampleInputEmail1" placeholder="type message here" aria-describedby="emailHelp">
+                  <div class="mic_icon">
+                    <img src="{%static 'static2/images/mic_iconInput.svg'%}" alt="mic_icon">
+                  </div>
+                  <div class="button-wrapper">
+                    <span class="label">
+                      <img src="{%static 'static2/images/gallary_icon_input.svg'%}" alt="gallary_icon">
+                    </span><input type="file" name="upload" id="upload" class="upload-box" placeholder="Upload File" aria-label="Upload File">
+                  </div>
+                  <button type="submit" class="btn btn-primary"><img src="{%static 'static2/images/send_icon_input.svg'%}" alt="send_icon"></button>
+                </form> 
+              </div>
+            </div>
+              {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- chat ui close here -->
+  <!-- footer bottom start here -->
+  {% comment %}   
+  {% endcomment %}
+  <!-- footer bottm close here -->
+  <!-- link js -->
+  <script src="{%static 'static2/js/jquery.js'%}"></script> 
+  <script>
+    $(document).ready(function(){ 
+        $("#searchuserr").hide(); 
+        
+        $(".side_manu_add").hide();
+      $(".add_People_btn").click(function(){
+        $("#searchuserr").toggle();
+      });
+      $(".close_icon_add").click(function(){
+        $(".side_manu_add").hide();
+      });
+      $(".Add_People").click(function(){
+        $(".side_manu_add").show();
+      });
+      $(".Search_input_Proposal").hide();
+      $(".search_message").click(function(){
+        $(".Search_input_Proposal").toggle();
+      });
+    });
+    </script>
+  
+   
+  
+  
+ 
+{%endblock%}

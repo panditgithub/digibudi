@@ -1,0 +1,70 @@
+name: Django CI
+
+on:
+  push:
+    branches: [ "main" ]
+
+
+jobs:
+  build:
+
+    runs-on: self-hosted
+    strategy:
+      max-parallel: 4
+      
+
+    steps:
+    - uses: actions/checkout@v3
+
+         
+    - name: install requirements
+      run: |
+        pip install --upgrade pip
+        pip install virtualenv
+        virtualenv venv
+        source venv/bin/activate
+        echo "VIRTUAL ENV:" $VIRTUAL_ENV
+
+        pip install -r requirements.txt
+    - name: migrations
+      run: |
+        source venv/bin/activate
+        python manage.py makemigrations
+        python manage.py makemigrations mainapp
+        python manage.py makemigrations chat
+
+    - name: migrate
+      run: |
+        source venv/bin/activate
+        python manage.py migrate
+        
+    - name: Collect Static
+      run: |
+        source venv/bin/activate
+        python manage.py collectstatic --noinput
+    - name: add fixtures
+      run: |
+        source venv/bin/activate
+        python manage.py loaddata skills
+        python manage.py loaddata jobType
+        python manage.py loaddata category
+        
+    
+   
+    - name: test
+      run: |
+        source venv/bin/activate
+        python manage.py test
+        
+        
+    - name: restart daphne
+      run: |
+        sudo -i
+        sudo service daphne restart
+        
+    - name: restart nginx
+      run: |
+        sudo -i
+        sudo service nginx restart
+        
+

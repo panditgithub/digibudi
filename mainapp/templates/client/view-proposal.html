@@ -1,0 +1,89 @@
+{% extends 'client_base.html' %}
+{% load static %}
+{% block content %}
+<section class="project-details-section client-project-details">
+    <div class="container LandingContainer">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="project-detail">
+            <div class="project-detail-info">
+              <div class="p-d-content">
+                <div class="p-d-info">
+                  <h3>View Proposal</h3>
+                {% comment %} {%for job in bid %} {% endcomment %}
+                  <div class="view-proposal">
+                    <div class="view-proposalfirst">
+                    <div class="v-p-project-detail">
+                      <div class="vp-project-img">
+                        <img src="{% static 'static2/images/view-proposal-img.png'%}" class="img-fluid" alt="">
+                      </div>
+                        <div class="vp-project-name">
+                          <h3 class="mb-0">{{job.bidder.user}}</h3>
+                          <span>{{bid.job.job_title}}</span>
+                            <div class="vp-location mb-2">
+                              <i class="fa fa-map-marker"></i>
+                              <span>{{bid.job.deadline}}</span>
+                            </div>
+                            <div class="view-pro-options">
+                              <div class="view-pro-all-options">
+                               {%for job in bid.job.skills.all%}
+                                <a href="" class="text-decoration-none"> {{job}}</a>
+                                {% endfor %}
+                              </ul>
+                            </div>
+                      </div>
+                    </div>
+                    </div>
+                    <div class="v-p-project-detail-price">
+                      <h2>{{bid.bid_amount}}/hr</h2>
+                    </div>
+                  </div>
+                  <div class="v-p-description">
+                    <h2 class="mb-0">Description</h2>
+                    <div class="dec-action">
+                      <a href="/save/{{bid.id}}">
+                      <div class="acpt">
+                        
+                        <div class="view_proposal_Div">
+                          <img src="{% static 'static2/images/v-check.png'%}" alt="massage_icon">
+                        </div>
+                        <span>Accept</span>
+                      </div>
+                      </a>
+                      <a href="/delete/{{bid.id}}">
+                      <div class="cros">
+                        <div class="view_proposal_Div cors_icon">
+                          <img src="{% static 'static2/images/v-cross.png'%}" alt="massage_icon">
+                        </div>
+                        <span>Decline</span>
+                      </div>
+                      </a>
+
+                      <div class="msg">
+                        <div class="view_proposal_Div message_icon">
+                          <img src="{% static 'static2/images/v-email.png'%}" alt="massage_icon">
+                        </div>
+                        <span>Message</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="description_paragraph">
+                  <p class="descripition_paragraph2">{{bid.pitch|safe}}</p>
+                  </div>
+                  <div class="">
+                  </div>
+                {% comment %} {% endfor %} {% endcomment %}
+                </div>
+                </div>
+              </div> 
+            </div> 
+
+          </div>
+      </div>
+      
+    </div>
+  </div>
+    
+  </section>
+
+{% endblock %}

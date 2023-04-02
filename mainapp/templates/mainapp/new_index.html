@@ -1,0 +1,692 @@
+{% extends 'base2.html' %}
+{% load static %}
+<!-- banner start here -->
+{% block content %}
+{% comment %} {% include 'navbar.html' %} {% endcomment %}
+<section>
+  <div class="bannerLadding">
+    <div class="container LandingContainer">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="Banner_outer">
+            <h1>Find The <span>Right Job</span></h1>
+            <p>Find the Latest Jobs Based on your Skills Sets.</p>
+            <div class="bannerInput">
+              <form>
+                <div class="form_bannerOuter">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                  <input class="form-control" type="search" placeholder="Job tittle or keyword, Company"
+                    aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">
+                    Find Jobs
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> 
+<!-- banner close here -->
+
+
+<!-- freelance start here -->
+ <section class="Featured_Freelance">
+  <div class="container LandingContainer">
+    <div class="featured_hadding">
+      <h2>Featured <span>Freelance</span></h2>
+    </div>
+    
+    <div class="Featured_Outer">
+      {% for data in buyer|slice:"0:15" %}
+      <div class="Featured_item Featured_item1">
+        <div class="Featured_img">
+          <div class="Featured_img_left">
+            <img src="{{data.profile_picture.url}}" alt="Featured_img">
+          </div>
+          <div class="Featured_img_right">
+            <h4>{{data.user.first_name}}</h4>
+            <p>{{data.profile_desc}}r</p>
+            <div class="rt-container">
+              <div class="radialProgressBar progress-60">
+                <div class="overlay">70%</div>
+              </div>
+              <div class="radialProgressBar_text">
+                <p>Job Success</p>
+                <div class="star-rate">
+                  <div class="free-star">
+                    <img src="{% static 'static2/images/star.png' %}" class="img-fluid" alt="star_icon">
+                    <img src="{% static 'static2/images/star.png' %}" class="img-fluid" alt="star_icon">
+                    <img src="{% static 'static2/images/star.png' %}" class="img-fluid" alt="star_icon">
+                    <img src="{% static 'static2/images/star.png' %}" class="img-fluid" alt="star_icon">
+                    <img src="{% static 'static2/images/grey-star.png' %}" class="img-fluid" alt="star_icon">
+                  </div>
+                  <p>4.5/5</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="jobs_Numbering">
+          <div class="numbering">
+            {% comment %} <p class="Time">$70/hr</p>
+            <p class="Time">30 jobs</p> {% endcomment %}
+          </div>
+          <div class="Job_tittle">
+            {% for i in data.skills.all %}
+            <span>{{i}}</span>
+            {% endfor %}
+            {% comment %} <span>Wordpress</span>
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>Shopify</span>
+            <span>SCSS</span>
+            <span>Javascript</span>
+            <span>Python</span> {% endcomment %}
+          </div>
+        </div>
+        <div class="featured_btnOuter">
+          <div class="featured_btn">
+            <a href="{% url 'login' %}">View Profile</a>
+          </div>
+          <div class="featured_btnRated">
+            <img src="{% static 'static2/images/rated.svg' %}" alt="rated">
+            <p>Top Rated</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      
+      {% comment %} <div class="Featured_item Featured_item1">
+        <div class="Featured_img">
+          <div class="Featured_img_left">
+            <img src="{% static 'static2/images/Featured_img2.jpg' %}" alt="Featured_img">
+          </div>
+          <div class="Featured_img_right">
+            <h4>Azumat B.</h4>
+            <p>Javascript Developer</p>
+            <div class="rt-container">
+              <div class="radialProgressBar progress-60">
+                <div class="overlay">70%</div>
+              </div>
+              <div class="radialProgressBar_text">
+                <p>Job Success</p>
+                <div class="star-rate">
+                  <div class="free-star">
+                    <img src="{% static 'static2/images/star.png' %}" class="img-fluid" alt="star_ic">
+                    <img src="{% static 'static2/images/star.png' %}" class="img-fluid" alt="star_ic">
+                    <img src="{% static 'static2/images/star.png' %}" class="img-fluid" alt="star_ic">
+                    <img src="{% static 'static2/images/star.png' %}" class="img-fluid" alt="star_ic">
+                    <img src="{% static 'static2/images/grey-star.png' %}" class="img-fluid" alt="star_ic">
+
+                  </div>
+                  <p>4.5/5</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="jobs_Numbering">
+          <div class="numbering">
+            <p class="Time">$70/hr</p>
+            <p class="Time">30 jobs</p>
+          </div>
+          <div class="Job_tittle">
+            <span>Php</span>
+            <span>Wordpress</span>
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>Shopify</span>
+            <span>SCSS</span>
+            <span>Javascript</span>
+            <span>Python</span>
+          </div>
+        </div>
+        <div class="featured_btnOuter">
+          <div class="featured_btn">
+            <a href="#">View Profile</a>
+          </div>
+          <div class="featured_btnRated pink-logo">
+            <img src="images/rated_plus.svg" alt="rated">
+            <p>Top Rated plus</p>
+          </div>
+        </div>
+      </div>
+      <div class="Featured_item Featured_item1">
+        <div class="Featured_img">
+          <div class="Featured_img_left">
+            <img src="images/Featured_img3.jpg" alt="Featured_img">
+          </div>
+          <div class="Featured_img_right">
+            <h4>Azumat B.</h4>
+            <p>Javascript Developer</p>
+            <div class="rt-container">
+              <div class="radialProgressBar progress-60">
+                <div class="overlay">70%</div>
+              </div>
+              <div class="radialProgressBar_text">
+                <p>Job Success</p>
+                <div class="star-rate">
+                  <div class="free-star">
+                    <img src="{% static 'static2/images/star.png' %}" class="img-fluid" alt="star_ic">
+                    <img src="{% static 'static2/images/star.png' %}" class="img-fluid" alt="star_ic">
+                    <img src="{% static 'static2/images/star.png' %}" class="img-fluid" alt="star_ic">
+                    <img src="{% static 'static2/images/star.png' %}" class="img-fluid" alt="star_ic">
+                    <img src="{% static 'static2/images/grey-star.png' %}" class="img-fluid" alt="star_ic">
+
+                  </div>
+                  <p>4.5/5</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="jobs_Numbering">
+          <div class="numbering">
+            <p class="Time">$70/hr</p>
+            <p class="Time">30 jobs</p>
+          </div>
+          <div class="Job_tittle">
+            <span>Php</span>
+            <span>Wordpress</span>
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>Shopify</span>
+            <span>SCSS</span>
+            <span>Javascript</span>
+            <span>Python</span>
+          </div>
+        </div>
+        <div class="featured_btnOuter">
+          <div class="featured_btn">
+            <a href="#">View Profile</a>
+          </div>
+          <div class="featured_btnRated">
+            <img src="{% static 'static2/images/rated.svg' %}" alt="rated">
+            <p>Top Rated</p>
+          </div>
+        </div>
+      </div>
+      <div class="Featured_item">
+        <div class="Featured_img">
+          <div class="Featured_img_left">
+            <img src="images/Featured_img4.jpg" alt="Featured_img">
+          </div>
+          <div class="Featured_img_right">
+            <h4>Azumat B.</h4>
+            <p>Javascript Developer</p>
+            <div class="rt-container">
+              <div class="radialProgressBar progress-60">
+                <div class="overlay">70%</div>
+              </div>
+              <div class="radialProgressBar_text">
+                <p>Job Success</p>
+                <div class="star-rate">
+                  <div class="free-star">
+                    <img src="images/star.png" class="img-fluid" alt="star_ic">
+                    <img src="images/star.png" class="img-fluid" alt="star_ic">
+                    <img src="images/star.png" class="img-fluid" alt="star_ic">
+                    <img src="images/star.png" class="img-fluid" alt="star_ic">
+                    <img src="images/grey-star.png" class="img-fluid" alt="star_ic">
+
+                  </div>
+                  <p>4.5/5</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="jobs_Numbering">
+          <div class="numbering">
+            <p class="Time">$70/hr</p>
+            <p class="Time">30 jobs</p>
+          </div>
+          <div class="Job_tittle">
+            <span>Php</span>
+            <span>Wordpress</span>
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>Shopify</span>
+            <span>SCSS</span>
+            <span>Javascript</span>
+            <span>Python</span>
+          </div>
+        </div>
+        <div class="featured_btnOuter">
+          <div class="featured_btn">
+            <a href="#">View Profile</a>
+          </div>
+          <div class="featured_btnRated pink-logo">
+            <img src="images/rated_plus.svg" alt="rated">
+            <p>Top Rated plus</p>
+          </div>
+        </div>
+      </div>
+      <div class="Featured_item">
+        <div class="Featured_img">
+          <div class="Featured_img_left">
+            <img src="images/Featured_img5.jpg" alt="Featured_img">
+          </div>
+          <div class="Featured_img_right">
+            <h4>Azumat B.</h4>
+            <p>Javascript Developer</p>
+            <div class="rt-container">
+              <div class="radialProgressBar progress-60">
+                <div class="overlay">70%</div>
+              </div>
+              <div class="radialProgressBar_text">
+                <p>Job Success</p>
+                <div class="star-rate">
+                  <div class="free-star">
+                    <img src="images/star.png" class="img-fluid" alt="star_ic">
+                    <img src="images/star.png" class="img-fluid" alt="star_ic">
+                    <img src="images/star.png" class="img-fluid" alt="star_ic">
+                    <img src="images/star.png" class="img-fluid" alt="star_ic">
+                    <img src="images/grey-star.png" class="img-fluid" alt="star_ic">
+
+                  </div>
+                  <p>4.5/5</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="jobs_Numbering">
+          <div class="numbering">
+            <p class="Time">$70/hr</p>
+            <p class="Time">30 jobs</p>
+          </div>
+          <div class="Job_tittle">
+            <span>Php</span>
+            <span>Wordpress</span>
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>Shopify</span>
+            <span>SCSS</span>
+            <span>Javascript</span>
+            <span>Python</span>
+          </div>
+        </div>
+        <div class="featured_btnOuter">
+          <div class="featured_btn">
+            <a href="#">View Profile</a>
+          </div>
+          <div class="featured_btnRated">
+            <img src="{% static 'static2/images/rated.svg' %}" alt="rated">
+            <p>Top Rated</p>
+          </div>
+        </div>
+      </div> {% endcomment %}
+    </div>
+    <div class="Featured_OuterBn">
+      <a href="{% url 'login' %}">See All</a>
+    </div>
+  </div>
+</section>
+<!-- freelance close here -->
+
+<!-- latest jobs start here -->
+<section>
+  
+  <div class="latest_jobs">
+    <div class="container LandingContainer">
+      <div class="featured_hadding featured_hadding1">
+        <h2>Latest <span>Jobs</span></h2>
+      </div>
+      <div class="row">
+       {% for job in jobs|slice:"0:15" %}
+        <div class="col-md-6 col-lg-6 col-xl-3">
+          <div class="latest_jobsItem latest_jobsItem1">
+            <h5>{{job.job_title|slice:'20'}}</h5>
+            <div class="jobsRating">
+              <img src="{% static 'static2/images/jobs_icon_star.png' %}" alt="star">
+              <span>4.5/5</span>
+              <p>
+                {{ job.short_desc|safe }}
+              </p>
+            </div>
+            <div class="Job_tittle">
+              {% for i in job.skills.all %}
+                <span>
+                  {{i}}
+                </span>
+              {% endfor %}
+            </div>
+            <div class="featured_btnOuter">
+              <div class="featured_btn">
+                <a href="{% url 'login' %}">Bid Now</a>
+              </div>
+              <div class="featured_btn">
+                <a href="{% url 'login' %}">20 Bids</a>
+              </div>
+              <div class="featured_btn">
+                <a href="#">Fix Time</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+      
+ {% comment %} <div class="row latest_jobsRow">
+        {% for data in jobs %}
+        <div class="col-md-6 col-lg-6 col-xl-3">
+          <div class="latest_jobsItem">
+            <h5>Front-End Developer</h5>
+            <div class="jobsRating">
+              <img src="{% static 'static2/images/jobs_icon_star.png' %}" alt="star">
+              <span>4.5/5</span>
+              <p>
+                do quidem quidem doloremque solutado quite dem quidem
+                doloremque soluta
+              </p>
+            </div>
+            <div class="Job_tittle">
+              <span>Php</span>
+              <span>Wordpress</span>
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>Shopify</span>
+              <span>SCSS</span>
+              <span>Javascript</span>
+              <span>Python</span>
+            </div>
+            <div class="featured_btnOuter">
+              <div class="featured_btn">
+                <a href="#">Bid Now</a>
+              </div>
+              <div class="featured_btn">
+                <a href="#">20 Bids</a>
+              </div>
+              <div class="featured_btn">
+                <a href="#">Fix Time</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      {% endfor %} {% endcomment %}
+
+      {% comment %} <div class="row latest_jobsRow">
+        <div class="col-md-6 col-lg-6 col-xl-3">
+          <div class="latest_jobsItem">
+            <h5>Front-End Developer</h5>
+            <div class="jobsRating">
+              <img src="{% static 'static2/images/jobs_icon_star.png' %}" alt="star">
+              <span>4.5/5</span>
+              <p>
+                do quidem quidem doloremque solutado quite dem quidem
+                doloremque soluta
+              </p>
+            </div>
+            <div class="Job_tittle">
+              <span>Php</span>
+              <span>Wordpress</span>
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>Shopify</span>
+              <span>SCSS</span>
+              <span>Javascript</span>
+              <span>Python</span>
+            </div>
+            <div class="featured_btnOuter">
+              <div class="featured_btn">
+                <a href="#">Bid Now</a>
+              </div>
+              <div class="featured_btn">
+                <a href="#">20 Bids</a>
+              </div>
+              <div class="featured_btn">
+                <a href="#">Fix Time</a>
+              </div>
+            </div>
+          </div>
+        </div> {% endcomment %}
+        {% comment %} <div class="col-md-6 col-lg-6 col-xl-3">
+          <div class="latest_jobsItem">
+            <h5>Front-End Developer</h5>
+            <div class="jobsRating">
+              <img src="images/jobs_icon_star.png" alt="star">
+              <span>4.5/5</span>
+              <p>
+                do quidem quidem doloremque solutado quite dem quidem
+                doloremque soluta
+              </p>
+            </div>
+            <div class="Job_tittle">
+              <span>Php</span>
+              <span>Wordpress</span>
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>Shopify</span>
+              <span>SCSS</span>
+              <span>Javascript</span>
+              <span>Python</span>
+            </div>
+            <div class="featured_btnOuter">
+              <div class="featured_btn">
+                <a href="#">Bid Now</a>
+              </div>
+              <div class="featured_btn">
+                <a href="#">20 Bids</a>
+              </div>
+              <div class="featured_btn">
+                <a href="#">Fix Time</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-6 col-xl-3">
+          <div class="latest_jobsItem">
+            <h5>Front-End Developer</h5>
+            <div class="jobsRating">
+              <img src="images/jobs_icon_star.png" alt="star">
+              <span>4.5/5</span>
+              <p>
+                do quidem quidem doloremque solutado quite dem quidem
+                doloremque soluta
+              </p>
+            </div>
+            <div class="Job_tittle">
+              <span>Php</span>
+              <span>Wordpress</span>
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>Shopify</span>
+              <span>SCSS</span>
+              <span>Javascript</span>
+              <span>Python</span>
+            </div>
+            <div class="featured_btnOuter">
+              <div class="featured_btn">
+                <a href="#">Bid Now</a>
+              </div>
+              <div class="featured_btn">
+                <a href="#">20 Bids</a>
+              </div>
+              <div class="featured_btn">
+                <a href="#">Fix Time</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-6 col-xl-3">
+          <div class="latest_jobsItem">
+            <h5>Front-End Developer</h5>
+            <div class="jobsRating">
+              <img src="images/jobs_icon_star.png" alt="star">
+              <span>4.5/5</span>
+              <p>
+                do quidem quidem doloremque solutado quite dem quidem
+                doloremque soluta
+              </p>
+            </div>
+            <div class="Job_tittle">
+              <span>Php</span>
+              <span>Wordpress</span>
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>Shopify</span>
+              <span>SCSS</span>
+              <span>Javascript</span>
+              <span>Python</span>
+            </div>
+            <div class="featured_btnOuter">
+              <div class="featured_btn">
+                <a href="#">Bid Now</a>
+              </div>
+              <div class="featured_btn">
+                <a href="#">20 Bids</a>
+              </div>
+              <div class="featured_btn">
+                <a href="#">Fix Time</a>
+              </div>
+            </div>
+          </div>
+        </div> {% endcomment %}
+      </div>
+      <div class="Featured_OuterBn">
+        <a href="{% url 'login' %}">View All Jobs</a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- latest jobs close here -->
+<!-- Category start here -->
+<section>
+  <div class="TopCategory">
+    <div class="container LandingContainer">
+      <div class="featured_hadding featured_hadding2">
+        <h2>Top Jobs <span>Category</span></h2>
+      </div>
+      <div class="row Category_Row1">
+        {% for i in category %}
+        <div class="col-md-6 col-lg-6 col-xl-2 Category_col Category_col2">
+          <div class="Category_Item Category_Item1">
+            <div class="TopBar_icon">
+              <img src="{% static 'static2/images/Category_icon1.svg' %}" alt="Category_icon">
+            </div>
+            <h5>{{ i.cat }}</h5>
+            <p>{{i.post}}</p>
+            <div class="arrowBtn_icon">
+              <a href="#"><img src="{% static 'static2/images/arrowleft.svg' %}" alt="arrowleft"></a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        
+       
+      </div>
+      {% comment %} <div class="row Category_Row Category_Row2">
+        <div class="col-md-6 col-lg-6 col-xl-2 Category_col">
+          <div class="Category_Item">
+            <div class="TopBar_icon">
+              <img src="{% static 'static2/images/Category_icon1.svg' %}" alt="Category_icon">
+            </div>
+            <h5>Engineering Jobs</h5>
+            <p>(12,578)</p>
+            <div class="arrowBtn_icon">
+              <a href="#"><img src="{% static 'static2/images/arrowleft.svg' %}" alt="arrowleft"></a>
+            </div>
+          </div>
+        </div>
+      </div> {% endcomment %}
+      <div class="Featured_OuterBn">
+        <a href="{% url 'login' %}">View All Categorys</a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Category close here -->
+  
+
+
+
+<!-- skills start here -->
+<section>
+  <div class="Top_skill">
+    <div class="container LandingContainer">
+      <div class="featured_hadding">
+        <h2>Top <span>Skills</span></h2>
+      </div>
+      <div class="Top_skillOuter1">
+        <div class="row Top_skillOuter">
+          <div class="col-md-6 col-lg-3">
+            <div class="skillItem">
+              <ul>
+                <li><a href="{% url 'login' %}">Front-End Developer</a></li>
+                <li><a href="{% url 'login' %}">UI/UX Designer</a></li>
+                <li><a href="{% url 'login' %}">Front-End Web Developer</a></li>
+                <li><a href="{% url 'login' %}">Javascript Developer</a></li>
+                <li><a href="{% url 'login' %}">Web Developer</a></li>
+              </ul>
+            </div>
+          </div>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- skills close here -->
+
+<!-- Companie start here -->
+<section>
+  <div class="Companies">
+    <div class="container LandingContainer">
+      <div class="row Companies_outer">
+        <div class="col-md-4 col-lg-2">
+          <div class="CompaniesItem">
+            <div class="Companies_icon">
+              <img src="{% static 'static2/images/Companies_icon.svg' %}" alt="Companies_icon">
+            </div>
+            <h2>2200+</h2>
+            <h5>Companies</h5>
+          </div>
+        </div>
+        <div class="col-md-4 col-lg-2">
+          <div class="CompaniesItem">
+            <div class="Companies_icon">
+              <img src="{% static 'static2/images/bag_icon.svg' %}" alt="Companies_icon">
+            </div>
+            <h2>400+</h2>
+            <h5>Live Jobs</h5>
+          </div>
+        </div>
+        <div class="col-md-4 col-lg-2">
+          <div class="CompaniesItem">
+            <div class="Companies_icon">
+              <img src="{% static 'static2/images/freelancer.svg' %}" alt="Companies_icon">
+            </div>
+            <h2>3000+</h2>
+            <h5>Freelancer</h5>
+          </div>
+        </div>
+        <div class="col-md-4 col-lg-2">
+          <div class="CompaniesItem">
+            <div class="Companies_icon">
+              <img src="{% static 'static2/images/resource.svg' %}" alt="Companies_icon">
+            </div>
+            <h2>2200+</h2>
+            <h5>Resources</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Companie close here -->
+{% endblock %}
+
+{% comment %} 
+
+
+
+
+<!-- link js -->
+<script src="{% static 'static2/js/bootstrap.bundle.min.js' %}"></script>
+</body>
+
+</html> {% endcomment %}

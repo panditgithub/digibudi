@@ -1,0 +1,155 @@
+{% extends 'client_base.html' %}
+{% block content %}
+{% load static %}
+  <!--header close here  -->
+  <!-- project details html start-->
+
+  <section class="project-details-section client-project-details">
+    <div class="container LandingContainer">
+      <div class="row">
+        <div class="col-xl-8 col-lg-7">
+          <div class="project-detail">
+            <div class="project-detail-info">
+              <div class="p-d-content">
+                <div class="p-d-info">
+                  {% comment %} <a style="text-decoration: none;" href="/project/report/{{project.id}}"> {% endcomment %}
+                  <h3>Project-details</h3>
+                  {% comment %} </a> {% endcomment %}
+                  <div class="editor-image">
+                    <div class="bid-editor">
+                      <div class="editor-textarea">
+                        <div class="editor-text">
+                          <div class="editor-content">
+                            <h4>{{project.job_title}}
+                            </h4>
+                            <div class="editor-text-price">
+                              <h5 class="mb-0">{{project.askamount}}/hr</h5>
+                              <div class="editor-time">
+                                <img src="{%static 'static2/images/editor-time.png'%}" class="img-fluid" alt="time">
+                                <span>{{project.deadline.date}}</span>
+                              </div>
+                              <div class="editor-pid">
+                                <span>Project ID:-95697685</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="div-editor">
+                            <p class="mb-1">{{project.full_desc|safe}}
+                            </p>
+                          </div>
+
+                        </div>
+                        {% if project.file_upload %}
+                        <div class="skills-attachments">
+                          <p class="mb-2">Attachments</p>
+                          <div class="attachment-files d-flex align-items-center">
+                            <i class="fa fa-paperclip me-2" aria-hidden="true"></i>
+                            <p class="mb-0"><a href="http://146.190.117.190/media/{{project.file_upload}}" target="_blank">{{project.file_upload|cut:"http://146.190.117.190/"}}</a></p>
+                          </div>
+                          {% comment %} <p class="mb-0"><a href="http://127.0.0.1:8000/media/{{project.Attachment}}" target="_blank">{{project.Attachment|cut:"http://127.0.0.1:8000/"}}</a></p> {% endcomment %}
+                        </div>
+                  {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-xl-4 col-lg-5">
+          <div class="all-proposal">
+            <h3>Lorem ipsum</h3>
+           {%for bid in bids%}
+            <div class="single-proposal">
+              <div class="proposal-data">
+
+                <div class="proposal-image">
+                  <img src="{% static 'static2/images/proposal-img.png' %}" class="w-75">
+                </div>
+                <div class="proposal-name">
+                  <h5>{{bid.bidder}}</h5>
+                  <div class="p-star">
+                    <img src="{% static 'static2/images/proposal-yellow-star.png' %}" alt="starts" class="img-fluid">
+                    <img src="{% static 'static2/images/proposal-yellow-star.png' %}" alt="starts" class="img-fluid">
+                    <img src="{% static 'static2/images/proposal-yellow-star.png' %}" alt="starts" class="img-fluid">
+                    <img src="{% static 'static2/images/proposal-yellow-star.png'%}" alt="starts" class="img-fluid">
+                    <img src="{% static 'static2/images/proposal-grey-star.png' %}" alt="starts" class="img-fluid">
+                    <span>4/5</span>
+                  </div>
+                  
+                  {% comment %} <a href="/proposal/{{bid.id}}" class="view-proposal-btn">View Proposal</a> {% endcomment %}
+                </div>
+              </div>
+              <div class="proposal-price">
+                <h5>{{bid.bid_amount}}</h5>
+                <span>Fix Time</span>
+                <div class="proposal-action">
+                  <a href="/save/{{bid.id}}">
+                    <div class="check-icon">
+                      <div class="check-img">
+                        <img src="{% static 'static2/images/check.png' %}" alt="starts" class="img-fluid">
+                      </div>
+                      
+                      <span>Accept</span>
+                  
+                    </div>
+                  </a>
+                
+                <a href="/reject/{{bid.id}}">
+                  <div class="time-icon">
+                    <div class="time-img">
+                      <img src="{% static 'static2/images/cross.png' %}" alt="starts" class="img-fluid">
+                    </div>
+                    <span>Decline</span>
+                  </div>
+                </a>
+
+
+
+                  <div class="email-icon">
+                    <div class="email-img">
+                      <a href="/project/group/{{bid.id}}">
+                      <img src="{% static 'static2/images/pro-email.png' %}" alt="starts" class="img-fluid">
+                      </a>
+                    </div>
+                    <span>Message</span>
+                  </div>
+                  <div class="user-icon">
+                    <div class="user-img">
+                      <img src="{% static 'static2/images/pro-user.png' %}" alt="starts" class="img-fluid">
+                    </div>
+                    <span>Invite</span>
+                  </div>
+                </div>
+               
+              </div>
+            </div>
+            <div class="container" style="text-align: justify;">{{bid.pitch|slice:"0:200"}}...</div>
+            {%endfor%}
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- link js --> 
+  <script>
+    $(function () {
+      // Owl Carousel
+      var owl = $(".owl-carousel");
+      owl.owlCarousel({
+        items: 1,
+        margin: 10,
+        loop: true,
+        nav: true
+      });
+    });
+
+  </script>
+  
+  {% endblock content %}

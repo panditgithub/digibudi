@@ -1,0 +1,133 @@
+
+{% block content %}
+{% load static %}
+<div class="editProfile">
+<div class="container LandingContainer">
+    <div class="editProfile_outerDiv">
+    <div class="editProfile_itemDiv">
+        <div class="row">
+        <div class="col-md-12">
+            <div class="editprofile_input"> 
+            <form>
+                <div class="form_prfileHadding">
+                <h6>Post a Job</h6>
+                </div>
+                <div class="row input_edit_profile d-flex">
+                <div class="col-md-12 input_editCol">
+                    <label for="exampleInputEmail1" class="form-label">Tittle*</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter your job tittle" aria-describedby="emailHelp"> 
+                </div> 
+                </div> 
+                <div class="row input_edit_profile d-flex">
+                <div class="col-md-12 input_editCol">
+                    <label for="exampleInputEmail1" class="form-label">Description*</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Lorem ipsum is dummy text" rows="3"></textarea>
+                </div> 
+                </div>
+                <div class="row input_edit_profile d-flex">
+                <div class="col-md-6 input_editCol input_selectEdit1">
+                    <label for="exampleInputEmail1" class="form-label">Category Type*</label>
+                    <form action="http://httpbin.org/post" method="post">
+                    <select data-placeholder="Enter your job tittle" multiple class="chosen-select" name="test"> 
+                        <option>American Black Bear</option>
+                        <option>Asiatic Black Bear</option>
+                        <option>Brown Bear</option>
+                        <option>Giant Panda</option>
+                        <option>Sloth Bear</option>
+                        <option>Sun Bear</option>
+                        <option>Polar Bear</option>
+                        <option>Spectacled Bear</option>
+                    </select> 
+                    </form>
+                </div>
+                <div class="col-md-6 input_editCol input_selectEdit1">
+                    <label for="exampleInputEmail1" class="form-label">Category Type*</label>
+                    <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        Dropdown button
+                    </button>
+                    <ul class="dropdown-menu menuOuter_category" aria-labelledby="dropdownMenuButton1">
+                        <div class="inputFled_outer"> 
+                        <input type="search" id="gsearch" placeholder="Search" name="gsearch">
+                        <img src="images/category_iconSearch.svg" alt="icon_Search" class="category_icon">
+                        </div>
+                        <li><a class="dropdown-item" href="#">Frontend Devloper</a></li>
+                        <li><a class="dropdown-item" href="#">Backend Developer</a></li>
+                        <li><a class="dropdown-item" href="#">UI/UX Designer</a></li>
+                        <li><a class="dropdown-item" href="#">Frontend Devloper</a></li>
+                        <li><a class="dropdown-item" href="#">Backend Developer</a></li>
+                    </ul>
+                    </div> 
+                </div>
+                </div>
+                <div class="row input_edit_profile d-flex">
+                <div class="col-md-6 input_editCol">
+                    <label for="exampleInputEmail1" class="form-label">Job Type* </label>
+                    <div class="radio_btn_outer">
+                    <div class="form-check form-check-inline check_RadioBtn_outer">
+                        <input class="form-check-input check_RadioBtn" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                        <label class="form-check-label" for="inlineRadio1">Hour</label>
+                    </div>
+                    <div class="form-check form-check-inline check_RadioBtn_outer">
+                        <input class="form-check-input check_RadioBtn" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                        <label class="form-check-label" for="inlineRadio2">one time payment</label>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-md-6 input_editCol">
+                    <div class="expiryDate_outer row">
+                    <div class="expiryDate_item col-md-12">
+                        <label for="exampleInputEmail1" class="form-label">Enter Amount*</label>
+                        <div class="enterAmount_outer row">
+                        <div class="enterAmount_item col-md-6">
+                            <input type="number" name="points" step="1" class="number-input" placeholder="2"> 
+                        </div>
+                        <div class="enterAmount_item col-md-6">
+                            <input type="number" name="points" step="1" class="number-input" placeholder="2"> 
+                        </div>
+                        </div>
+                    </div> 
+                    </div>
+                    
+                </div>
+                </div>
+                <div class="row input_edit_profile d-flex textarea-editor-img">
+                <div class="col-md-12 input_editCol">
+                    <div class="lable-editor">
+                    <label for="exampleInputEmail1" class="form-label">Full Description*</label>
+                    <img src="images/editor-image.png" class="img-fluid">
+                </div>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="" rows="3"></textarea>
+                    <div class="editor-character-words">
+                        <span>Character:100 &nbsp;  Words:260</span>
+                    </div>
+                </div> 
+                </div>
+                <div class="row input_edit_profile d-flex">
+                <label for="exampleInputEmail1" class="form-label">File Attachment*</label>
+                <div class="col-md-12 input_editCol1">
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Upload a File" aria-describedby="emailHelp">
+                    <input type="file" id="upload" hidden/>
+                    <label for="upload">Choose file</label>
+                    <img src="{% static 'static2/images/upload_IconFile.svg' %}" alt="Uploaad_icon" class="uploadIcon">
+                </div> 
+                </div> 
+                <div class="editProfile_btn">
+                <div class="btn_leftSide">
+                    <a href="#">Update</a>
+                </div>
+                <div class="btn_leftSide btn_rightSide">
+                    <a href="#">Cancel</a>
+                </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+</div>
+</div>
+{% endblock content %}
+
+  
